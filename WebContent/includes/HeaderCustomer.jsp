@@ -11,7 +11,7 @@ Kool Store Template
 http://www.templatemo.com/preview/templatemo_428_kool_store
 -->
     <meta charset="utf-8">
-    <title>Ransom Store - Place to Get Cool Vehicles</title>
+    <title>Ransom Vehicle Store - Place to Get Cool Vehicles</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
@@ -23,7 +23,7 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/templatemo-misc.css">
-    <link rel="stylesheet" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 
@@ -35,72 +35,51 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 
     
     <header class="site-header">
-        <div class="top-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6">
-                        <div class="top-header-left">
-                            <a href="#">Sign Up</a>
-                            <a href="#">Log In</a>
-                        </div> <!-- /.top-header-left -->
-                    </div> <!-- /.col-md-6 -->
-                    <div class="col-md-6 col-sm-6">
-                        <div class="social-icons">
-                            <ul>
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-dribbble"></a></li>
-                                <li><a href="#" class="fa fa-twitter"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div> <!-- /.social-icons -->
-                    </div> <!-- /.col-md-6 -->
-                </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /.top-header -->
-        <div class="main-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-6 col-xs-8">
-                        <div class="logo">
-                            <h1><a href="#">Ransom Store</a></h1>
-                        </div> <!-- /.logo -->
-                    </div> <!-- /.col-md-4 -->
-                    <div class="col-md-8 col-sm-6 col-xs-4">
-                        <div class="main-menu">
-                            <a href="#" class="toggle-menu">
-                                <i class="fa fa-bars"></i>
-                            </a>
-                            <ul class="menu">
-                                <li><a href="#">Profile</a></li>
-                                <li><a href="#">View Order</a></li>                           
-                                <li><a href="#">About</a></li>
-                            </ul>
-                        </div> <!-- /.main-menu -->
-                    </div> <!-- /.col-md-8 -->
-                </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /.main-header -->
-        <div class="main-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-7">
-                        <div class="list-menu">
-                            <ul>
-                                <li><a href="index.html">Home</a></li> <!--  index page, refer to the index.html template to add some vehicles, but we going to use index.jsp to include dynamic stuffs -->
-                                <li><a href="product-detail.html">Store</a></li> <!-- vehicles store -->
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div> <!-- /.list-menu -->
-                    </div> <!-- /.col-md-6 -->
-                    <div class="col-md-6 col-sm-5">
-                        <div class="notification">
-                            <span>Free Shipping on any order above $50</span>
-                        </div>
-                    </div> <!-- /.col-md-6 -->
-                </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /.main-nav -->
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+						aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Ransom Vehicle Store</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+						<li><a href="#">Store</a></li>
+						<li><a href="#">Order</a></li>
+						<li><a href="#">Contact</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul></li>
+					</ul>
+				
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Sign Up</a></li>
+						<li><a href="#">Log In</a></li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
     </header> <!-- /.site-header -->
 
     <script src="js/vendor/jquery-1.10.1.min.js"></script>
