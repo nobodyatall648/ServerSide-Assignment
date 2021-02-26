@@ -43,7 +43,7 @@ public class CustomerEntity implements Serializable {
 
 	//bi-directional many-to-one association to EmployeeEntity
 	@ManyToOne
-	@JoinColumn(name="salesrepemployeenumber")
+	@JoinColumn(name="salesrepemployeenumber", insertable=false, updatable=false)
 	private EmployeeEntity employee;
 
 	//bi-directional many-to-one association to PaymentEntity

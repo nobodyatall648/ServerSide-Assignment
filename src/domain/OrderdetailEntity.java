@@ -26,12 +26,12 @@ public class OrderdetailEntity implements Serializable {
 
 	//bi-directional many-to-one association to OrderEntity
 	@ManyToOne
-	@JoinColumn(name="ordernumber")
+	@JoinColumn(name="ordernumber", insertable=false, updatable=false)
 	private OrderEntity order;
 
 	//bi-directional many-to-one association to ProductEntity
 	@ManyToOne
-	@JoinColumn(name="productcode")
+	@JoinColumn(name="productcode", insertable=false, updatable=false)
 	private ProductEntity product;
 
 	public OrderdetailEntity() {

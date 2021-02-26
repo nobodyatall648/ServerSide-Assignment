@@ -1,19 +1,30 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.ejb.EJB;
+import javax.ejb.EJBException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.OrderEntity;
+import sessionbean.OrderSessionBeanLocal;
+
 /**
- * Servlet implementation class addOrder
+ * Servlet implementation class AddOrder
  */
-@WebServlet("/addOrder")
+@WebServlet("/AddOrder")
 public class AddOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+     
+	@EJB
+	private OrderSessionBeanLocal orderBean;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,7 +38,15 @@ public class AddOrder extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		PrintWriter out = response.getWriter();			
+		
+		try {
+			List<OrderEntity>orderList = orderBean.getAllOrder();
+			
+			out.println(orderList.get(0).getCustomernumber());
+		} catch (EJBException e) {
+			out.println("[error]: " + e);
+		}
 	}
 
 	/**

@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name="orders",schema="classicmodels")
 @NamedQuery(name="OrderEntity.findAll", query="SELECT o FROM OrderEntity o")
+
 public class OrderEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -19,7 +20,7 @@ public class OrderEntity implements Serializable {
 	private Integer ordernumber;
 
 	private String comments;
-
+	
 	private Integer customernumber;
 
 	private String orderdate;
