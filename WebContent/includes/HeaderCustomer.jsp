@@ -46,7 +46,7 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Ransom Vehicle Store</a>
+					<a class="navbar-brand" href="index.jsp">Ransom Vehicle Store</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -55,7 +55,7 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
 						<li><a href="#">Store</a></li>
-						<li><a href="#">Order</a></li>
+						<li><a href="addOrder.jsp">Order</a></li>
 						<li><a href="#">Contact</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
