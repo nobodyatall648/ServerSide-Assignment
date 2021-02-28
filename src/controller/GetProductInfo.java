@@ -42,14 +42,20 @@ public class GetProductInfo extends HttpServlet {
 		
 		String productCode = request.getParameter("productCode");
 		
+		boolean noRsl = false;
+		
 		try {
 			ProductEntity productInfo = productBean.getProductByProductCode(productCode);
 			
 			request.setAttribute("PRODUCT_INFO", productInfo);
+			request.setAttribute("NORESULT", noRsl);
 			RequestDispatcher req = request.getRequestDispatcher("addOrder.jsp");
 			req.forward(request, response);
 		} catch (EJBException e) {
-			out.println("[error]: " + e);
+			noRsl = true;
+			request.setAttribute("NORESULT", noRsl);
+			RequestDispatcher req = request.getRequestDispatcher("addOrder.jsp");
+			req.forward(request, response);
 		}
 	}
 
