@@ -1,7 +1,10 @@
 package controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -13,7 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domain.OrderEntity;
+import domain.OrderdetailEntity;
+import domain.OrderdetailEntityPK;
+import domain.ProductEntity;
+import sessionbean.OrderDetailSessionBean;
+import sessionbean.OrderDetailSessionBeanLocal;
 import sessionbean.OrderSessionBeanLocal;
+import sessionbean.ProductSessionBeanLocal;
 
 /**
  * Servlet implementation class AddOrder
@@ -24,6 +33,8 @@ public class AddOrder extends HttpServlet {
      
 	@EJB
 	private OrderSessionBeanLocal orderBean;
+	private OrderDetailSessionBeanLocal orderDetailBean;
+	private ProductSessionBeanLocal productBean;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,15 +49,7 @@ public class AddOrder extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();			
 		
-		try {
-			List<OrderEntity>orderList = orderBean.getAllOrder();
-			
-			out.println(orderList.get(0).getCustomernumber());
-		} catch (EJBException e) {
-			out.println("[error]: " + e);
-		}
 	}
 
 	/**
@@ -54,7 +57,53 @@ public class AddOrder extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		PrintWriter out = response.getWriter();
+		
+		String productCode = request.getParameter("productCode");
+		String custNum = request.getParameter("customernumber");
+		String requiredDate = request.getParameter("requiredDate");
+		String comments = request.getParameter("comments");
+		String qty = request.getParameter("qty");
+		
+		//add Order
+		String orderDate = null;
+		
+		try {
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			orderDate = dateFormat.format(new Date());					
+		}catch(Exception e) {
+			out.println("Something wrong somewhere: " + e);
+		}
+		
+		int orderNum = orderBean.newOrderNumber(); 
+		
+		OrderEntity orderEntity = null;
+		orderEntity.setOrdernumber(orderNum);
+		orderEntity.setOrderdate(orderDate);
+		orderEntity.setRequireddate(requiredDate);
+		orderEntity.setStatus("In Process");
+		orderEntity.setComments(comments);
+		orderEntity.setCustomernumber(Integer.parseInt(custNum));
+		
+		orderBean.addOrder(orderEntity);
+		
+		//add orderDetails
+		OrderdetailEntity orderDetailEntity = null;
+		OrderdetailEntityPK idPK = null;
+		ProductEntity productInfo = productBean.getProductByProductCode(productCode);
+		
+		idPK.setOrdernumber(orderNum);
+		idPK.setProductcode(productCode);
+		
+		orderDetailEntity.setId(idPK);
+		orderDetailEntity.setQuantityordered(Integer.parseInt(qty));
+		orderDetailEntity.setPriceeach(productInfo.getMsrp());
+		//orderDetailEntity.setOrderlinenumber(orderlinenumber);
+		
+		//deduct qty
+		
+		//reset cart session
+		
 	}
 
 }

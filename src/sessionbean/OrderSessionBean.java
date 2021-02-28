@@ -1,11 +1,13 @@
 package sessionbean;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import domain.OrderEntity;
 
@@ -16,6 +18,14 @@ import domain.OrderEntity;
 public class OrderSessionBean implements OrderSessionBeanLocal {
 	@PersistenceContext(unitName="ServerSideAssignment")
 	EntityManager em;
+	
+	/**
+     * Default constructor. 
+     */
+    public OrderSessionBean() {
+        // TODO Auto-generated constructor stub
+    }
+	
     @Override
 	public OrderEntity getOrderByOrderNumber(String custNum) throws EJBException {
 		// TODO Auto-generated method stub
@@ -28,8 +38,8 @@ public class OrderSessionBean implements OrderSessionBeanLocal {
 	}
 	@Override
 	public void addOrder(OrderEntity order) throws EJBException {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
+		em.persist(order);
 	}
 	@Override
 	public void updateOrder(OrderEntity order) throws EJBException {
@@ -46,11 +56,16 @@ public class OrderSessionBean implements OrderSessionBeanLocal {
 		// TODO Auto-generated method stub
 		return em.createNamedQuery("OrderEntity.findAll").getResultList();
 	}
-	/**
-     * Default constructor. 
-     */
-    public OrderSessionBean() {
-        // TODO Auto-generated constructor stub
-    }
 
+	@Override
+	public int newOrderNumber() throws EJBException {
+		// TODO Auto-generated method stub
+		
+		Query q = em.createNamedQuery("OrderEntity.getLastOrderNumber");
+		int lastNum = (int) q.setMaxResults(1).getSingleResult();
+		int newNum = lastNum + 1;
+		
+		return newNum;
+	}
+		
 }

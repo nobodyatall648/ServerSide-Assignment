@@ -15,4 +15,5 @@ public interface OrderSessionBeanLocal {
 	public void updateOrder(OrderEntity order) throws EJBException;
 	public void deleteOrder(int orderNum) throws EJBException;
 	public List<OrderEntity> getAllOrder() throws EJBException;
+	public int newOrderNumber() throws EJBException;
 }
