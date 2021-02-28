@@ -10,15 +10,15 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
 /**
- * Servlet Filter implementation class logfilter
+ * Servlet Filter implementation class adminFilter
  */
-@WebFilter("/logfilter")
-public class logfilter implements Filter {
+@WebFilter(filterName="/adminFilter",urlPatterns= {"/Admincontroller"})
+public class adminFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public logfilter() {
+    public adminFilter() {
         // TODO Auto-generated constructor stub
     }
 
