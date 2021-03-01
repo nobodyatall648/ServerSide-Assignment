@@ -113,10 +113,10 @@
 	<%
 		try {
 			List<Cart> cartList = (List<Cart>) session.getAttribute("CART");
-			//cart list + place order
+			//cart list management
 			if (cartList.size() != 0) {
 				out.println("<h3><u>Cart List</u></h3>");
-				out.println("<form action=\"AddOrder\" method=\"post\">");
+				out.println("<form action=\"CartController\" method=\"get\">");
 				out.println("<table border=2>");
 
 				out.println("<thead style=\"font-weight: bold\">");
@@ -145,8 +145,13 @@
 				}
 
 				out.println("</tbody>");
-
+				out.println("<button type=\"submit\">Remove Cart</button>");
 				out.println("</table>");
+				out.println("</form>");
+				
+				//place order
+				out.println("<form action=\"AddOrder\" method=\"post\">");
+				out.println("<button type=\"submit\">Place Order</button>");
 				out.println("</form>");
 			}
 		} catch (Exception e) {
