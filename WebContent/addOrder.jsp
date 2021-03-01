@@ -144,9 +144,9 @@
 					out.println("</tr>");
 				}
 
-				out.println("</tbody>");
-				out.println("<button type=\"submit\">Remove Cart</button>");
+				out.println("</tbody>");				
 				out.println("</table>");
+				out.println("<button type=\"submit\">Remove Cart</button>");
 				out.println("</form>");
 				
 				//place order
@@ -155,7 +155,6 @@
 				out.println("</form>");
 			}
 		} catch (Exception e) {
-
 		}
 	%>
 	<br>
