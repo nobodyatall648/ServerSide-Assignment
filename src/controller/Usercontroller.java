@@ -1,18 +1,24 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import sessionbean.EmployeeSessionBeanLocal;
+
 /**
  * Servlet implementation class Usercontroller
  */
-@WebServlet(name="/Usercontroller",urlPatterns= {"/Usercontroller"})
+@WebServlet(name="/User",urlPatterns= {"/Usercontroller"})
 public class Usercontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@EJB
+	private EmployeeSessionBeanLocal emp;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,7 +41,15 @@ public class Usercontroller extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		String usrname=request.getParameter("usrname");
+		String pass=request.getParameter("usrpsw");
+		System.out.println(usrname);
+		System.out.println(pass);
+		
+		
+		
+		
+		
+		}
 
 }
