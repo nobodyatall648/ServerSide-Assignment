@@ -93,11 +93,30 @@ public class AddOrder extends HttpServlet {
 			orderEntity.setCustomernumber(cartList.get(0).getCustomerNumber());
 
 			// add orderDetails
+			OrderdetailEntity orderDetailEntity = new OrderdetailEntity();
 			
 			
-			// deduct qty
-
-			// reset cart session
+			for(int i=0; i < cartList.size(); i++) {
+				ProductEntity productInfo = new ProductEntity();
+				try {
+					productInfo = productBean.getProductByProductCode(cartList.get(i).getProductCode());
+					orderDetailEntity.setOrder(orderEntity);
+					orderDetailEntity.setProduct(productInfo);
+					orderDetailEntity.setQuantityordered(cartList.get(i).getQty());
+					orderDetailEntity.setPriceeach(productInfo.getMsrp());
+					orderDetailEntity.setOrderlinenumber(i);
+				}catch(Exception e) {
+					
+				}							
+			}
+			
+			// reset cart session attribute
+			session.setAttribute("CART", "");
+			
+			//<info>
+			//later in payment, just pass the orderEntity + orderDetailEntity object to ur payment servlet.
+			//</info>
+			
 		} catch (Exception e) {
 
 		}
