@@ -87,12 +87,13 @@
 				out.println("<td>Quantity </td>");
 				out.println("<td>&nbsp; : <input type=\"text\" name=\"qty\" value=\"\" required> </td>");
 				out.println("</tr>");
-
+				
+				/*
 				out.println("<tr>");
 				out.println("<td>Comments </td>");
 				out.println("<td>&nbsp; : <input type=\"text\" name=\"comments\" value=\"\" required> </td>");
 				out.println("</tr>");
-
+				*/
 				out.println("<tr>");
 				out.println("<td>Required Date </td>");
 				out.println("<td>&nbsp; : <input type=\"date\" name=\"requiredDate\" value=\"\" required> </td>");
@@ -124,7 +125,7 @@
 				out.println("<td>&nbsp;Product Code&nbsp;</td>");
 				out.println("<td>&nbsp;Customer Number&nbsp;</td>");
 				out.println("<td>&nbsp;Required Date&nbsp;</td>");
-				out.println("<td>&nbsp;Comments&nbsp;</td>");
+				//out.println("<td>&nbsp;Comments&nbsp;</td>");
 				out.println("<td>&nbsp;Quantity&nbsp;</td>");
 				out.println("<td>&nbsp;Remove?&nbsp;</td>");
 				out.println("</tr>");
@@ -138,7 +139,7 @@
 					out.println("<td>&nbsp;" + cartList.get(i).getProductCode() + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + cartList.get(i).getCustomerNumber() + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + cartList.get(i).getRequiredDate() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + cartList.get(i).getComments() + "&nbsp;</td>");
+					//out.println("<td>&nbsp;" + cartList.get(i).getComments() + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + cartList.get(i).getQty() + "&nbsp;</td>");
 					out.println("<td>&nbsp;<input type=\"checkbox\" name=\"productCode\" value=\""+ cartList.get(i).getProductCode() + "\">&nbsp;</td>");
 					out.println("</tr>");
@@ -146,11 +147,23 @@
 
 				out.println("</tbody>");				
 				out.println("</table>");
+				out.println("<br>");
 				out.println("<button type=\"submit\">Remove Cart</button>");
 				out.println("</form>");
 				
+				out.println("<br>");
+				out.println("<br>");
 				//place order
 				out.println("<form action=\"AddOrder\" method=\"post\">");
+				
+				out.println("<table border=0>");
+				out.println("<tr>");
+				out.println("<td>Comments </td>");
+				out.println("<td>&nbsp; : <input type=\"text\" name=\"comments\" value=\"\" required> </td>");
+				out.println("</tr>");
+				out.println("</table>");
+				
+				out.println("<br>");
 				out.println("<button type=\"submit\">Place Order</button>");
 				out.println("</form>");
 			}

@@ -34,7 +34,12 @@ public class OrderSessionBean implements OrderSessionBeanLocal {
 	@Override
 	public List<OrderEntity> getOrderByCustNum(String custNum) throws EJBException {
 		// TODO Auto-generated method stub
-		return null;
+		Query q = null;
+		
+		q = em.createNamedQuery("OrderEntity.findCustomerOrder");
+		q.setParameter("custnum", Integer.parseInt(custNum));
+		
+		return q.getResultList();
 	}
 	@Override
 	public void addOrder(OrderEntity order) throws EJBException {
