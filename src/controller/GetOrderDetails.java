@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,27 +10,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import domain.OrderEntity;
+import domain.OrderdetailEntity;
 import sessionbean.OrderDetailSessionBeanLocal;
-import sessionbean.OrderSessionBeanLocal;
 
 /**
- * Servlet implementation class GetCustomerOrder
+ * Servlet implementation class GetOrderDetails
  */
-@WebServlet("/GetCustomerOrder")
-public class GetCustomerOrder extends HttpServlet {
+@WebServlet("/GetOrderDetails")
+public class GetOrderDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
 	@EJB
-	OrderSessionBeanLocal orderBean;
 	OrderDetailSessionBeanLocal orderDetailBean;
-	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetCustomerOrder() {
+    public GetOrderDetails() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,17 +36,14 @@ public class GetCustomerOrder extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		PrintWriter out = response.getWriter();		
+		String orderNum = request.getParameter("ordernumber");
 		
-		String customerNumber = "114"; //demo
+		List<OrderdetailEntity> orderDetailList = orderDetailBean.getOrderDetalByOrderNumber(orderNum);
 		
-		List<OrderEntity> orderList = orderBean.getOrderByCustNum(customerNumber);
-		
-		session.setAttribute("ORDER_LIST", orderList);
-		//request.setAttribute("ORDER_LIST", orderList);
+		request.setAttribute("ORDER_DETAIL_LIST", orderDetailList);
 		RequestDispatcher req = request.getRequestDispatcher("viewOrder.jsp");
 		req.forward(request, response);
+		
 	}
 
 	/**
@@ -59,7 +51,7 @@ public class GetCustomerOrder extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		doGet(request, response);
 	}
 
 }
