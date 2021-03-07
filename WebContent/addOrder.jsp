@@ -88,12 +88,6 @@
 				out.println("<td>&nbsp; : <input type=\"text\" name=\"qty\" value=\"\" required> </td>");
 				out.println("</tr>");
 				
-				/*
-				out.println("<tr>");
-				out.println("<td>Comments </td>");
-				out.println("<td>&nbsp; : <input type=\"text\" name=\"comments\" value=\"\" required> </td>");
-				out.println("</tr>");
-				*/
 				out.println("<tr>");
 				out.println("<td>Required Date </td>");
 				out.println("<td>&nbsp; : <input type=\"date\" name=\"requiredDate\" value=\"\" required> </td>");
@@ -125,7 +119,7 @@
 				out.println("<td>&nbsp;Product Code&nbsp;</td>");
 				out.println("<td>&nbsp;Customer Number&nbsp;</td>");
 				out.println("<td>&nbsp;Required Date&nbsp;</td>");
-				//out.println("<td>&nbsp;Comments&nbsp;</td>");
+				out.println("<td>&nbsp;Price Each (RM)&nbsp;</td>");
 				out.println("<td>&nbsp;Quantity&nbsp;</td>");
 				out.println("<td>&nbsp;Remove?&nbsp;</td>");
 				out.println("</tr>");
@@ -133,16 +127,19 @@
 
 				//looping showing result lei geh
 				out.println("<tbody>");
-
+				
+				double totalPrice = 0;
+				
 				for (int i = 0; i < cartList.size(); i++) {
 					out.println("<tr>");
 					out.println("<td>&nbsp;" + cartList.get(i).getProductCode() + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + cartList.get(i).getCustomerNumber() + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + cartList.get(i).getRequiredDate() + "&nbsp;</td>");
-					//out.println("<td>&nbsp;" + cartList.get(i).getComments() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + String.format("%.2f", cartList.get(i).getPriceEst()) + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + cartList.get(i).getQty() + "&nbsp;</td>");
 					out.println("<td>&nbsp;<input type=\"checkbox\" name=\"productCode\" value=\""+ cartList.get(i).getProductCode() + "\">&nbsp;</td>");
 					out.println("</tr>");
+					totalPrice += cartList.get(i).getPriceEst()*cartList.get(i).getQty();
 				}
 
 				out.println("</tbody>");				
@@ -150,6 +147,10 @@
 				out.println("<br>");
 				out.println("<button type=\"submit\">Remove Cart</button>");
 				out.println("</form>");
+				
+				out.println("<br>");
+				
+				out.println("<h4>Total Price Estimated: RM" + String.format("%.2f", totalPrice) +"</h4>");
 				
 				out.println("<br>");
 				out.println("<br>");

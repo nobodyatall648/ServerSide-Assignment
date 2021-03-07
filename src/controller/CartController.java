@@ -87,7 +87,7 @@ public class CartController extends HttpServlet {
 		String productCode = request.getParameter("productCode");
 		String custNum = request.getParameter("customernumber");
 		String requiredDate = request.getParameter("requiredDate");
-		String comments = request.getParameter("comments");
+		//String comments = request.getParameter("comments");
 		String qty = request.getParameter("qty");
 
 		HttpSession session = request.getSession();
@@ -98,8 +98,9 @@ public class CartController extends HttpServlet {
 		boolean jsAlertNotEnough = false;
 		
 		//check more than qtyInStock available
+		ProductEntity productInfo = new ProductEntity();
 		try {
-			ProductEntity productInfo = productBean.getProductByProductCode(productCode);
+			productInfo = productBean.getProductByProductCode(productCode);
 			
 			if(Integer.parseInt(qty) > productInfo.getQuantityinstock()) {
 				jsAlertNotEnough = true;
@@ -119,6 +120,7 @@ public class CartController extends HttpServlet {
 			cart.setCustomerNumber(Integer.parseInt(custNum));
 			cart.setRequiredDate(requiredDate);
 			cart.setQty(Integer.parseInt(qty));
+			cart.setPriceEst(Double.parseDouble(productInfo.getMsrp().toString()));
 						
 			// catching null when 1st time adding to cart
 			try {
