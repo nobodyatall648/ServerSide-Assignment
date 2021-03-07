@@ -153,14 +153,15 @@
 				out.println("<h4>Total Price Estimated: RM" + String.format("%.2f", totalPrice) +"</h4>");
 				
 				out.println("<br>");
-				out.println("<br>");
 				//place order
 				out.println("<form action=\"AddOrder\" method=\"post\">");
 				
 				out.println("<table border=0>");
 				out.println("<tr>");
-				out.println("<td>Comments </td>");
-				out.println("<td>&nbsp; : <input type=\"text\" name=\"comments\" value=\"\" required> </td>");
+				out.println("<td>Comments : </td> <br>");
+				out.println("</tr>");
+				out.println("<tr>");
+				out.println("<td><textarea name=\"comments\" rows=\"4\" cols=\"50\"></textarea></td>");
 				out.println("</tr>");
 				out.println("</table>");
 				
