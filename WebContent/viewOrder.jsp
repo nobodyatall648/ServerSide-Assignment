@@ -38,14 +38,14 @@
 				</select>
 				</td>
 				<td>&nbsp;
-					<button type="submit">Get Product Info</button>
+					<button type="submit">Get Order Details</button>
 				</td>
 			</tr>
 		</table>
 	</form>
 
 	<h3>
-		<u>Orders</u>
+		<u>Order Status</u>
 	</h3>
 	<table border=2>
 		<thead>
