@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name="employees",schema="classicmodels")
 @NamedQuery(name="EmployeeEntity.findAll", query="SELECT e FROM EmployeeEntity e")
+@NamedQuery(name="EmployeeEntity.findbynum",query="SELECT e FROM EmployeeEntity e WHERE e.employeenumber =:Employnum")
 public class EmployeeEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -38,6 +39,8 @@ public class EmployeeEntity implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="officecode", insertable=false, updatable=false)
 	private OfficeEntity office;
+	
+	
 
 	public EmployeeEntity() {
 	}
