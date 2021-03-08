@@ -7,8 +7,10 @@ import java.util.List;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.servlet.http.HttpServletRequest;
 
 import domain.EmployeeEntity;
 
@@ -19,11 +21,19 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 	EntityManager em;
 	
 	@Override
-	public EmployeeEntity getEmployeeByEmpNum(int empNum) throws EJBException {
+	public EmployeeEntity getEmployeeByEmpNum(String empNum,HttpServletRequest req) throws EJBException {
 		// TODO Auto-generated method stub
-		Query emp=em.createNamedQuery("EmployeeEntity.getEmployeenumber");
-		emp.setParameter("Employee number",String.valueOf(empNum));
-		return(EmployeeEntity)emp.getSingleResult();
+		try {
+		Query emp=em.createNamedQuery("EmployeeEntity.findbynum");
+		emp.setParameter("Employnum",Integer.valueOf(empNum));
+		return (EmployeeEntity) emp.getSingleResult();
+		
+		
+		
+		}catch(NoResultException e) {
+			System.out.println("No data found");
+			return null;
+		}
 		
 	}
 
@@ -52,10 +62,10 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 	}
 	
 @Override
-	public void deleteEmployee(int empNum) throws EJBException {
+	public void deleteEmployee(String empNum) throws EJBException {
 		// TODO Auto-generated method stub
-		EmployeeEntity e=getEmployeeByEmpNum(empNum);
-		em.remove(e);
+		
+		
 	}
 
 	@Override

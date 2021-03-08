@@ -1,8 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -16,10 +15,10 @@ import domain.EmployeeEntity;
 import sessionbean.EmployeeSessionBeanLocal;
 
 /**
- * Servlet implementation class Usercontroller
+ * Servlet implementation class ViewEmployee
  */
-@WebServlet(name="/User",urlPatterns= {"/Usercontroller"})
-public class Usercontroller extends HttpServlet {
+@WebServlet(name="/employee",urlPatterns= {"/ViewEmployee"})
+public class ViewEmployee extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
 	private EmployeeSessionBeanLocal emp;
@@ -27,7 +26,7 @@ public class Usercontroller extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Usercontroller() {
+    public ViewEmployee() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,13 +44,13 @@ public class Usercontroller extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String usrname=request.getParameter("usrname");
-		String pass=request.getParameter("usrpsw");
-		System.out.println(usrname);
-		System.out.println(pass);
-		
-		
-		
-		}
+		String employeenum=request.getParameter("employeenum");
+		if(employeenum!=null) {
+		EmployeeEntity e=emp.getEmployeeByEmpNum(employeenum,request);
+		request.setAttribute("EmployeeResult", e);
+		RequestDispatcher req=request.getRequestDispatcher("ViewEmployee.jsp");
+		req.forward(request, response);
+		}else response.sendRedirect("ViewEmployee.jsp");
+	}
 
 }
