@@ -5,8 +5,11 @@ import java.util.List;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
+import domain.EmployeeEntity;
 import domain.OfficeEntity;
 
 @Stateless
@@ -19,12 +22,23 @@ public class OfficeSessionBean implements OfficeSessionBeanLocal {
 		// TODO Auto-generated method stub
 		return em.createNamedQuery("OfficeEntity.findAll").getResultList();
 	}
+	
 
 	@Override
-	public List<OfficeEntity> findOffice(int officeCode) throws EJBException {
+	public OfficeEntity findOffice(int officeCode) throws EJBException {
 		// TODO Auto-generated method stub
-		OfficeEntity e=em.find(OfficeEntity.class, officeCode);
-		return null;
+		try {
+			Query off=em.createNamedQuery("OfficeEntity.findbynum");
+			off.setParameter("officenum",officeCode);
+			return (OfficeEntity) off.getSingleResult();
+			
+			
+			
+			}catch(NoResultException e) {
+				System.out.println("No data found");
+				return null;
+			}
+			
 		
 	}
 

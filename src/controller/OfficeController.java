@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -10,23 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.OfficeEntity;
 import sessionbean.EmployeeSessionBeanLocal;
-import utilities.ValidateEmployee;
+import sessionbean.OfficeSessionBeanLocal;
 
 /**
- * Servlet implementation class Admincontroller
+ * Servlet implementation class OfficeController
  */
-@WebServlet(name="/admincontroller",urlPatterns= {"/admincontroller"})
-public class Admincontroller extends HttpServlet {
+@WebServlet("/OfficeController")
+public class OfficeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
 	@EJB
-	private EmployeeSessionBeanLocal empbean;
+	private OfficeSessionBeanLocal offbean;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Admincontroller() {
+    public OfficeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,27 +43,9 @@ public class Admincontroller extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String eid=request.getParameter("id");
-		String fname=request.getParameter("fname");
-		String lname=request.getParameter("lname");
-		String email=request.getParameter("email");
-		String job=request.getParameter("job");
-		String ocode=request.getParameter("officecode");
-		String report=request.getParameter("report");
-		
-		PrintWriter out = response.getWriter();
-		
-		String[] s= {eid,fname,lname,email,job,ocode,report};
-		
-			if(ValidateEmployee.ValidateEmployee(request).equals("UPDATE")) {
-				empbean.updateEmployee(s);
-			}else if(ValidateEmployee.ValidateEmployee(request).equals("DELETE")) {
-				empbean.deleteEmployee(eid);
-			}
-			else {
-				empbean.addEmployee(s);
-			}
-			ValidateEmployee.navigateJS(out);
+		OfficeEntity o=offbean.findOffice(2);
+		System.out.println(o.getOfficecode());
+		System.out.println(o.getPhone());
 	}
 
 }
