@@ -9,21 +9,27 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import domain.EmployeeEntity;
 import domain.OfficeEntity;
 
+/**
+ * Session Bean implementation class OfficeSessionBean
+ */
 @Stateless
 public class OfficeSessionBean implements OfficeSessionBeanLocal {
 
+    /**
+     * Default constructor. 
+     */
 	@PersistenceContext(unitName = "ServerSideAssignment")
 	EntityManager em;
+    public OfficeSessionBean() {
+        // TODO Auto-generated constructor stub
+    }
 	@Override
 	public List<OfficeEntity> getAllOffice() throws EJBException {
 		// TODO Auto-generated method stub
 		return em.createNamedQuery("OfficeEntity.findAll").getResultList();
 	}
-	
-
 	@Override
 	public OfficeEntity findOffice(int officeCode) throws EJBException {
 		// TODO Auto-generated method stub
@@ -38,26 +44,22 @@ public class OfficeSessionBean implements OfficeSessionBeanLocal {
 				System.out.println("No data found");
 				return null;
 			}
-			
-		
 	}
-
 	@Override
 	public void addOffice(OfficeEntity office) throws EJBException {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void updateOffice(OfficeEntity office) throws EJBException {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void deleteOffice(OfficeEntity office) throws EJBException {
 		// TODO Auto-generated method stub
 		
 	}
-
+    
+    
 }
