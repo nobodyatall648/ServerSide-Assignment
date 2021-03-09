@@ -23,7 +23,7 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 	EntityManager em;
 	
 	@EJB
-	private OfficeSessionBean offbean;
+	private OfficeSessionBeanLocal offbean;
 	
 	
 	
