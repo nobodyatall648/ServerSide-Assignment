@@ -22,7 +22,10 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 	@PersistenceContext(unitName = "ServerSideAssignment")
 	EntityManager em;
 	
-		
+	@EJB
+	private OfficeSessionBeanLocal offbean;
+	
+	
 	
 	@Override
 	public EmployeeEntity getEmployeeByEmpNum(String empNum,HttpServletRequest req) throws EJBException {
