@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.OfficeEntity;
 import sessionbean.EmployeeSessionBeanLocal;
-import sessionbean.bkpOBL;
+import sessionbean.OfficeSessionBeanLocal;
 
 /**
  * Servlet implementation class OfficeController
@@ -20,7 +20,7 @@ import sessionbean.bkpOBL;
 public class OfficeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
-	private bkpOBL offbean;
+	private OfficeSessionBeanLocal offbean;
        
     /**
      * @see HttpServlet#HttpServlet()
