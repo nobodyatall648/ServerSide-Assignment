@@ -59,6 +59,7 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 							aria-expanded="false">Customer Order <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="employeeViewCustomerOrder.jsp">View Customer Order</a></li>
+								<li><a href="GetUnassignedSRCust">Choose Customer as Sales Rep.</a></li>
 								<li><a href="#">...</a></li>								
 							</ul></li>
 						<li><a href="#">Manage Vehicle</a></li>
