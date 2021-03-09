@@ -2,10 +2,45 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Log In</title>
+<title>Employee Management</title>
+<style>
+.form-container .btn:hover, .open-button:hover {
+	opacity: 1;
+}
+.form-popup {
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 400px;
+	display: none;
+	position: fixed;
+	top: 60%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+/* Add styles to the form container */
+.form-container {
+	max-width: 500px;
+	padding: 10px;
+	background-color: white;
+}
+.form-container .btn {
+	background-color: #4CAF50;
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	margin-bottom: 10px;
+	opacity: 0.8;
+}
+</style>
 </head>
+
 <body>
-<h1>User Section</h1>
+
+<h1>Admin Section</h1>
 <form method="post" action="ViewEmployee">
   
 
@@ -21,6 +56,46 @@
 
 </form>
 <br>
+<h1>TO view All Employee detail</h1>
+<button type="submit" action="ViewEmployee" method="get"></button>
+<br>
+<br>
+
+		
+		<button class="open-button" onclick="openForm()">ADD</button>
+	<div class="form-popup" id="myForm">
+		<form action="admincontroller" class="form-container" method="post">
+			<h1>Add Employee</h1>
+			<fieldset>
+				<legend>Add Employee Details:</legend>
+				<br> Employee Number <input type="text" name="id" /> <br> First Name:
+				<input type="text" name="fname" /> <br> Last Name: <input
+					type="text" name="lname" /> <br>Email : <input type="text"
+					name="email" /> <br> Office Code: <input type="text" name="officecode" />
+				<br> Report: <input type="text" name="report" />
+				<br> Job: <input type="text" name="job" />
+
+			</fieldset>
+
+			<button type="submit" class="btn">Submit</button>
+			<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+			<button type="reset" class="btn">Reset</button>
+		</form>
+	</div>
+	<script>
+		function openForm() {
+			document.getElementById("myForm").style.display = "block";
+		}
+
+		function closeForm() {
+			document.getElementById("myForm").style.display = "none";
+		}
+	</script>
+	
+	<form action="OfficeController" method="post">
+	<button type="submit">Submit</button>
+	</form>
+
 
 </body>
 </html>

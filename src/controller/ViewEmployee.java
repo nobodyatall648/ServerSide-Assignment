@@ -50,7 +50,7 @@ public class ViewEmployee extends HttpServlet {
 		request.setAttribute("EmployeeResult", e);
 		RequestDispatcher req=request.getRequestDispatcher("ViewEmployee.jsp");
 		req.forward(request, response);
-		}else response.sendRedirect("ViewEmployee.jsp");
+		}else response.sendRedirect("ViewEmployeedetail.html");
 	}
 
 }
