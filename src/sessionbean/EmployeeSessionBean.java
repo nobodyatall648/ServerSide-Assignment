@@ -22,8 +22,8 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 	@PersistenceContext(unitName = "ServerSideAssignment")
 	EntityManager em;
 	
-	@EJB
-	private OfficeSessionBean offbean;
+	
+	
 	
 	
 	
@@ -45,13 +45,11 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 	}
 
 	@Override
-	public void addEmployee(String[] s) throws EJBException {
+	public void addEmployee(String[] s, OfficeEntity o) throws EJBException {
 		// TODO Auto-generated method stub
 		EmployeeEntity e=new EmployeeEntity();
-	    OfficeEntity o=new OfficeEntity();
+		
 	    
-	    o=offbean.findOffice(Integer.parseInt(s[5]));
-	
 		e.setEmployeenumber(Integer.parseInt(s[0]));
 		e.setFirstname(s[1]);
 		e.setLastname(s[2]);
@@ -59,7 +57,7 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 		e.setJobtitle(s[4]);
 		e.setExtension("x100");
 		e.setReportsto(s[6]);
-		e.setOffice(o);
+		e.setOffice(o);;
 		
 
 		em.persist(o);

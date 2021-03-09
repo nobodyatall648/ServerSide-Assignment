@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.OfficeEntity;
 import sessionbean.EmployeeSessionBeanLocal;
+import sessionbean.OfficeSessionBeanLocal;
 import utilities.ValidateEmployee;
 
 /**
@@ -22,6 +24,8 @@ public class Admincontroller extends HttpServlet {
 	
 	@EJB
 	private EmployeeSessionBeanLocal empbean;
+	@EJB
+	private OfficeSessionBeanLocal offbean;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,6 +48,7 @@ public class Admincontroller extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		String eid=request.getParameter("id");
 		String fname=request.getParameter("fname");
 		String lname=request.getParameter("lname");
@@ -51,6 +56,9 @@ public class Admincontroller extends HttpServlet {
 		String job=request.getParameter("job");
 		String ocode=request.getParameter("officecode");
 		String report=request.getParameter("report");
+		
+		OfficeEntity o=new OfficeEntity();
+		o=offbean.findOffice(Integer.parseInt(ocode));
 		
 		PrintWriter out = response.getWriter();
 		
@@ -62,7 +70,7 @@ public class Admincontroller extends HttpServlet {
 				empbean.deleteEmployee(eid);
 			}
 			else {
-				empbean.addEmployee(s);
+				empbean.addEmployee(s,o);
 			}
 			ValidateEmployee.navigateJS(out);
 	}
