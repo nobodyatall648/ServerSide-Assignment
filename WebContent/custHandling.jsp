@@ -16,8 +16,7 @@
 	<%@ page import="domain.CustomerEntity"%>
 	<%@ page import="java.util.List"%>
 	
-	<h3>Customer Handling</h3>
-	<form action="AcceptCustomerAssign" method="post">	
+	<h3>Customer Handling</h3>	
 		<table border=3>
 			<thead>
 				<tr>
@@ -41,11 +40,10 @@
 						for(int i=0; i < custHandling.size(); i++){
 							out.println("<tr>");
 							
-							out.println("<td>"+ custHandling.get(i).getCustomernumber() +"</td>");
-							out.println("<td>"+ custHandling.get(i).getCustomername() +"</td>");
-							out.println("<td>"+ custHandling.get(i).getContactfirstname() + " " + custHandling.get(i).getContactlastname() +"</td>");
-							out.println("<td>"+ custHandling.get(i).getPhone() +"</td>");
-							out.println("<td>"+ custHandling.get(i).getCustomername() +"</td>");
+							out.println("<td>&nbsp;"+ custHandling.get(i).getCustomernumber() +"&nbsp;</td>");
+							out.println("<td>&nbsp;"+ custHandling.get(i).getCustomername() +"&nbsp;</td>");
+							out.println("<td>&nbsp;"+ custHandling.get(i).getContactfirstname() + " " + custHandling.get(i).getContactlastname() +"&nbsp;</td>");
+							out.println("<td>&nbsp;"+ custHandling.get(i).getPhone() +"&nbsp;</td>");
 							
 							//append address
 							String address = custHandling.get(i).getAddressline1();
@@ -54,21 +52,24 @@
 								address += " " + custHandling.get(i).getAddressline2();
 							}
 							
-							out.println("<td>"+ address +"</td>");
-							out.println("<td>"+ custHandling.get(i).getCity() +"</td>");
-							out.println("<td>"+ custHandling.get(i).getState() +"</td>");
-							out.println("<td>"+ custHandling.get(i).getPostalcode() +"</td>");
-							out.println("<td>"+ custHandling.get(i).getCountry() +"</td>");
+							out.println("<td>&nbsp;"+ address +"&nbsp;</td>");
+							out.println("<td>&nbsp;"+ custHandling.get(i).getCity() +"&nbsp;</td>");
+							out.println("<td>&nbsp;"+ custHandling.get(i).getState() +"&nbsp;</td>");
+							out.println("<td>&nbsp;"+ custHandling.get(i).getPostalcode() +"&nbsp;</td>");
+							out.println("<td>&nbsp;"+ custHandling.get(i).getCountry() +"&nbsp;</td>");
 							
 							out.println("</tr>");
 						}
 					}catch(Exception e){
-						
+
 					}
 				%>
 			</tbody>
 		</table>
-	</form>
+	
+		<form action="AcceptCustomerAssign" method="post">
+				
+		</form>
 	<jsp:include page="includes/Footer.jsp" />
 </body>
 </html>

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -37,7 +38,7 @@ public class GetUnassignedSRCust extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		PrintWriter out = response.getWriter();
 		String empno = "1611"; //demo
 		
 		List<CustomerEntity> custListNoSR = customerBean.getCustomerByUnassignedSR();
@@ -45,7 +46,8 @@ public class GetUnassignedSRCust extends HttpServlet {
 		
 		request.setAttribute("CUST_LIST_NOSR", custListNoSR);
 		request.setAttribute("CUST_LIST_HANDLING", custHandling);
-		RequestDispatcher req = request.getRequestDispatcher("CustHandling.jsp");
+		RequestDispatcher req = request.getRequestDispatcher("custHandling.jsp");
+		
 		req.forward(request, response);
 	}
 

@@ -53,17 +53,19 @@ public class CustomerSessionBean implements CustomerSessionBeanLocal {
 	@Override
 	public List<CustomerEntity> getCustomerByUnassignedSR() throws EJBException {
 		// TODO Auto-generated method stub
-		Query q = em.createNativeQuery("SELECT * FROM classicmodels.customers c WHERE c.salesrepemployeenumber is null");
-				
+		Query q = em.createNativeQuery("SELECT * FROM classicmodels.customers c WHERE c.salesrepemployeenumber is null", CustomerEntity.class);
+		
 		return q.getResultList();
 	}
 
 	@Override
 	public List<CustomerEntity> getCustomerBySR(String empNo) throws EJBException {
 		// TODO Auto-generated method stub
-		Query q = em.createNamedQuery("CustomerEntity.findSRByEmpNo");
-		q.setParameter("empno", Integer.parseInt(empNo));
+		Query q = em.createNativeQuery("SELECT * FROM classicmodels.customers c WHERE c.salesrepemployeenumber = ?", CustomerEntity.class);
+		q.setParameter(1, Integer.parseInt(empNo));
 		
+		List<CustomerEntity> cm = q.getResultList();
+
 		return q.getResultList();
 	}
     
