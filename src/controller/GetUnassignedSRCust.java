@@ -46,6 +46,7 @@ public class GetUnassignedSRCust extends HttpServlet {
 		
 		request.setAttribute("CUST_LIST_NOSR", custListNoSR);
 		request.setAttribute("CUST_LIST_HANDLING", custHandling);
+		request.setAttribute("SALESREP", empno);
 		RequestDispatcher req = request.getRequestDispatcher("custHandling.jsp");
 		
 		req.forward(request, response);

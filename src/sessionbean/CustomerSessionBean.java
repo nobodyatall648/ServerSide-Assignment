@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import domain.CustomerEntity;
+import domain.EmployeeEntity;
 
 /**
  * Session Bean implementation class CustomerSessionBean
@@ -35,13 +36,15 @@ public class CustomerSessionBean implements CustomerSessionBeanLocal {
 	@Override
 	public CustomerEntity getCustomerByCustNum(String custNum) throws EJBException {
 		// TODO Auto-generated method stub
-		return null;
+		Query q = em.createNamedQuery("CustomerEntity.findCustomerByCustomerNum");
+		q.setParameter("custnum", Integer.parseInt(custNum));
+		
+		return (CustomerEntity) q.getSingleResult();
 	}
 
 	@Override
 	public void addCustomer(CustomerEntity customer) throws EJBException {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
@@ -67,6 +70,23 @@ public class CustomerSessionBean implements CustomerSessionBeanLocal {
 		List<CustomerEntity> cm = q.getResultList();
 
 		return q.getResultList();
+	}
+
+	@Override
+	public Boolean assignSalesRep(String custNum, String salesRep) throws EJBException {
+		// TODO Auto-generated method stub
+		CustomerEntity cust = getCustomerByCustNum(custNum);
+		
+		try {
+		Query q = em.createNativeQuery("UPDATE classicmodels.customers SET salesrepemployeenumber = :salesrep WHERE customernumber = :custnum", CustomerEntity.class);
+		q.setParameter("salesrep", Integer.parseInt(salesRep));
+		q.setParameter("custnum", Integer.parseInt(custNum));
+		q.executeUpdate();	
+		}catch(Exception e) {
+			return false;
+		}
+		
+		return true;
 	}
     
 	

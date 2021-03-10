@@ -13,6 +13,7 @@ import java.util.List;
 @Entity
 @Table(name="customers",schema="classicmodels")
 @NamedQuery(name="CustomerEntity.findAll", query="SELECT c FROM CustomerEntity c")
+@NamedQuery(name="CustomerEntity.findCustomerByCustomerNum", query="SELECT c FROM CustomerEntity c WHERE c.customernumber = :custnum")
 
 public class CustomerEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

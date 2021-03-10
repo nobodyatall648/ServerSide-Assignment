@@ -38,7 +38,7 @@ public class EmployeeEntity implements Serializable {
 
 	//bi-directional many-to-one association to OfficeEntity
 	@ManyToOne
-	@JoinColumn(name="officecode", insertable=true, updatable=true)
+	@JoinColumn(name="officecode", insertable=false, updatable=false)
 	private OfficeEntity office;
 	
 	
