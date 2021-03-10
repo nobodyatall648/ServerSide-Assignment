@@ -13,13 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domain.EmployeeEntity;
+import domain.UserRoleEntity;
+import domain.UserRoleEntityPK;
 import sessionbean.EmployeeSessionBeanLocal;
 
 /**
  * Servlet implementation class Usercontroller
  */
-@WebServlet(name="/User",urlPatterns= {"/Usercontroller"})
-public class Usercontroller extends HttpServlet {
+@WebServlet(name="/Login",urlPatterns= {"/LoginController"})
+public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
 	private EmployeeSessionBeanLocal emp;
@@ -27,7 +29,7 @@ public class Usercontroller extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Usercontroller() {
+    public LoginController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,12 +47,20 @@ public class Usercontroller extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String usrname=request.getParameter("usrname");
-		String pass=request.getParameter("usrpsw");
-		System.out.println(usrname);
-		System.out.println(pass);
+		String usrname=request.getParameter("name");
+		String pass=request.getParameter("pass");
 		
+		List<UserRoleEntity> u=emp.findRole(usrname);
+		if(u.get(0).getId().getRole().equals("user")==true) {
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("userhomepage");//DIRECT USER HOMEPAGE
+			dispatcher.forward(request, response);
+		}else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("AdminHomepage.html");
+			dispatcher.forward(request, response);
+		}
 		
+	
 		
 		}
 

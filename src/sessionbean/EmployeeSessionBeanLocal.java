@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import domain.EmployeeEntity;
 import domain.OfficeEntity;
+import domain.UserEntity;
+import domain.UserRoleEntity;
+import domain.UserRoleEntityPK;
 
 @Local
 public interface EmployeeSessionBeanLocal {
@@ -17,6 +20,8 @@ public interface EmployeeSessionBeanLocal {
 	public void deleteEmployee(String empNum) throws EJBException;
 	public List<EmployeeEntity> getallEmployee() throws EJBException;
 	public EmployeeEntity findEmployee(String num)throws EJBException;
+	public UserEntity findUser(String user)throws EJBException;
+	public List<UserRoleEntity> findRole(String role)throws EJBException;
 	
 
 }
