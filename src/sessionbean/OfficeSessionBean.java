@@ -46,19 +46,42 @@ public class OfficeSessionBean implements OfficeSessionBeanLocal {
 			}
 	}
 	@Override
-	public void addOffice(OfficeEntity office) throws EJBException {
+	public void addOffice(String[] o) throws EJBException {
 		// TODO Auto-generated method stub
+		OfficeEntity f=new OfficeEntity();
+		f.setOfficecode(Integer.parseInt(o[0]));
+		f.setCity(o[1]);
+		f.setPhone(o[2]);
+		f.setAddressline1(o[3]);
+		f.setAddressline2(o[4]);
+		f.setState(o[5]);
+		f.setCountry(o[6]);
+		f.setPostalcode(o[7]);
+		f.setTerritory(o[8]);
+		em.persist(f);
 		
 	}
 	@Override
-	public void updateOffice(OfficeEntity office) throws EJBException {
+	public void updateOffice(String[] o) throws EJBException {
 		// TODO Auto-generated method stub
+		OfficeEntity f=findOffice(Integer.parseInt(o[0]));
+		f.setCity(o[1]);
+		f.setPhone(o[2]);
+		f.setAddressline1(o[3]);
+		f.setAddressline2(o[4]);
+		f.setState(o[5]);
+		f.setCountry(o[6]);
+		f.setPostalcode(o[7]);
+		f.setTerritory(o[8]);
+		em.merge(f);
+		
 		
 	}
 	@Override
-	public void deleteOffice(OfficeEntity office) throws EJBException {
+	public void deleteOffice(String[] o) throws EJBException {
 		// TODO Auto-generated method stub
-		
+		OfficeEntity f=findOffice(Integer.parseInt(o[0]));
+		em.remove(f);
 	}
     
     

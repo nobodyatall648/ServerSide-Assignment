@@ -30,6 +30,7 @@ public class EmployeeEntity implements Serializable {
 	private String lastname;
 
 	private String reportsto;
+	
 
 	//bi-directional many-to-one association to CustomerEntity
 	@OneToMany(mappedBy="employee")

@@ -5,16 +5,16 @@
 <title>Log In</title>
 </head>
 <body>
-<h1>User Section</h1>
-<form method="post" action="Usercontroller">
+<h1>Log In Section</h1>
+<form method="post" action="LoginController">
   
 
   <div class="container">
     <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="usrname" required>
+    <input type="text" placeholder="Enter Username" name="name" required>
     
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="usrpsw" required>
+    <input type="password" placeholder="Enter Password" name="pass" required>
 
     <button type="submit">Login</button>
   </div>
@@ -22,22 +22,6 @@
 </form>
 <br>
 <br>
-<h1>Admin Section</h1>
-
-<form action="adminConroller" method="post">
-  
-
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="adname" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="adpsw" required>
-
-    <button type="submit">Login</button>
-  </div>
-
-</form>
 
 </body>
 </html>

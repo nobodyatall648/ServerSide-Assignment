@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import domain.EmployeeEntity;
 import domain.OfficeEntity;
+import domain.UserEntity;
+import domain.UserRoleEntity;
+import domain.UserRoleEntityPK;
 
 @Stateless
 public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
@@ -57,10 +60,8 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 		e.setJobtitle(s[4]);
 		e.setExtension("x100");
 		e.setReportsto(s[6]);
-		e.setOffice(o);;
+		e.setOffice(o);
 		
-
-		em.persist(o);
 		em.persist(e);
 		
 		
@@ -104,6 +105,33 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 		Query m=em.createNamedQuery("EmployeeEntity.findbynum");
 		m.setParameter("Employnum", Integer.parseInt(num));
 		return (EmployeeEntity)m.getSingleResult();
+	}
+
+	@Override
+	public UserEntity findUser(String user) throws EJBException {
+		// TODO Auto-generated method stub
+		
+		try {
+		Query u=em.createNativeQuery("SELECT * FROM classicmodels.users e WHERE e.username=:name",UserEntity.class);
+		u.setParameter("name", user);
+        return (UserEntity)u.getSingleResult();
+		}catch(NoResultException e) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<UserRoleEntity> findRole(String role) throws EJBException {
+		// TODO Auto-generated method stub
+		try{
+			Query u=em.createNativeQuery("SELECT * FROM classicmodels.user_roles e WHERE e.username=:name",UserRoleEntity.class);
+		u.setParameter("name", role);
+		List<UserRoleEntity> result = u.getResultList();
+        return u.getResultList();
+		}
+		catch(NoResultException e) {
+			return null;
+		}
 	}
 
 }
