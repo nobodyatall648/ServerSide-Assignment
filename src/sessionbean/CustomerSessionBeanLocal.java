@@ -6,6 +6,7 @@ import javax.ejb.EJBException;
 import javax.ejb.Local;
 
 import domain.CustomerEntity;
+import domain.EmployeeEntity;
 
 @Local
 public interface CustomerSessionBeanLocal {
@@ -15,4 +16,5 @@ public interface CustomerSessionBeanLocal {
 	void updateCustomer(CustomerEntity customer) throws EJBException;
 	List<CustomerEntity> getCustomerByUnassignedSR() throws EJBException;
 	List<CustomerEntity> getCustomerBySR(String empNo) throws EJBException;
+	Boolean assignSalesRep(String custNum, String salesRep) throws EJBException;
 }

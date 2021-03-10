@@ -125,12 +125,17 @@
 
 							out.println("</tr>");
 						}
+						
+						String salesRep = (String) request.getAttribute("SALESREP");
+						out.println("<input type=\"hidden\" name=\"salesRep\" value=\""+ salesRep +"\">");
 					} catch (Exception e) {
 
 					}
 				%>
 			</tbody>
 		</table>
+		<br>
+		<button type="submit">Become customer SalesRep</button>
 	</form>
 	
 	<br>
