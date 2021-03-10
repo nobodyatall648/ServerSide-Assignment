@@ -55,7 +55,13 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
 						<li><a href="#">Store</a></li>
-						<li><a href="addOrder.jsp">Order</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Order <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="addOrder.jsp">Add Order</a></li>
+								<li><a href="GetCustomerOrder">View Order</a></li>								
+							</ul></li>
 						<li><a href="#">Contact</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"

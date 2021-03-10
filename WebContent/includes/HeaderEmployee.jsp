@@ -54,7 +54,14 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-						<li><a href="#">Customer Order</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Customer Order <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="employeeViewCustomerOrder.jsp">View Customer Order</a></li>
+								<li><a href="GetUnassignedSRCust">Choose Customer as Sales Rep.</a></li>
+								<li><a href="#">...</a></li>								
+							</ul></li>
 						<li><a href="#">Manage Vehicle</a></li>
 					</ul>
 				

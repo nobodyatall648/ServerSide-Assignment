@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.ejb.EJB;
+import javax.ejb.EJBException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import domain.Cart;
 import domain.ProductEntity;
+import sessionbean.ProductSessionBeanLocal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +26,9 @@ import java.util.List;
 @WebServlet("/CartController")
 public class CartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	@EJB
+	ProductSessionBeanLocal productBean;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -82,56 +87,78 @@ public class CartController extends HttpServlet {
 		String productCode = request.getParameter("productCode");
 		String custNum = request.getParameter("customernumber");
 		String requiredDate = request.getParameter("requiredDate");
-		String comments = request.getParameter("comments");
+		//String comments = request.getParameter("comments");
 		String qty = request.getParameter("qty");
 
 		HttpSession session = request.getSession();
 
 		// init
 		Cart cart = new Cart();
-
-		cart.setProductCode(productCode);
-		cart.setCustomerNumber(Integer.parseInt(custNum));
-		cart.setRequiredDate(requiredDate);
-		cart.setComments(comments);
-		cart.setQty(Integer.parseInt(qty));
+		boolean jsAlertDuplicate = false;
+		boolean jsAlertNotEnough = false;
 		
-		boolean jsAlert = false;
-		// catching null when 1st time adding to cart
+		//check more than qtyInStock available
+		ProductEntity productInfo = new ProductEntity();
 		try {
-			List<Cart> cartList = (List<Cart>) session.getAttribute("CART");
+			productInfo = productBean.getProductByProductCode(productCode);
 			
-			// check redundancy
-			boolean redundant = false;
-
-			for (int i = 0; i < cartList.size(); i++) {
-				if (cartList.get(i).getProductCode().equals(productCode)) {
-					redundant = true;
-					break;
-				}
-			}			
-
-			if (redundant == false) {
-				cartList.add(cart);
-				session.setAttribute("CART", cartList);
-			} else {
-				jsAlert = true;
+			if(Integer.parseInt(qty) > productInfo.getQuantityinstock()) {
+				jsAlertNotEnough = true;
 			}
-		} catch (Exception e) {
-			List<Cart> cartList = new ArrayList<Cart>();
-			cartList.add(cart);
-			session.setAttribute("CART", cartList);
+		}catch(EJBException e) {
+			
 		}
-
-		if (jsAlert == true) {
+		
+		if(jsAlertNotEnough == true) {
 			out.println("<script type=\"text/javascript\">");  
-			out.println("alert('redundant product code found in the cart.');");  
+			out.println("alert('Quantity in stock are not enough. Please check back the Quantity in stock available.');");  
 			out.println("location='addOrder.jsp';");
 			out.println("</script>"); 	
-		} else {
-			RequestDispatcher req = request.getRequestDispatcher("addOrder.jsp");
-			req.forward(request, response);
+		}else {
+			//insert to cart
+			cart.setProductCode(productCode);
+			cart.setCustomerNumber(Integer.parseInt(custNum));
+			cart.setRequiredDate(requiredDate);
+			cart.setQty(Integer.parseInt(qty));
+			cart.setPriceEst(Double.parseDouble(productInfo.getMsrp().toString()));
+						
+			// catching null when 1st time adding to cart
+			try {
+				List<Cart> cartList = (List<Cart>) session.getAttribute("CART");
+				
+				// check redundancy
+				boolean redundant = false;
+
+				for (int i = 0; i < cartList.size(); i++) {
+					if (cartList.get(i).getProductCode().equals(productCode)) {
+						redundant = true;
+						break;
+					}
+				}			
+
+				if (redundant == false) {
+					cartList.add(cart);
+					session.setAttribute("CART", cartList);
+				} else {
+					jsAlertDuplicate = true;
+				}
+			} catch (Exception e) {
+				List<Cart> cartList = new ArrayList<Cart>();
+				cartList.add(cart);
+				session.setAttribute("CART", cartList);
+			}
+
+			if (jsAlertDuplicate == true) {
+				out.println("<script type=\"text/javascript\">");  
+				out.println("alert('redundant product code found in the cart.');");  
+				out.println("location='addOrder.jsp';");
+				out.println("</script>"); 	
+			} else {
+				RequestDispatcher req = request.getRequestDispatcher("addOrder.jsp");
+				req.forward(request, response);
+			}
 		}
-	}
+		}
+		
 
 }

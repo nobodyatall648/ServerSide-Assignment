@@ -14,7 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import domain.Cart;
 import domain.OrderEntity;
 import domain.OrderdetailEntity;
 import domain.OrderdetailEntityPK;
@@ -30,80 +32,95 @@ import sessionbean.ProductSessionBeanLocal;
 @WebServlet("/AddOrder")
 public class AddOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-     
+
 	@EJB
 	private OrderSessionBeanLocal orderBean;
 	private OrderDetailSessionBeanLocal orderDetailBean;
 	private ProductSessionBeanLocal productBean;
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddOrder() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+	public AddOrder() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
+		String comment = request.getParameter("comments");
 		
-		String productCode = request.getParameter("productCode");
-		String custNum = request.getParameter("customernumber");
-		String requiredDate = request.getParameter("requiredDate");
-		String comments = request.getParameter("comments");
-		String qty = request.getParameter("qty");
-		
-		//add Order
-		String orderDate = null;
-		
+		HttpSession session = request.getSession();
+
 		try {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			orderDate = dateFormat.format(new Date());					
-		}catch(Exception e) {
-			out.println("Something wrong somewhere: " + e);
+			List<Cart> cartList = (List<Cart>) session.getAttribute("CART");
+
+			// add Order
+			String orderDate = null;
+
+			try {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				orderDate = dateFormat.format(new Date());
+			} catch (Exception e) {
+				out.println("Something wrong somewhere: " + e);
+			}
+
+			// get new order number
+			int orderNum = orderBean.newOrderNumber();
+
+			OrderEntity orderEntity = new OrderEntity();
+			orderEntity.setOrdernumber(orderNum);
+			orderEntity.setOrderdate(orderDate);
+			orderEntity.setRequireddate(cartList.get(0).getRequiredDate());
+			orderEntity.setStatus("In Process");
+			orderEntity.setComments(comment);
+			orderEntity.setCustomernumber(cartList.get(0).getCustomerNumber());
+
+			// add orderDetails
+			OrderdetailEntity orderDetailEntity = new OrderdetailEntity();
+			
+			
+			for(int i=0; i < cartList.size(); i++) {
+				ProductEntity productInfo = new ProductEntity();
+				try {
+					productInfo = productBean.getProductByProductCode(cartList.get(i).getProductCode());
+					orderDetailEntity.setOrder(orderEntity);
+					orderDetailEntity.setProduct(productInfo);
+					orderDetailEntity.setQuantityordered(cartList.get(i).getQty());
+					orderDetailEntity.setPriceeach(productInfo.getMsrp());
+					orderDetailEntity.setOrderlinenumber(i);
+				}catch(Exception e) {
+					
+				}							
+			}
+			
+			// reset cart session attribute
+			session.setAttribute("CART", "");
+			
+			//<info>
+			//later in payment, just pass the orderEntity + orderDetailEntity object to ur payment servlet.
+			//</info>
+			
+		} catch (Exception e) {
+
 		}
-		
-		int orderNum = orderBean.newOrderNumber(); 
-		
-		OrderEntity orderEntity = null;
-		orderEntity.setOrdernumber(orderNum);
-		orderEntity.setOrderdate(orderDate);
-		orderEntity.setRequireddate(requiredDate);
-		orderEntity.setStatus("In Process");
-		orderEntity.setComments(comments);
-		orderEntity.setCustomernumber(Integer.parseInt(custNum));
-		
-		orderBean.addOrder(orderEntity);
-		
-		//add orderDetails
-		OrderdetailEntity orderDetailEntity = null;
-		OrderdetailEntityPK idPK = null;
-		ProductEntity productInfo = productBean.getProductByProductCode(productCode);
-		
-		idPK.setOrdernumber(orderNum);
-		idPK.setProductcode(productCode);
-		
-		orderDetailEntity.setId(idPK);
-		orderDetailEntity.setQuantityordered(Integer.parseInt(qty));
-		orderDetailEntity.setPriceeach(productInfo.getMsrp());
-		//orderDetailEntity.setOrderlinenumber(orderlinenumber);
-		
-		//deduct qty
-		
-		//reset cart session
-		
+
 	}
 
 }

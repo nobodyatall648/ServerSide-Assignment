@@ -4,20 +4,28 @@ public class Cart {
 	private String productCode;
 	private int customerNumber;
 	private String requiredDate;
-	private String comments;
 	private int qty;
-	
+	private double priceEst;
+
 	public Cart() {
-		
+
 	}
-	
-	public Cart(String productCode, int customerNumber, String requiredDate, String comments, int qty) {
+
+	public Cart(String productCode, int customerNumber, String requiredDate, int qty, double priceEst) {
 		super();
 		this.productCode = productCode;
 		this.customerNumber = customerNumber;
 		this.requiredDate = requiredDate;
-		this.comments = comments;
 		this.qty = qty;
+		this.priceEst = priceEst;
+	}
+		
+	public double getPriceEst() {
+		return priceEst;
+	}
+
+	public void setPriceEst(double priceEst) {
+		this.priceEst = priceEst;
 	}
 
 	public String getProductCode() {
@@ -44,20 +52,12 @@ public class Cart {
 		this.requiredDate = requiredDate;
 	}
 
-	public String getComments() {
-		return comments;
-	}
-
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
-
 	public int getQty() {
 		return qty;
 	}
 
 	public void setQty(int qty) {
 		this.qty = qty;
-	}	
+	}
 	
 }
