@@ -24,7 +24,7 @@
 							<td><b>Enter product code :</b></td>
 							<td>&nbsp<input class="inputdesign" type="text"
 								name="productCode" value="" placeholder="eg: S10_1678" required></td>
-							<td><button type="submit">Get Product Info</button></td>
+							<td><button class="buttondesign" type="submit">Get Product Info</button></td>
 						</tr>
 					</table>
 				</form>
@@ -130,7 +130,7 @@
 							<%
 								try {
 									List<Cart> cartList = (List<Cart>) session.getAttribute("CART");
-
+									
 									//cart list management
 									if (cartList.size() != 0) {
 										out.println("<div class='cartsubheader'><h3><strong>&nbspCart List</strong></h3></div>");
@@ -194,6 +194,10 @@
 										out.println("<br>");
 										out.println("<button class='buttondesign' type=\"submit\">Place Order</button>");
 										out.println("</form>");
+									}
+									else{
+										out.println("<div class='cartsubheader'><h3><strong>&nbspCart List</strong></h3></div>");
+										out.println("<p>It is empty here! Try adding some products.</p>");
 									}
 								} catch (Exception e) {
 								}

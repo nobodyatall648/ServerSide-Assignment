@@ -53,7 +53,6 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Customer Order <span class="caret"></span></a>

@@ -1,16 +1,3 @@
-/* 
-Kool Store Template
-http://www.templatemo.com/preview/templatemo_428_kool_store
-*/
-
-
-/* ==========================================================================
-    Header Site Styling
-   ========================================================================== */
-
-
-
-
 /* ==========================================================================
     Footer Site Styling
    ========================================================================== */
@@ -57,9 +44,9 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 }
 
 
-/*------------------------------------------------------
-	login.jsp 
---------------------------------------------------------*/
+/* ==========================================================================
+    login.jsp
+   ========================================================================== */
 .login-form {
 		width: 340px;
     	margin: 50px auto;
@@ -83,20 +70,13 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
     background-color:#4eb5f1; 
 }
 
-/*------------------------------------------------------
-	overall consistency
---------------------------------------------------------*/
+/* ==========================================================================
+    Default Styling used in any page
+   ========================================================================== */
 .paneldesign {
 	background:#f7efa3;
 	border-radius:  0px 0px 25px 25px;
   	border: 2px solid;
-}
-
-
-.hrdesign{
-	height: 12px;
-    border: 0;
-    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
 }
 
 .subheader{
@@ -133,6 +113,16 @@ transition: all 0.2s;
 .buttondesign:hover{
 	background-color:#4095c6;
 }
+
+.textareadesign{
+	 border: 2px solid;
+  border-radius: 4px;
+	background:#6e6e6e;
+}
+
+/* ==========================================================================
+   addOrder.jsp
+   ========================================================================== */
 
 #shoppingcart{
 	position:fixed;
@@ -185,8 +175,3 @@ transition: all 0.2s;
 	color:white;
 }
 
-.textareadesign{
-	 border: 2px solid;
-  border-radius: 4px;
-	background:#6e6e6e;
-}
