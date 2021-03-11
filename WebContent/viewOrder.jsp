@@ -8,10 +8,14 @@
 </head>
 <body>
 	<jsp:include page="includes/HeaderCustomer.jsp" />
-
+	<div class="container">
+	<div class="subheader">
 	<h2>
-		<u><strong>View Order</strong></u>
+		<strong>View Order</strong>
 	</h2>
+	</div>
+	<div class="panel panel-default paneldesign">
+			<div class="panel-body">
 
 	<%@ page import="domain.OrderEntity"%>
 	<%@ page import="domain.OrderdetailEntity"%>
@@ -20,7 +24,7 @@
 	<form action="GetOrderDetails" method="get">
 		<table border=0>
 			<tr>
-				<td>Choose order number to view more details :</td>
+				<td><strong>Choose order number to view more details :</strong></td>
 				<td>&nbsp; <select name="ordernumber">
 						<%
 							//list order numbers
@@ -45,15 +49,15 @@
 	</form>
 
 	<h3>
-		<u>Order Status</u>
+		<u><strong>Order Status</strong></u>
 	</h3>
-	<table border=2>
+	<table class="table" border=2>
 		<thead>
 			<tr>
-				<td>&nbsp;Order Number&nbsp;</td>
-				<td>&nbsp;Order Date&nbsp;</td>
-				<td>&nbsp;Comments&nbsp;</td>
-				<td>&nbsp;Status&nbsp;</td>
+				<td><strong>&nbsp;Order Number&nbsp;</strong></td>
+				<td><strong>&nbsp;Order Date&nbsp;</strong></td>
+				<td><strong>&nbsp;Comments&nbsp;</strong></td>
+				<td><strong>&nbsp;Status&nbsp;</strong></td>
 			</tr>
 		</thead>
 		<%
@@ -85,15 +89,15 @@
 		try {
 			List<OrderdetailEntity> orderDetailList = (List<OrderdetailEntity>) request
 					.getAttribute("ORDER_DETAIL_LIST");
-			out.println("<h3><u>More Order Details of " + orderDetailList.get(0).getOrder().getOrdernumber()
-					+ "</u></h3>");
+			out.println("<h3><u><strong>More Order Details of " + orderDetailList.get(0).getOrder().getOrdernumber()
+					+ "</strong></u></h3>");
 
-			out.println("<table border=2>");
+			out.println("<table border=2 class='table' >");
 			out.println("<thead>");
 			out.println("<tr>");
-			out.println("<td>&nbsp;Product Code&nbsp;</td>");
-			out.println("<td>&nbsp;Price Each&nbsp;</td>");
-			out.println("<td>&nbsp;QTY Ordered&nbsp;</td>");
+			out.println("<td><strong>&nbsp;Product Code&nbsp;</strong></td>");
+			out.println("<td><strong>&nbsp;Price Each&nbsp;</strong></td>");
+			out.println("<td><strong>&nbsp;QTY Ordered&nbsp;</strong></td>");
 			out.println("</tr>");
 			out.println("</thead>");
 
@@ -116,13 +120,19 @@
 			out.println("</table>");
 			out.println("<br>");
 			
-			out.println("<h4>Total Price: RM" + String.format("%.2f", totalPrice) +"</h4>");
+			out.println("<h4><strong>Total Price: RM" + String.format("%.2f", totalPrice) +"</strong></h4>");
 			
 		} catch (Exception e) {
 
 		}
 	%>
 
+	<br>
+	<br>
+	</div>
+	</div>
+	</div>	
+	<br>
 	<br>
 	<br>
 

@@ -53,7 +53,8 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+					
+						<li class="<%= request.getParameter("activeLogin") %>" ><a href="#">Home <span class="sr-only">(current)</span></a></li>
 						<li><a href="#">Store</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -79,7 +80,7 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 				
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#">Sign Up</a></li>
-						<li><a href="#">Log In</a></li>
+						<li><a href="login.jsp">Log In</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->

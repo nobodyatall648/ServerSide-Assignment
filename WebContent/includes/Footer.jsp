@@ -30,19 +30,12 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
         <div class="main-footer">
             <div class="container">
                 <div class="row">
-                 <div class="col-md-5">
+                 <div class="col-md-">
                         <div class="footer-widget">
-                            <h3 class="widget-title">Our Newsletter</h3>
-                            <div class="newsletter">
-                                <form action="#" method="get">
-                                    <p> After registering, you will receive the latest Ransom Store related news and information in your email.</p>
-                                    <input type="text" title="Email" name="email" placeholder="Your Email Here">
-                                    <input type="submit" class="s-button" value="Submit" name="Submit">
-                                </form>
-                            </div> <!-- /.newsletter -->
+                           
                         </div> <!-- /.footer-widget -->
                     </div> <!-- /.col-md-5 -->
-                    <div class="col-md-5">
+                    <div class="col-md-8">
                         <div class="footer-widget">
                             <h3 class="widget-title">About Us</h3>
                             Ransom Vehicle Store is a place to get cool vehicles. Start searching for your dream vehicle and purchase it in this website.
@@ -54,16 +47,7 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
                         </div> <!-- /.footer-widget -->
                     </div> <!-- /.col-md-5 -->
 
-                    <div class="col-md-2">
-                        <div class="footer-widget">
-                            <h3 class="widget-title">Useful Links</h3>
-                            <ul>
-                                <li><a href="#">Store</a></li>
-                                <li><a href="#">Order</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div> <!-- /.footer-widget -->
-                    </div> <!-- /.col-md-2 -->
+                   
                     
                 </div> <!-- /.row -->
             </div> <!-- /.container -->
