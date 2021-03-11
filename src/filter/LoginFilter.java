@@ -12,9 +12,11 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 
 import domain.UserEntity;
 import sessionbean.EmployeeSessionBeanLocal;
+import utilities.ValidateEmployee;
 
 /**
  * Servlet Filter implementation class adminFilter
@@ -54,7 +56,6 @@ public class LoginFilter implements Filter {
 		    			chain.doFilter(request, response);
 		    		}
 		    		else {
-		    			 out.println("alert(\\\"Username or Password is invalid!!\\\")");  
 		    			    RequestDispatcher rd=request.getRequestDispatcher("login.html");  
 		    			    rd.forward(request, response);
 		    		}

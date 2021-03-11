@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +39,19 @@
 }
 </style>
 </head>
+<%
+Cookie[] cookies = request.getCookies();
+if (cookies != null) {
+ Cookie cookie;
+ for (int i = 0; i < cookies.length; i++) {
+ cookie = cookies[i];
+ if (cookie.getName().equals("user")) {
+ out.println("Welcome User" + "\n" + cookie.getValue());
+ }
+ }
+
+ }
+%>
 
 <body>
 
