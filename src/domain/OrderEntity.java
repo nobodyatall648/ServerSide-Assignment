@@ -14,6 +14,7 @@ import java.util.List;
 @NamedQuery(name="OrderEntity.findAll", query="SELECT o FROM OrderEntity o")
 @NamedQuery(name="OrderEntity.getLastOrderNumber", query="SELECT o.ordernumber FROM OrderEntity o ORDER BY o.ordernumber desc")
 @NamedQuery(name="OrderEntity.findCustomerOrder", query="SELECT o FROM OrderEntity o WHERE o.customernumber = :custnum")
+@NamedQuery(name="OrderEntity.findOrderNumber", query="SELECT o FROM OrderEntity o WHERE o.ordernumber = :ordernum")
 
 public class OrderEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
