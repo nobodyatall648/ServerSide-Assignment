@@ -59,7 +59,7 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 							<ul class="dropdown-menu">
 								<li><a href="employeeViewCustomerOrder.jsp">View Customer Order</a></li>
 								<li><a href="GetUnassignedSRCust">Choose Customer as Sales Rep.</a></li>
-								<li><a href="#">...</a></li>								
+								<li><a href="UpdateCustOrderStatus.jsp">Update Customer Order Status</a></li>								
 							</ul></li>
 						<li><a href="#">Manage Vehicle</a></li>
 					</ul>

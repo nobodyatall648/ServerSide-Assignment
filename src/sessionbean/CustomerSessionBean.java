@@ -36,10 +36,11 @@ public class CustomerSessionBean implements CustomerSessionBeanLocal {
 	@Override
 	public CustomerEntity getCustomerByCustNum(String custNum) throws EJBException {
 		// TODO Auto-generated method stub
-		Query q = em.createNamedQuery("CustomerEntity.findCustomerByCustomerNum");
-		q.setParameter("custnum", Integer.parseInt(custNum));
+		Query q = em.createNativeQuery("SELECT * FROM classicmodels.customers c WHERE c.customernumber = ?", CustomerEntity.class);
+		q.setParameter(1, Integer.parseInt(custNum));
 		
 		return (CustomerEntity) q.getSingleResult();
+		
 	}
 
 	@Override

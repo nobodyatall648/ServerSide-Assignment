@@ -9,12 +9,12 @@
 <body>
 	<jsp:include page="includes/HeaderEmployee.jsp" />
 	
-	<h4>Customer Has Been Assigned a Sales Representative.</h4>
+	<h4>Customer Order Status Has Been Assigned a Sales Representative.</h4>
 	<h4>Auto Redirecting Back to Customer Handling & Assigning Page.</h4>
 	
 	<a href='GetUnassignedSRCust'>Click Here if not redirecting back automatically.</a>
 	<%
-		int timeout = 5;
+		int timeout = 3;
 		response.setHeader("Refresh", timeout + "; URL = GetUnassignedSRCust");		
 	%>
 	

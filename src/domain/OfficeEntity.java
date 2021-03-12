@@ -13,6 +13,7 @@ import java.util.List;
 @Table(name="offices",schema="classicmodels")
 @NamedQuery(name="OfficeEntity.findAll", query="SELECT o FROM OfficeEntity o")
 @NamedQuery(name="OfficeEntity.findbynum",query="SELECT e FROM OfficeEntity e WHERE e.officecode =: officenum")
+
 public class OfficeEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
