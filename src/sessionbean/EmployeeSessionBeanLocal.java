@@ -21,7 +21,7 @@ public interface EmployeeSessionBeanLocal {
 	public List<EmployeeEntity> getallEmployee() throws EJBException;
 	public EmployeeEntity findEmployee(String num)throws EJBException;
 	public UserEntity findUser(String user)throws EJBException;
-	public List<UserRoleEntity> findRole(String role)throws EJBException;
+	
 	
 
 }

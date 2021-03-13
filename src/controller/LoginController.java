@@ -18,6 +18,7 @@ import domain.EmployeeEntity;
 import domain.UserRoleEntity;
 import domain.UserRoleEntityPK;
 import sessionbean.EmployeeSessionBeanLocal;
+import sessionbean.UserRoleSessionBeanLocal;
 
 /**
  * Servlet implementation class Usercontroller
@@ -26,7 +27,7 @@ import sessionbean.EmployeeSessionBeanLocal;
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
-	private EmployeeSessionBeanLocal emp;
+	private UserRoleSessionBeanLocal role;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -63,7 +64,7 @@ public class LoginController extends HttpServlet {
          
          pwriter.close();
          
-		List<UserRoleEntity> u=emp.findRole(usrname);
+		List<UserRoleEntity> u=role.findRole(usrname);
 		if(u.get(0).getId().getRole().equals("user")==true) {
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");//DIRECT USER HOMEPAGE

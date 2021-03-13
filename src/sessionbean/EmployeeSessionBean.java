@@ -120,18 +120,5 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 		}
 	}
 
-	@Override
-	public List<UserRoleEntity> findRole(String role) throws EJBException {
-		// TODO Auto-generated method stub
-		try{
-			Query u=em.createNativeQuery("SELECT * FROM classicmodels.user_roles e WHERE e.username=:name",UserRoleEntity.class);
-		u.setParameter("name", role);
-		List<UserRoleEntity> result = u.getResultList();
-        return u.getResultList();
-		}
-		catch(NoResultException e) {
-			return null;
-		}
-	}
 
 }
