@@ -107,18 +107,7 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 		return (EmployeeEntity)m.getSingleResult();
 	}
 
-	@Override
-	public UserEntity findUser(String user) throws EJBException {
-		// TODO Auto-generated method stub
-		
-		try {
-		Query u=em.createNativeQuery("SELECT * FROM classicmodels.users e WHERE e.username=:name",UserEntity.class);
-		u.setParameter("name", user);
-        return (UserEntity)u.getSingleResult();
-		}catch(NoResultException e) {
-			return null;
-		}
-	}
+
 
 
 }

@@ -33,17 +33,14 @@ public class OfficeSessionBean implements OfficeSessionBeanLocal {
 	@Override
 	public OfficeEntity findOffice(int officeCode) throws EJBException {
 		// TODO Auto-generated method stub
-		try {
+		
 			Query off=em.createNamedQuery("OfficeEntity.findbynum");
 			off.setParameter("officenum",officeCode);
 			return (OfficeEntity) off.getSingleResult();
 			
 			
 			
-			}catch(NoResultException e) {
-				System.out.println("No data found");
-				return null;
-			}
+			
 	}
 	@Override
 	public void addOffice(String[] o) throws EJBException {
