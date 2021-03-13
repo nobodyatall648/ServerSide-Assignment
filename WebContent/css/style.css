@@ -74,7 +74,7 @@
     Default Styling used in any page
    ========================================================================== */
 .paneldesign {
-	background:#f7efa3;
+	background:#f7f7f7;
 	border-radius:  0px 0px 25px 25px;
   	border: 2px solid;
 }
@@ -119,6 +119,17 @@ transition: all 0.2s;
   border-radius: 4px;
 	background:#6e6e6e;
 }
+
+hr{
+	background:black;
+	padding:1px;
+
+}
+
+.tableborderdesign thead, .tableborderdesign td{
+	border: 1px solid black !important;
+}
+
 
 /* ==========================================================================
    addOrder.jsp
@@ -174,4 +185,5 @@ transition: all 0.2s;
 	padding:5px;
 	color:white;
 }
+
 
