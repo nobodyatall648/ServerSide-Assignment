@@ -21,8 +21,6 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/templatemo-misc.css">
     <link rel="stylesheet" href="css/style.css">
 
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
@@ -54,16 +52,17 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 					
-						<li class="<%= request.getParameter("activeLogin") %>" ><a href="#">Home <span class="sr-only">(current)</span></a></li>
+						<li class="<%= request.getParameter("activeLogin") %>" ><a href="index.jsp">Home <span class="sr-only">(current)</span></a></li>
 						<li><a href="#">Store</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Order <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="addOrder.jsp">Add Order</a></li>
-								<li><a href="GetCustomerOrder">View Order</a></li>								
+								<li><a href="GetCustomerOrder">View Order</a></li>	
+								<li><a href="viewPayment.jsp">View Payment</a></li>								
 							</ul></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="paymentCheckout.jsp">Checkout</a></li>
 					</ul>
 				
 					<ul class="nav navbar-nav navbar-right">

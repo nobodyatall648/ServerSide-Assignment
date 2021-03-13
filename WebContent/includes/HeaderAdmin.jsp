@@ -21,8 +21,6 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/templatemo-misc.css">
     <link rel="stylesheet" href="css/style.css">
 
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>

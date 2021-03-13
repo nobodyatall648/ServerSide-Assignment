@@ -129,6 +129,7 @@
 							</button>
 							<%
 								try {
+									String customernumber = "114"; //demo
 									List<Cart> cartList = (List<Cart>) session.getAttribute("CART");
 									
 									//cart list management
@@ -185,13 +186,11 @@
 										out.println("<tr>");
 										out.println("<td>Comments : </td> <br>");
 										out.println("</tr>");
-										out.println("<tr>");
-										out.println(
-												"<td><textarea class='textareadesign' name=\"comments\" rows=\"4\" cols=\"50\"></textarea></td>");
-										out.println("</tr>");
+
 										out.println("</table>");
 
 										out.println("<br>");
+										out.println("<input type=\"hidden\" name=\"customernumber\" value=\"" + customernumber + "\">");
 										out.println("<button class='buttondesign' type=\"submit\">Place Order</button>");
 										out.println("</form>");
 									}
@@ -228,6 +227,7 @@
 		function hideCart() {
 			document.getElementById('divCart').style.display = "none";
 		}
+
 	</script>
 </body>
 </html>

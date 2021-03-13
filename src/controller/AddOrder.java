@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -65,6 +66,9 @@ public class AddOrder extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String comment = request.getParameter("comments");
 		
+		//demo customer number
+		String customerNumber = request.getParameter("customernumber");
+		
 		HttpSession session = request.getSession();
 
 		try {
@@ -84,12 +88,19 @@ public class AddOrder extends HttpServlet {
 			int orderNum = orderBean.newOrderNumber();
 
 			OrderEntity orderEntity = new OrderEntity();
+			//demo customer number
+			orderEntity.setCustomernumber(Integer.parseInt(customerNumber));
+			
 			orderEntity.setOrdernumber(orderNum);
 			orderEntity.setOrderdate(orderDate);
 			orderEntity.setRequireddate(cartList.get(0).getRequiredDate());
 			orderEntity.setStatus("In Process");
 			orderEntity.setComments(comment);
 			orderEntity.setCustomernumber(cartList.get(0).getCustomerNumber());
+			
+			//orderBean.addOrder(orderEntity);
+			
+			session.setAttribute("ORDER_ENTITY", orderEntity);
 
 			// add orderDetails
 			OrderdetailEntity orderDetailEntity = new OrderdetailEntity();
@@ -104,22 +115,27 @@ public class AddOrder extends HttpServlet {
 					orderDetailEntity.setQuantityordered(cartList.get(i).getQty());
 					orderDetailEntity.setPriceeach(productInfo.getMsrp());
 					orderDetailEntity.setOrderlinenumber(i);
+					
+					
+					//orderDetailBean.addOrderDetail(orderDetailEntity);
+					session.setAttribute("ORDERDETAIL_ENTITY", orderDetailEntity);
+					
 				}catch(Exception e) {
 					
 				}							
 			}
 			
-			// reset cart session attribute
-			session.setAttribute("CART", "");
+//			// reset cart session attribute
+//			session.setAttribute("CART", "");
 			
-			//<info>
-			//later in payment, just pass the orderEntity + orderDetailEntity object to ur payment servlet.
-			//</info>
+			//pass the orderEntity + orderDetailEntity object to payment module
+			RequestDispatcher req = request.getRequestDispatcher("paymentCheckout.jsp");
+			req.forward(request, response);
+			
 			
 		} catch (Exception e) {
 
 		}
-
+		
 	}
-
 }
