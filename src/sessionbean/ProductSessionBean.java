@@ -8,6 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import domain.OrderEntity;
+import domain.OrderdetailEntity;
 import domain.ProductEntity;
 
 /**
@@ -28,8 +30,11 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
 	@Override
 	public List<ProductEntity> getAllProduct() throws EJBException {
 		// TODO Auto-generated method stub
-		return null;
+		Query query = em.createNamedQuery("ProductEntity.findAll");
+		
+		return query.getResultList();
 	}
+	
 
 	@Override
 	public List<ProductEntity> findProductByName(String productName) throws EJBException {

@@ -87,8 +87,7 @@
 
 	<%
 		try {
-			List<OrderdetailEntity> orderDetailList = (List<OrderdetailEntity>) request
-					.getAttribute("ORDER_DETAIL_LIST");
+			List<OrderdetailEntity> orderDetailList = (List<OrderdetailEntity>) request.getAttribute("ORDER_DETAIL_LIST");
 			out.println("<h3><u><strong>More Order Details of " + orderDetailList.get(0).getOrder().getOrdernumber()
 					+ "</strong></u></h3>");
 

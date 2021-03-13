@@ -63,6 +63,7 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 								<li><a href="addOrder.jsp">Add Order</a></li>
 								<li><a href="GetCustomerOrder">View Order</a></li>								
 							</ul></li>
+						<li><a href="ViewProductInfo.jsp">Product</a>
 						<li><a href="#">Contact</a></li>
 					</ul>
 				
