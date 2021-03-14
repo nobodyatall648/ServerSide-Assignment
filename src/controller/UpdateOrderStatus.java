@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -57,7 +59,18 @@ public class UpdateOrderStatus extends HttpServlet {
 		try {
 			OrderEntity order = orderBean.getOrderByOrderNumber(orderNum);
 			order.setStatus(orderStatus);
+			
+			if(orderStatus.equals("Shipped")) {
+				String shippedDate = null;
 
+				try {
+					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					shippedDate = dateFormat.format(new Date());
+				} catch (Exception e) {
+					out.println("Something wrong somewhere: " + e);
+				}
+				order.setShippeddate(shippedDate);
+			}
 			boolean result = orderBean.updateOrder(order);
 
 			if (result) {

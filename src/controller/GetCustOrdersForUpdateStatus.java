@@ -64,7 +64,7 @@ public class GetCustOrdersForUpdateStatus extends HttpServlet {
 			if(filtering.equals("all")) {
 				session.setAttribute("ORDERLIST", orderList);
 				session.setAttribute("CUSTLIST", custEntity);
-				RequestDispatcher req = request.getRequestDispatcher("UpdateCustStatus.jsp");
+				RequestDispatcher req = request.getRequestDispatcher("UpdateCustOrderStatus.jsp");
 				
 				req.forward(request, response);
 			}else if(filtering.equals("filter_ship")) {

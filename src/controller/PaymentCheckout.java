@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import domain.Cart;
 import domain.OrderEntity;
 import domain.OrderdetailEntity;
+import domain.OrderdetailEntityPK;
 import domain.PaymentEntity;
 import domain.PaymentEntityPK;
 import sessionbean.OrderDetailSessionBeanLocal;
@@ -87,12 +88,22 @@ public class PaymentCheckout extends HttpServlet {
 		
 		//get orderEntity and orderDetailEntity from AddOrder module
 		OrderEntity orderEntity = (OrderEntity) session.getAttribute("ORDER_ENTITY");
-		OrderdetailEntity orderDetailEntity = (OrderdetailEntity) session.getAttribute("ORDERDETAIL_ENTITY");
-		
+		List<OrderdetailEntity> orderDetailEntity = (List<OrderdetailEntity>) session.getAttribute("ORDERDETAIL_ENTITY");
+		List<Cart> cartList = (List<Cart>) session.getAttribute("CART");
 		
 		//add order and order details to database
 		orderBean.addOrder(orderEntity);
-		orderDetailBean.addOrderDetail(orderDetailEntity);
+		
+		for(int i=0; i < orderDetailEntity.size(); i++) {
+			OrderdetailEntityPK orderDetailPK = new OrderdetailEntityPK();
+						
+			orderDetailPK.setOrdernumber(orderEntity.getOrdernumber());
+			orderDetailPK.setProductcode(cartList.get(i).getProductCode());
+			orderDetailEntity.get(i).setId(orderDetailPK);
+			
+			orderDetailBean.addOrderDetail(orderDetailEntity.get(i));
+		}
+		
 		
 		//add payment details to database
 		PaymentEntity paymentEntity = new PaymentEntity();

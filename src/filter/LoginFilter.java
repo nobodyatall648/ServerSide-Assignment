@@ -16,7 +16,7 @@ import javax.servlet.http.Cookie;
 
 import domain.UserEntity;
 import sessionbean.EmployeeSessionBeanLocal;
-import sessionbean.UserEntitySessionBeanLocal;
+import sessionbean.UserSessionBeanLocal;
 import utilities.ValidateEmployee;
 
 /**
@@ -25,7 +25,7 @@ import utilities.ValidateEmployee;
 @WebFilter(filterName="/adminFilter",urlPatterns= {"/LoginController"})
 public class LoginFilter implements Filter {
 	@EJB
-	private UserEntitySessionBeanLocal usr;
+	private UserSessionBeanLocal usr;
 
     /**
      * Default constructor. 

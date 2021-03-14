@@ -50,7 +50,7 @@ public class OrderDetailSessionBean implements OrderDetailSessionBeanLocal {
 	@Override
 	public void addOrderDetail(OrderdetailEntity orderDetail) throws EJBException {
 		// TODO Auto-generated method stub
-		
+		em.persist(orderDetail);
 	}
 
 	@Override

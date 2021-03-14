@@ -67,10 +67,17 @@
 				out.println("<tbody>");
 				for (int i = 0; i < orderList.size(); i++) {
 					out.println("<tr>");
-
+					
+					String comment;
+					
+					if(orderList.get(i).getComments() == null || orderList.get(i).getComments().equals("null")){
+						comment = "";
+					}else{
+						 comment = orderList.get(i).getComments();
+					}
 					out.println("<td>&nbsp;" + orderList.get(i).getOrdernumber() + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + orderList.get(i).getOrderdate() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + orderList.get(i).getComments() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + comment + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + orderList.get(i).getStatus() + "&nbsp;</td>");
 
 					out.println("</tr>");

@@ -19,6 +19,7 @@ import domain.UserRoleEntity;
 import domain.UserRoleEntityPK;
 import sessionbean.EmployeeSessionBeanLocal;
 import sessionbean.UserRoleSessionBeanLocal;
+import sessionbean.UserSessionBeanLocal;
 
 /**
  * Servlet implementation class Usercontroller
@@ -27,7 +28,10 @@ import sessionbean.UserRoleSessionBeanLocal;
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
-	private UserRoleSessionBeanLocal role;
+	private UserRoleSessionBeanLocal userRoleBean;
+	
+	@EJB
+	private UserSessionBeanLocal userBean;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -50,32 +54,22 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		 response.setContentType("text/html");
-         PrintWriter pwriter = response.getWriter();
+		response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
          
-		String usrname=request.getParameter("name");
+		String user=request.getParameter("name");
 		String pass=request.getParameter("pass");
+	    
+		boolean credCheck = userBean.accountMatching(user, pass);
 		
-		Cookie[] cookies = request.getCookies();
-        Cookie c1=new Cookie("user",usrname);
-        c1.setMaxAge(-1);
-        response.addCookie(c1);
-		
-         
-         pwriter.close();
-         
-		List<UserRoleEntity> u=role.findRole(usrname);
-		if(u.get(0).getId().getRole().equals("user")==true) {
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");//DIRECT USER HOMEPAGE
-			dispatcher.forward(request, response);
+		if(credCheck) {
+			out.println("still under development");
 		}else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("AdminHomepage.jsp");
-			dispatcher.forward(request, response);
+			out.println("<script type=\"text/javascript\">");  
+			out.println("alert('Invalid Credential');");  
+			out.println("location='login.jsp';");
+			out.println("</script>"); 	
 		}
-		
-	
-		
-		}
+	}
 
 }

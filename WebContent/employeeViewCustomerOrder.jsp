@@ -80,6 +80,8 @@
 				out.println("<td>&nbsp;Order Number&nbsp;</td>");
 				out.println("<td>&nbsp;Order Date&nbsp;</td>");
 				out.println("<td>&nbsp;Comments&nbsp;</td>");
+				out.println("<td>&nbsp;Required Date&nbsp;</td>");
+				out.println("<td>&nbsp;Shipped Date&nbsp;</td>");
 				out.println("<td>&nbsp;Status&nbsp;</td>");
 				out.println("</tr>");
 				out.println("</thead>");
@@ -91,6 +93,8 @@
 					out.println("<td>&nbsp;" + orderList.get(i).getOrdernumber() + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + orderList.get(i).getOrderdate() + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + orderList.get(i).getComments() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + orderList.get(i).getRequireddate() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + orderList.get(i).getShippeddate() + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + orderList.get(i).getStatus() + "&nbsp;</td>");
 
 					out.println("</tr>");

@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +37,11 @@ public class AddOrder extends HttpServlet {
 
 	@EJB
 	private OrderSessionBeanLocal orderBean;
+	
+	@EJB
 	private OrderDetailSessionBeanLocal orderDetailBean;
+	
+	@EJB
 	private ProductSessionBeanLocal productBean;
 
 	/**
@@ -103,30 +108,37 @@ public class AddOrder extends HttpServlet {
 			session.setAttribute("ORDER_ENTITY", orderEntity);
 
 			// add orderDetails
-			OrderdetailEntity orderDetailEntity = new OrderdetailEntity();
+			List<OrderdetailEntity> orderDetailEntityList = new ArrayList<OrderdetailEntity>();
 			
 			
+			System.out.println("[debug cart size]: " + cartList.size());
+			System.out.println("[debug cart ]: " + cartList.get(0).getProductCode());
 			for(int i=0; i < cartList.size(); i++) {
+				OrderdetailEntity orderDetailEntity = new OrderdetailEntity();
 				ProductEntity productInfo = new ProductEntity();
+				
 				try {
 					productInfo = productBean.getProductByProductCode(cartList.get(i).getProductCode());
-					orderDetailEntity.setOrder(orderEntity);
-					orderDetailEntity.setProduct(productInfo);
+					
 					orderDetailEntity.setQuantityordered(cartList.get(i).getQty());
 					orderDetailEntity.setPriceeach(productInfo.getMsrp());
-					orderDetailEntity.setOrderlinenumber(i);
+					orderDetailEntity.setOrderlinenumber(i+1);
 					
+					orderDetailEntityList.add(orderDetailEntity);
 					
 					//orderDetailBean.addOrderDetail(orderDetailEntity);
-					session.setAttribute("ORDERDETAIL_ENTITY", orderDetailEntity);
+					
 					
 				}catch(Exception e) {
-					
+					System.out.println(e);
 				}							
 			}
 			
+			session.setAttribute("ORDERDETAIL_ENTITY", orderDetailEntityList);			
+			
 //			// reset cart session attribute
 //			session.setAttribute("CART", "");
+			
 			
 			//pass the orderEntity + orderDetailEntity object to payment module
 			RequestDispatcher req = request.getRequestDispatcher("paymentCheckout.jsp");
