@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<jsp:include page="includes/HeaderCustomer.jsp" />
+	<jsp:include page="includes/HeaderLogin.jsp" />
 	<div class="container">
 		<h1 style="text-align: center;">Ransom Vehicle Store</h1>
 		<div class="login-form ">

@@ -17,13 +17,13 @@ public class UserRoleSessionBean implements UserRoleSessionBeanLocal {
 	EntityManager em;
 
 	@Override
-	public List<UserRoleEntity> findRole(String role) throws EJBException {
+	public UserRoleEntity findRole(String role) throws EJBException {
 		// TODO Auto-generated method stub
 	
 			Query u=em.createNativeQuery("SELECT * FROM classicmodels.user_roles e WHERE e.username=:name",UserRoleEntity.class);
 		u.setParameter("name", role);
-		List<UserRoleEntity> result = u.getResultList();
-        return u.getResultList();
+		UserRoleEntity result = (UserRoleEntity) u.getSingleResult();
+        return result;
 	}
 
 }

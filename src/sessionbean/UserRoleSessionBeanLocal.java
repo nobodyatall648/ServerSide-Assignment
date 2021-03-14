@@ -9,6 +9,6 @@ import domain.UserRoleEntity;
 
 @Local
 public interface UserRoleSessionBeanLocal {
-	public List<UserRoleEntity> findRole(String role)throws EJBException;
+	public UserRoleEntity findRole(String role)throws EJBException;
 
 }

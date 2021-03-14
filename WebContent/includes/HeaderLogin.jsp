@@ -13,7 +13,7 @@ Kool Store Template
 http://www.templatemo.com/preview/templatemo_428_kool_store
 -->
 <meta charset="utf-8">
-<title>Admin Portal</title>
+<title>Ransom Vehicle Store - Place to Get Cool Vehicles</title>
 
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
@@ -25,6 +25,8 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/normalize.min.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/templatemo-misc.css">
 <link rel="stylesheet" href="css/style.css">
 
 <script src="js/vendor/modernizr-2.6.2.min.js"></script>
@@ -48,27 +50,23 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Ransom Vehicle Store</a>
+					<a class="navbar-brand" href="index.jsp">Ransom Vehicle Store</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Manage Employee<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Add Employee</a></li>
-								<li><a href="#">Remove Employee</a></li>
-								<li><a href="#">Assign Employee</a></li>
-							</ul></li>
+
+						<li class="<%=request.getParameter("activeLogin")%>"><a
+							href="#">Home <span class="sr-only">(current)</span></a></li>
+						<!-- <li><a href="#">Store</a></li>						
+						<li><a href="ViewProductInfo.jsp">Product</a>
+						<li><a href="#">Contact</a></li>-->
 					</ul>
-
-
+					
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Profile</a></li>
-						<li><a href="Logout">Logout</a></li>
+						<li><a href="login.jsp">Login</a></li>
 					</ul>
 					<!--  
 					<ul class="nav navbar-nav navbar-right">
@@ -93,47 +91,8 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 	<script src="js/bootstrap.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/main.js"></script>
-	
-	<%
-		//check for authorization
-		String roleAuth = "admin";
-		Cookie[] cookies = request.getCookies();
 
-		//check cookie empty or exist
-		if(cookies.length == 1){
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('You are not authorized to view the page.');");
-			out.println("location='login.jsp';");
-			out.println("</script>");
-		}else if (cookies != null) {
-			for (int i = 0; i < cookies.length; i++) {
-				Cookie c = cookies[i];
-				if (c.getName().equals("role")) {
-					if (!c.getValue().equals(roleAuth)) {						
-						//pop up alert unauthorized location & remove cookies
-						out.println("<script type=\"text/javascript\">");						
-						out.println("alert('You are not authorized to view the page.');");
-						out.println("location='Logout';");
-						out.println("</script>");
-					}
-				}
-			}
-		}else{
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('You are not authorized to view the page.');");
-			out.println("location='login.jsp';");
-			out.println("</script>");
-		}
-	%>
-	
-	<%
-		//welcome banner
-		for (int i = 0; i < cookies.length; i++) {
-			Cookie c = cookies[i];
-			if (c.getName().equals("username")) {
-				out.println("<p>Welcome, " + c.getValue() + "</p>");
-			}
-		}
-	%>
+
+
 </body>
 </html>
