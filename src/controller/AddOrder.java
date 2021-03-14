@@ -111,8 +111,9 @@ public class AddOrder extends HttpServlet {
 			List<OrderdetailEntity> orderDetailEntityList = new ArrayList<OrderdetailEntity>();
 			
 			
-			System.out.println("[debug cart size]: " + cartList.size());
-			System.out.println("[debug cart ]: " + cartList.get(0).getProductCode());
+//			System.out.println("[debug cart size]: " + cartList.size());
+//			System.out.println("[debug cart ]: " + cartList.get(0).getProductCode());
+			
 			for(int i=0; i < cartList.size(); i++) {
 				OrderdetailEntity orderDetailEntity = new OrderdetailEntity();
 				ProductEntity productInfo = new ProductEntity();

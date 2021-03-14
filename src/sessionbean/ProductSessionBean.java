@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import domain.OrderEntity;
 import domain.OrderdetailEntity;
+import domain.PaymentEntity;
 import domain.ProductEntity;
 
 /**
@@ -67,6 +68,32 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
 	public void deleteProduct(String productCode) throws EJBException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int getQuantityByProductCode(String productCode) throws EJBException {
+		// TODO Auto-generated method stub
+//		Query q = null;
+//		
+//		q = em.createNativeQuery("SELECT quantityinstock FROM classicmodels.products p WHERE p.productcode = ?", ProductEntity.class);
+//		q.setParameter(1, productCode);
+		Query q = em.createNamedQuery("ProductEntity.findQuantityByProductCode");
+		q.setParameter("productcode", productCode);
+		
+		return (Integer) q.getSingleResult();
+	}
+
+	@Override
+	public void setQuantityByProductCode(String productCode, Integer newQuantity) throws EJBException {
+		// TODO Auto-generated method stub
+		Query q = null;
+	
+		q = em.createNativeQuery("UPDATE classicmodels.products SET quantityinstock =?  WHERE productcode = ?", ProductEntity.class);
+		q.setParameter(1,newQuantity);
+		q.setParameter(2,productCode);
+		
+		q.executeUpdate();
+
 	}
 
 }

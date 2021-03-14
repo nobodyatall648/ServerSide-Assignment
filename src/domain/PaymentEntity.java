@@ -12,7 +12,6 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="payments",schema="classicmodels")
 @NamedQuery(name="PaymentEntity.findAll", query="SELECT p FROM PaymentEntity p")
-@NamedQuery(name="PaymentEntity.findCustomerPayment", query="SELECT p FROM PaymentEntity p WHERE p.id = :id")
 
 public class PaymentEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

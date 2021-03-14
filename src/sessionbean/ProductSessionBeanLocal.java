@@ -15,5 +15,7 @@ public interface ProductSessionBeanLocal {
 	void updateProduct(ProductEntity product) throws EJBException;
 	ProductEntity getProductByProductCode(String productCode) throws EJBException;
 	void deleteProduct(String productCode) throws EJBException;	
+	public int getQuantityByProductCode(String productCode) throws EJBException;
+	public void setQuantityByProductCode(String productCode, Integer newQuantity) throws EJBException;
 
 }

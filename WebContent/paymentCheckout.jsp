@@ -85,7 +85,15 @@
 								out.println("</div><br>");
 
 								//place order and payment
-								String customernumber = "114"; //demo
+								String customernumber = "";
+								Cookie[] cookies = request.getCookies();
+								for (int i = 0; i < cookies.length; i++) {
+									Cookie c = cookies[i];
+									if (c.getName().equals("uid")) {
+										customernumber = c.getValue();
+									}
+								}
+
 								out.println("<div class='col-xs-5'>");
 
 								out.println("<table border=0>");

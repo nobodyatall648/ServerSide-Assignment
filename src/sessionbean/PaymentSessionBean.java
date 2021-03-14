@@ -9,7 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import domain.OrderdetailEntity;
 import domain.PaymentEntity;
+import domain.PaymentEntityPK;
 
 
 /**
@@ -28,11 +30,14 @@ public class PaymentSessionBean implements PaymentSessionBeanLocal {
     }
 
 	@Override
-	public PaymentEntity getCustomerPaymentInfo(String custNum) throws EJBException {
+	public List<PaymentEntity> getCustomerPaymentInfo(String custNum) throws EJBException {
 		// TODO Auto-generated method stub
-		Query q = em.createNamedQuery("PaymentEntity.findCustomerPayment");
-		q.setParameter("id", Integer.parseInt(custNum));
-		return (PaymentEntity) q.getSingleResult();
+		Query q = null;
+		
+		q = em.createNativeQuery("SELECT * FROM classicmodels.payments p WHERE p.customernumber = ?", PaymentEntity.class);
+		q.setParameter(1, Integer.parseInt(custNum));
+
+		return q.getResultList();
 	}
 	
 	@Override

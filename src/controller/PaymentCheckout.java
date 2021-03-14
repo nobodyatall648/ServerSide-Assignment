@@ -23,9 +23,12 @@ import domain.OrderdetailEntity;
 import domain.OrderdetailEntityPK;
 import domain.PaymentEntity;
 import domain.PaymentEntityPK;
+
+
 import sessionbean.OrderDetailSessionBeanLocal;
 import sessionbean.OrderSessionBeanLocal;
 import sessionbean.PaymentSessionBeanLocal;
+import sessionbean.ProductSessionBeanLocal;
 
 /**
  * Servlet implementation class PaymentCheckout
@@ -42,6 +45,9 @@ public class PaymentCheckout extends HttpServlet {
 	
 	@EJB
 	private OrderDetailSessionBeanLocal orderDetailBean;
+	
+	@EJB
+	private ProductSessionBeanLocal productBean;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -67,66 +73,80 @@ public class PaymentCheckout extends HttpServlet {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
 		HttpSession session = request.getSession();
-		
-		try{
-			   
-		
-		//retrieve information from paymentCheckout.jsp on payment details
-		String totalPrice = request.getParameter("totalPrice");
-		String paymentDate = request.getParameter("paymentDate");
-		String checkNumber = request.getParameter("checkNumber");
-		
-		
-		//format date object into string
-		DateFormat outputFormat = new SimpleDateFormat("MM/dd/yyyy");
-		DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = inputFormat.parse(paymentDate);
-		String paymentDateFormat = outputFormat.format(date);
-				
-		//demo customer number
-		String customerNumber = request.getParameter("customernumber");
-		
-		//get orderEntity and orderDetailEntity from AddOrder module
-		OrderEntity orderEntity = (OrderEntity) session.getAttribute("ORDER_ENTITY");
-		List<OrderdetailEntity> orderDetailEntity = (List<OrderdetailEntity>) session.getAttribute("ORDERDETAIL_ENTITY");
-		List<Cart> cartList = (List<Cart>) session.getAttribute("CART");
-		
-		//add order and order details to database
-		orderBean.addOrder(orderEntity);
-		
-		for(int i=0; i < orderDetailEntity.size(); i++) {
-			OrderdetailEntityPK orderDetailPK = new OrderdetailEntityPK();
-						
-			orderDetailPK.setOrdernumber(orderEntity.getOrdernumber());
-			orderDetailPK.setProductcode(cartList.get(i).getProductCode());
-			orderDetailEntity.get(i).setId(orderDetailPK);
-			
-			orderDetailBean.addOrderDetail(orderDetailEntity.get(i));
-		}
-		
-		
-		//add payment details to database
-		PaymentEntity paymentEntity = new PaymentEntity();
 
-		paymentEntity.setAmount(new BigDecimal(totalPrice));
-		paymentEntity.setPaymentdate(paymentDateFormat);
-		PaymentEntityPK paymentEntityPKVal = new PaymentEntityPK();
-		
-		paymentEntityPKVal.setChecknumber(checkNumber);
-		paymentEntityPKVal.setCustomernumber(Integer.parseInt(customerNumber));
-		
-		paymentEntity.setId(paymentEntityPKVal);
-		
-		paymentBean.addCustomerPayment(paymentEntity);
-		
-		 }catch(Exception e) { 
-			   e.printStackTrace();
-			 }
-		
+		try {
+
+			// retrieve information from paymentCheckout.jsp on payment details
+			String totalPrice = request.getParameter("totalPrice");
+			String paymentDate = request.getParameter("paymentDate");
+			String checkNumber = request.getParameter("checkNumber");
+			String customerNumber = request.getParameter("customernumber");
+
+			// format date object into string
+			DateFormat outputFormat = new SimpleDateFormat("MM/dd/yyyy");
+			DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = inputFormat.parse(paymentDate);
+			String paymentDateFormat = outputFormat.format(date);
+
+			// get orderEntity and orderDetailEntity from AddOrder module
+			OrderEntity orderEntity = (OrderEntity) session.getAttribute("ORDER_ENTITY");
+			List<OrderdetailEntity> orderDetailEntity = (List<OrderdetailEntity>) session.getAttribute("ORDERDETAIL_ENTITY");
+			List<Cart> cartList = (List<Cart>) session.getAttribute("CART");
+
+			// add order and order details to database
+			orderBean.addOrder(orderEntity);
+
+			for (int i = 0; i < orderDetailEntity.size(); i++) {
+				OrderdetailEntityPK orderDetailPK = new OrderdetailEntityPK();
+
+				orderDetailPK.setOrdernumber(orderEntity.getOrdernumber());
+				orderDetailPK.setProductcode(cartList.get(i).getProductCode());
+				orderDetailEntity.get(i).setId(orderDetailPK);
+				
+				orderDetailBean.addOrderDetail(orderDetailEntity.get(i));	
+				
+				
+				//deduct quantity of product from ProductEntity
+//				System.out.println("[debug]: " + orderDetailEntity.get(i).getProduct().getQuantityinstock());
+//				System.out.println("[debug]: " + orderDetailEntity.get(i).getQuantityordered());
+//				orderDetailEntity.get(i).getProduct()
+//						.setQuantityinstock((orderDetailEntity.get(i).getProduct().getQuantityinstock())
+//								-(orderDetailEntity.get(i).getQuantityordered()));
+//				
+				//System.out.println("[debug]: " + productBean.getQuantityByProductCode(cartList.get(i).getProductCode()));
+				productBean.setQuantityByProductCode(cartList.get(i).getProductCode(), (productBean.getQuantityByProductCode(cartList.get(i).getProductCode()))-(orderDetailEntity.get(i).getQuantityordered()));
+				
+//				orderDetailEntity.get(i).getProduct()
+//						.setQuantityinstock((productBean.getQuantityByProductCode(cartList.get(i).getProductCode())
+//								- (orderDetailEntity.get(i).getQuantityordered())));
+
+			}
+			
+
+			// add payment details to database
+			PaymentEntity paymentEntity = new PaymentEntity();
+
+			paymentEntity.setAmount(new BigDecimal(totalPrice));
+			paymentEntity.setPaymentdate(paymentDateFormat);
+			
+			PaymentEntityPK paymentEntityPKVal = new PaymentEntityPK();
+
+			paymentEntityPKVal.setChecknumber(checkNumber);
+			paymentEntityPKVal.setCustomernumber(Integer.parseInt(customerNumber));
+
+			paymentEntity.setId(paymentEntityPKVal);
+
+			paymentBean.addCustomerPayment(paymentEntity);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		// reset cart session attribute
 		session.setAttribute("CART", "");
 
-		response.sendRedirect(request.getContextPath() + "/index.jsp");
+		//after done, send success message to user
+		response.sendRedirect(request.getContextPath() + "/index.jsp?success=1");
 	}
 
 }
