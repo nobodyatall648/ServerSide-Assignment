@@ -1,4 +1,4 @@
-insert into classicmodels.users values ('1166', 'emp1');
+insert into classicmodels.users values ('1611', 'emp1');
 insert into classicmodels.users values ('1056', 'emp2');
 insert into classicmodels.users values ('1076', 'emp3');
 insert into classicmodels.users values ('1088', 'emp4');
@@ -10,7 +10,7 @@ insert into classicmodels.users values ('129', 'cust4');
 insert into classicmodels.users values ('131', 'cust5');
 insert into classicmodels.users values ('adminEC', 'admin');
 
-insert into classicmodels.user_roles values ('1166', 'emp');
+insert into classicmodels.user_roles values ('1611', 'emp');
 insert into classicmodels.user_roles values ('1056', 'emp');
 insert into classicmodels.user_roles values ('1076', 'emp');
 insert into classicmodels.user_roles values ('1088', 'emp');
