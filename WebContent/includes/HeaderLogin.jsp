@@ -1,17 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
+
 <html class="no-js">
-<!--<![endif]-->
+
 <head>
-<!-- 
-Kool Store Template
-http://www.templatemo.com/preview/templatemo_428_kool_store
--->
+
 <meta charset="utf-8">
 <title>Ransom Vehicle Store - Place to Get Cool Vehicles</title>
 
@@ -25,19 +19,12 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/normalize.min.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/templatemo-misc.css">
 <link rel="stylesheet" href="css/style.css">
 
 <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 
 </head>
 <body>
-	<!--[if lt IE 7]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-    <![endif]-->
-
-
 	<header class="site-header">
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
@@ -57,22 +44,12 @@ http://www.templatemo.com/preview/templatemo_428_kool_store
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-
-						<li class="<%=request.getParameter("activeLogin")%>"><a
-							href="#">Home <span class="sr-only">(current)</span></a></li>
-						<!-- <li><a href="#">Store</a></li>						
-						<li><a href="ViewProductInfo.jsp">Product</a>
-						<li><a href="#">Contact</a></li>-->
+						<li><a href="index.jsp">Home</a></li>
 					</ul>
 					
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="login.jsp">Login</a></li>
 					</ul>
-					<!--  
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Sign Up</a></li>
-						<li><a href="login.jsp">Log In</a></li>
-					</ul>-->
 				</div>
 				<!-- /.navbar-collapse -->
 			</div>

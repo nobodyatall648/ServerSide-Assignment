@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="subheader">
 			<h2>
-				<strong>&nbspView Payment</strong>
+				<strong>&nbspProfile</strong>
 			</h2>
 		</div>
 		<div class="panel panel-default paneldesign">

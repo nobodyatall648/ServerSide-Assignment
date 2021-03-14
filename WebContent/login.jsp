@@ -9,7 +9,7 @@
 	<jsp:include page="includes/HeaderLogin.jsp" />
 	<div class="container">
 		<h1 style="text-align: center;">Ransom Vehicle Store</h1>
-		<div class="login-form ">
+		<div class="login-form">
 			<form action="LoginController" method="post">
 				<h2 class="text-center">Log in to your account</h2>
 				<div class="form-group">
@@ -24,11 +24,11 @@
 					<button type="submit" class="btn btn-primary btn-block loginbtn">Log
 						in</button>
 				</div>
-				<div class="clearfix">
-					<div class="text-center">
-						<a href="#">Create an Account</a>
-					</div>
-				</div>
+<!-- 				<div class="clearfix"> -->
+<!-- 					<div class="text-center"> -->
+<!-- 						<a href="#">Create an Account</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 			</form>
 
 		</div>
