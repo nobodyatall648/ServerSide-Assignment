@@ -24,7 +24,8 @@
 							<td><b>Enter product code :</b></td>
 							<td>&nbsp<input class="inputdesign" type="text"
 								name="productCode" value="" placeholder="eg: S10_1678" required></td>
-							<td><button class="buttondesign" type="submit">Get Product Info</button></td>
+							<td><button class="buttondesign" type="submit">Get
+									Product Info</button></td>
 						</tr>
 					</table>
 				</form>
@@ -81,7 +82,14 @@
 							out.println("<h3><b><u>Order Placing Details</u></b></h3>");
 
 							//add to cart
-							String customernumber = "114"; //demo
+							String customernumber = "";
+							Cookie[] cookies = request.getCookies();
+							for (int i = 0; i < cookies.length; i++) {
+								Cookie c = cookies[i];
+								if (c.getName().equals("uid")) {
+									customernumber = c.getValue();
+								}
+							}							
 
 							out.println("<form action=\"CartController\" method=\"post\">");
 							out.println("<table border=0>");
@@ -129,7 +137,14 @@
 							</button>
 							<%
 								try {
-									String customernumber = "114"; //demo
+									String customernumber = "";
+									Cookie[] cookies = request.getCookies();
+									for (int i = 0; i < cookies.length; i++) {
+										Cookie c = cookies[i];
+										if (c.getName().equals("uid")) {
+											customernumber = c.getValue();
+										}
+									}
 									List<Cart> cartList = (List<Cart>) session.getAttribute("CART");
 									
 									//cart list management
@@ -227,7 +242,6 @@
 		function hideCart() {
 			document.getElementById('divCart').style.display = "none";
 		}
-
 	</script>
 </body>
 </html>

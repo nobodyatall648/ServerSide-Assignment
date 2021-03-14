@@ -9,6 +9,7 @@ import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,7 +47,15 @@ public class GetCustOrdersForUpdateStatus extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String empno = "1611"; //demo
+		String empno = ""; 
+		String customerNumber = "";
+		Cookie[] cookies = request.getCookies();
+		for (int i = 0; i < cookies.length; i++) {
+			Cookie c = cookies[i];
+			if (c.getName().equals("uid")) {
+				empno = c.getValue();
+			}
+		}
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		String filtering = request.getParameter("filter");
@@ -85,7 +94,7 @@ public class GetCustOrdersForUpdateStatus extends HttpServlet {
 		}else {
 			out.println("<script type=\"text/javascript\">");  
 			out.println("alert('You are not the sales representative of the customer.');");  
-			out.println("location='UpdateCustStatus.jsp';");
+			out.println("location='UpdateCustOrderStatus.jsp';");
 			out.println("</script>"); 	
 		}
 		
@@ -93,7 +102,7 @@ public class GetCustOrdersForUpdateStatus extends HttpServlet {
 		}catch(Exception e) {
 			out.println("<script type=\"text/javascript\">");  
 			out.println("alert('Something wrong happen here.');");  
-			out.println("location='UpdateCustStatus.jsp';");
+			out.println("location='UpdateCustOrderStatus.jsp';");
 			out.println("</script>"); 	
 		}
 	}

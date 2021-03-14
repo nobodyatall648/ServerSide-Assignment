@@ -8,6 +8,7 @@ import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +40,14 @@ public class GetUnassignedSRCust extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
-		String empno = "1611"; //demo
+		String empno = ""; 
+		Cookie[] cookies = request.getCookies();
+		for (int i = 0; i < cookies.length; i++) {
+			Cookie c = cookies[i];
+			if (c.getName().equals("uid")) {
+				empno = c.getValue();
+			}
+		}
 		
 		List<CustomerEntity> custListNoSR = customerBean.getCustomerByUnassignedSR();
 		List<CustomerEntity> custHandling = customerBean.getCustomerBySR(empno);
