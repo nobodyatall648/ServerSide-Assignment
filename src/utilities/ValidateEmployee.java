@@ -17,7 +17,7 @@ public class ValidateEmployee {
 		out.println("<SCRIPT type=\"text/javascript\">");
 		out.println("alert(\"Record has been updated and url will be redirected\")");
 		out.println("</SCRIPT>");
-		out.println("<td> <button type='submit' value='OK' onclick =\"window.location.href='AdminHomepage.jsp'\">BACK</button> </td>");
+		out.println("<td> <button type='submit' value='OK' onclick =\"window.location.href='indexAdmin.jsp'\">BACK</button> </td>");
 		
 	}
 

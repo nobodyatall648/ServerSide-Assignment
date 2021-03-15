@@ -38,7 +38,6 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 		emp.setParameter("Employnum",Integer.valueOf(empNum));
 		return (EmployeeEntity) emp.getSingleResult();
 		
-		
 	}
 
 	@Override
