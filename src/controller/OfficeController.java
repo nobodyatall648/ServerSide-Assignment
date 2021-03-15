@@ -46,7 +46,7 @@ public class OfficeController extends HttpServlet {
 		request.setAttribute("OfficeResult", o);
 		RequestDispatcher req=request.getRequestDispatcher("ViewOffice.jsp");
 		req.forward(request, response);
-		}else response.sendRedirect("ViewEmployeedetail.html");
+		}
 	}
 	
 

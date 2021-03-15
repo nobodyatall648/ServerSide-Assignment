@@ -41,7 +41,6 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 		
 		
 		}catch(NoResultException e) {
-			System.out.println("No data found");
 			return null;
 		}
 		
