@@ -201,7 +201,10 @@
 										out.println("<tr>");
 										out.println("<td>Comments : </td> <br>");
 										out.println("</tr>");
-
+										out.println("<tr>");
+										out.println(
+												"<td><textarea class='textareadesign' name=\"comments\" rows=\"4\" cols=\"50\"></textarea></td>");
+										out.println("</tr>");
 										out.println("</table>");
 
 										out.println("<br>");

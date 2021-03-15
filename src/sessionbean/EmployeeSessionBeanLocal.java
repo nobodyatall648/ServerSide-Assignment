@@ -14,7 +14,7 @@ import domain.UserRoleEntityPK;
 
 @Local
 public interface EmployeeSessionBeanLocal {
-	public EmployeeEntity getEmployeeByEmpNum(String empNum,HttpServletRequest req) throws EJBException;
+	public EmployeeEntity getEmployeeByEmpNum(String empNum) throws EJBException;
 	public void addEmployee(String[] s, OfficeEntity o) throws EJBException;
 	public void updateEmployee(String[] s) throws EJBException;
 	public void deleteEmployee(String empNum) throws EJBException;

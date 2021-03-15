@@ -97,7 +97,7 @@ public class LoginController extends HttpServlet {
 										
 					response.sendRedirect("index.jsp");
 				} else if (userRole.getId().getRole().equals("emp")) {
-					EmployeeEntity empInfo = empBean.getEmployeeByEmpNum(userRole.getId().getUsername(), request);
+					EmployeeEntity empInfo = empBean.getEmployeeByEmpNum(userRole.getId().getUsername());
 					Cookie usernameCookie = new Cookie("username", empInfo.getFirstname());
 					usernameCookie.setMaxAge(60 * 60); // 1hr cookie age
 					response.addCookie(usernameCookie);
