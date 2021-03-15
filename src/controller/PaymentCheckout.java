@@ -106,19 +106,9 @@ public class PaymentCheckout extends HttpServlet {
 				orderDetailBean.addOrderDetail(orderDetailEntity.get(i));	
 				
 				
-				//deduct quantity of product from ProductEntity
-//				System.out.println("[debug]: " + orderDetailEntity.get(i).getProduct().getQuantityinstock());
-//				System.out.println("[debug]: " + orderDetailEntity.get(i).getQuantityordered());
-//				orderDetailEntity.get(i).getProduct()
-//						.setQuantityinstock((orderDetailEntity.get(i).getProduct().getQuantityinstock())
-//								-(orderDetailEntity.get(i).getQuantityordered()));
-//				
-				//System.out.println("[debug]: " + productBean.getQuantityByProductCode(cartList.get(i).getProductCode()));
+				//deduct quantity of product from ProductEntity		
 				productBean.setQuantityByProductCode(cartList.get(i).getProductCode(), (productBean.getQuantityByProductCode(cartList.get(i).getProductCode()))-(orderDetailEntity.get(i).getQuantityordered()));
-				
-//				orderDetailEntity.get(i).getProduct()
-//						.setQuantityinstock((productBean.getQuantityByProductCode(cartList.get(i).getProductCode())
-//								- (orderDetailEntity.get(i).getQuantityordered())));
+
 
 			}
 			

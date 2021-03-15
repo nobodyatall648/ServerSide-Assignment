@@ -31,19 +31,13 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 	
 	
 	@Override
-	public EmployeeEntity getEmployeeByEmpNum(String empNum,HttpServletRequest req) throws EJBException {
+	public EmployeeEntity getEmployeeByEmpNum (String empNum) throws EJBException {
 		// TODO Auto-generated method stub
-		try {
+		
 		Query emp=em.createNamedQuery("EmployeeEntity.findbynum");
 		emp.setParameter("Employnum",Integer.valueOf(empNum));
 		return (EmployeeEntity) emp.getSingleResult();
 		
-		
-		
-		}catch(NoResultException e) {
-			System.out.println("No data found");
-			return null;
-		}
 		
 	}
 
