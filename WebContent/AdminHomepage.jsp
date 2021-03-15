@@ -56,6 +56,8 @@ if (cookies != null) {
 <body>
 
 <h1>Admin Section</h1>
+<br>
+<h1>Please refer database to include data</h1>
 <form method="post" action="ViewEmployee">
   
 
