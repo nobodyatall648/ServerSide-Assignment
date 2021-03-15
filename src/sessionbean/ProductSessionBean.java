@@ -40,18 +40,38 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
 	@Override
 	public List<ProductEntity> findProductByName(String productName) throws EJBException {
 		// TODO Auto-generated method stub
-		return null;
+		Query query = em.createNamedQuery("ProductEntity.findByProductName");
+		query.setParameter("productname", productName);
+		
+		return (List<ProductEntity>) query.getSingleResult();
 	}
 
 	@Override
-	public void addProduct(ProductEntity product) throws EJBException {
+	public void addProduct(String[] s) throws EJBException {
 		// TODO Auto-generated method stub
 		
+		ProductEntity p = new ProductEntity();
+		
+		p.setProductcode(s[0]);
+		p.setProductname(s[1]);
+		p.setProductscale(s[2]);
+		p.setProductvendor(s[3]);
+		p.setProductdescription(s[4]);
+		p.setQuantityinstock(Integer.parseInt(s[5])); 
+		
+		em.persist(p);
 	}
 
 	@Override
-	public void updateProduct(ProductEntity product) throws EJBException {
+	public void updateProduct(String[] s) throws EJBException {
 		// TODO Auto-generated method stub
+		
+	    ProductEntity p1 = (ProductEntity) findProductByName(s[0]);
+		p1.setProductname(s[1]);
+		p1.setProductscale(s[2]);
+		p1.setProductvendor(s[3]);
+		p1.setProductdescription(s[4]);
+		p1.setQuantityinstock(Integer.parseInt(s[5])); 
 		
 	}
 
@@ -65,9 +85,11 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
 	}
 
 	@Override
-	public void deleteProduct(String productCode) throws EJBException {
+	public void deleteProduct(String productName) throws EJBException {
 		// TODO Auto-generated method stub
 		
+		ProductEntity p2 = (ProductEntity) findProductByName(productName);
+		em.remove(p2);
 	}
 
 	@Override

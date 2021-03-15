@@ -47,11 +47,11 @@
 		<%
 			try {
 				List<ProductEntity> productList = (List<ProductEntity>) request.getAttribute("PRODUCT_LIST");
-				//List<ProductlineEntity> productlineList = (List<ProductlineEntity>) request.getAttribute("PRODUCTLINE_LIST");
+				List<ProductlineEntity> productlineList = (List<ProductlineEntity>) request.getAttribute("PRODUCTLINE_LIST");
      			out.println("<tbody>");
 				for (int i = 0; i < productList.size(); i++) {
 					
-					//for (int j = 0; j < productlineList.size(); j++){
+					for (int j = 0; j < productlineList.size(); j++){
 					out.println("<tr>");
 
 					out.println("<td>&nbsp;" + productList.get(i).getProductcode() + "&nbsp;</td>");
@@ -62,13 +62,13 @@
 					out.println("<td>&nbsp;" + productList.get(i).getProductscale() + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + productList.get(i).getProductvendor() + "&nbsp;</td>");
 					out.println("<td>&nbsp;" + productList.get(i).getQuantityinstock() + "&nbsp;</td>");
-					//out.println("<td>&nbsp;" + productlineList.get(j).getProductline() + "&nbsp;</td>");
-				    //out.println("<td>&nbsp;" + productlineList.get(j).getHtmldescription() + "&nbsp;</td>");
-					//out.println("<td>&nbsp;" + productlineList.get(j).getImage() + "&nbsp;</td>");
-					//out.println("<td>&nbsp;" + productlineList.get(j).getTextdescription() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + productlineList.get(j).getProductline() + "&nbsp;</td>");
+				    out.println("<td>&nbsp;" + productlineList.get(j).getHtmldescription() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + productlineList.get(j).getImage() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + productlineList.get(j).getTextdescription() + "&nbsp;</td>");
 					
 					out.println("</tr>");
-					//}
+					}
 				}
 				out.println("</tbody>");
 			} catch (Exception e) {

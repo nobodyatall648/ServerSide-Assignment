@@ -40,7 +40,7 @@ public class ViewProductInfo extends HttpServlet {
 		List<ProductlineEntity> productLineList = productlineBean.getAllProductLine();
 		
 		request.setAttribute("PRODUCT_LIST", productList);
-		//request.setAttribute("PRODUCTLINE_LIST", productLineList);
+		request.setAttribute("PRODUCTLINE_LIST", productLineList);
 		RequestDispatcher req = request.getRequestDispatcher("ViewProductInfo.jsp");
 		req.forward(request, response);
 		
