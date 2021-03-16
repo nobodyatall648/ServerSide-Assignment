@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import domain.EmployeeEntity;
 import domain.OfficeEntity;
+import domain.ProductEntity;
 import domain.UserEntity;
 import domain.UserRoleEntity;
 import domain.UserRoleEntityPK;
@@ -25,11 +26,7 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 	@PersistenceContext(unitName = "ServerSideAssignment")
 	EntityManager em;
 	
-	
-	
-	
-	
-	
+
 	@Override
 	public EmployeeEntity getEmployeeByEmpNum (String empNum) throws EJBException {
 		// TODO Auto-generated method stub
@@ -77,7 +74,7 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 		em.merge(e);
 	}
 	
-	
+
 @Override
 	public void deleteEmployee(String empNum) throws EJBException {
 		// TODO Auto-generated method stub
@@ -100,7 +97,19 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 		return (EmployeeEntity)m.getSingleResult();
 	}
 
-
+	@Override
+	public void updateEmployeeFromProfile(String[] s) throws EJBException {
+		// TODO Auto-generated method stub
+		Query q = null;
+		
+		q = em.createNativeQuery("UPDATE classicmodels.employees SET firstname =?, lastname =?, email =?  WHERE employeenumber = ?", EmployeeEntity.class);
+		q.setParameter(1,s[1]);
+		q.setParameter(2,s[2]);
+		q.setParameter(3,s[3]);
+		q.setParameter(4,Integer.parseInt(s[0]));
+		
+		q.executeUpdate();
+	}
 
 
 }

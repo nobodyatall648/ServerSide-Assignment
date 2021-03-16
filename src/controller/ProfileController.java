@@ -94,7 +94,6 @@ public class ProfileController extends HttpServlet {
 	 	}
 		
 		
-		
 	}
 
 	/**
@@ -102,7 +101,69 @@ public class ProfileController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+//		doGet(request, response);
+		HttpSession session = request.getSession();
+		Cookie [] cookies = request.getCookies();
+		
+		for (int i = 0; i < cookies.length; i++) {
+	 		Cookie c = cookies[i];
+	 		if (c.getName().equals("role")) {
+	 			//IF ROLE IS CUSTOMER
+	 			if (c.getValue().equals("cust")) {
+	 				try {
+	 				//update customer profile
+	 				String custNum = request.getParameter("custNum");
+					String custName = request.getParameter("custName");
+					String custFirstName = request.getParameter("custFirstName");
+					String custLastName = request.getParameter("custLastName");
+					String custPhone = request.getParameter("custPhone");
+					String custCreditLimit = request.getParameter("custCreditLimit");
+					String custAddr1 = request.getParameter("custAddr1");
+					String custAddr2 = request.getParameter("custAddr2");
+					String custPostal = request.getParameter("custPostal");
+					String custCity = request.getParameter("custCity");
+					String custState = request.getParameter("custState");
+					String custCountry = request.getParameter("custCountry");
+					
+					String[] custString = { custNum, custName, custFirstName, custLastName, custPhone, custCreditLimit,
+							custAddr1, custAddr2, custPostal, custCity, custState, custCountry};
 
+					customerBean.updateCustomerFromProfile(custString);
+					
+					//set new values
+					CustomerEntity customerEntity = customerBean.getCustomerByCustNum(custNum);
+	 				session.setAttribute("CUSTOMER_ENTITY", customerEntity);
+	 				} catch (Exception e) {
+	 					
+	 				}
+	 				RequestDispatcher req = request.getRequestDispatcher("profile.jsp");
+					req.forward(request, response);
+	 			}
+	 			//IF ROLE IS EMPLOYEE
+	 			else if (c.getValue().equals("emp")) {
+	 			try {
+					//update employee profile
+					String empNum = request.getParameter("empNum");
+					String empFirstName = request.getParameter("empFirstName");
+					String empLastName = request.getParameter("empLastName");
+					String empEmail = request.getParameter("empEmail");
+					
+					String[] empString = {empNum, empFirstName, empLastName, empEmail};
+					
+					employeeBean.updateEmployeeFromProfile(empString);
+					
+					//set new values
+					EmployeeEntity employeeEntity = employeeBean.getEmployeeByEmpNum(empNum);
+	 				session.setAttribute("EMPLOYEE_ENTITY", employeeEntity);
+	 				
+	 			}catch (Exception e) {
+	 				
+	 			}
+
+ 				RequestDispatcher req = request.getRequestDispatcher("profile.jsp");
+				req.forward(request, response);
+	 			}
+	 		}
+		}
+	}
 }

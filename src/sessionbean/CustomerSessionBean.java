@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import domain.CustomerEntity;
 import domain.EmployeeEntity;
+import domain.ProductEntity;
 
 /**
  * Session Bean implementation class CustomerSessionBean
@@ -88,6 +89,29 @@ public class CustomerSessionBean implements CustomerSessionBeanLocal {
 		}
 		
 		return true;
+	}
+
+	@Override
+	public void updateCustomerFromProfile(String[] s) throws EJBException {
+		// TODO Auto-generated method stub
+		Query q = null;
+		
+		q = em.createNativeQuery("UPDATE classicmodels.customers SET customername =?, contactlastname =?, contactfirstname =?, phone=?, addressline1=?, addressline2=?, city=?, state=?, postalcode=?, country=?, creditlimit=? WHERE customernumber = ?", CustomerEntity.class);
+		q.setParameter(1,s[1]);
+		q.setParameter(2,s[2]);
+		q.setParameter(3,s[3]);
+		q.setParameter(4,s[4]);
+		q.setParameter(5,s[6]);
+		q.setParameter(6,s[7]);
+		q.setParameter(7,s[9]);
+		q.setParameter(8,s[10]);
+		q.setParameter(9,s[8]);
+		q.setParameter(10,s[11]);
+		q.setParameter(11,Double.parseDouble(s[5]));
+		q.setParameter(12,Integer.parseInt(s[0]));
+		
+		q.executeUpdate();
+	
 	}
     
 	

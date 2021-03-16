@@ -20,7 +20,7 @@ public interface EmployeeSessionBeanLocal {
 	public void deleteEmployee(String empNum) throws EJBException;
 	public List<EmployeeEntity> getallEmployee() throws EJBException;
 	public EmployeeEntity findEmployee(String num)throws EJBException;
-	
+	public void updateEmployeeFromProfile(String[] s) throws EJBException;
 	
 	
 

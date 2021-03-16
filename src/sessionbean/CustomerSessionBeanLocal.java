@@ -17,4 +17,5 @@ public interface CustomerSessionBeanLocal {
 	List<CustomerEntity> getCustomerByUnassignedSR() throws EJBException;
 	List<CustomerEntity> getCustomerBySR(String empNo) throws EJBException;
 	Boolean assignSalesRep(String custNum, String salesRep) throws EJBException;
+	public void updateCustomerFromProfile(String[] s) throws EJBException;
 }
