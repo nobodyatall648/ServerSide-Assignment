@@ -25,7 +25,7 @@
 	<h3>
 		<u><strong>Product Info</strong></u>
 	</h3>
-	
+	<form action = "Product" method ="get">
 	<table class="table" border=2>
 		<thead>
 			<tr>
@@ -46,27 +46,25 @@
 		 
 		<%
 			try {
-				List<ProductEntity> productList = (List<ProductEntity>) request.getAttribute("PRODUCT_LIST");
-				List<ProductlineEntity> productlineList = (List<ProductlineEntity>) request.getAttribute("PRODUCTLINE_LIST");
+				List<ProductEntity> pl = (List<ProductEntity>) request.getAttribute("PRODUCT_LIST");
+				List<ProductlineEntity> plList = (List<ProductlineEntity>) request.getAttribute("PRODUCTLINE_LIST");
      			out.println("<tbody>");
-				for (int i = 0; i < productList.size(); i++) {
-					
-					for (int j = 0; j < productlineList.size(); j++){
+				for (int i = 0; i < pl.size(); i++) {
+					for (int j = 0; j < pl.size(); j++){
 					out.println("<tr>");
 
-					out.println("<td>&nbsp;" + productList.get(i).getProductcode() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + productList.get(i).getBuyprice() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + productList.get(i).getMsrp() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + productList.get(i).getProductdescription() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + productList.get(i).getProductname() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + productList.get(i).getProductscale() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + productList.get(i).getProductvendor() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + productList.get(i).getQuantityinstock() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + productlineList.get(j).getProductline() + "&nbsp;</td>");
-				    out.println("<td>&nbsp;" + productlineList.get(j).getHtmldescription() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + productlineList.get(j).getImage() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + productlineList.get(j).getTextdescription() + "&nbsp;</td>");
-					
+					out.println("<td>&nbsp;" + pl.get(i).getProductcode() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + pl.get(i).getBuyprice() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + pl.get(i).getMsrp() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + pl.get(i).getProductdescription() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + pl.get(i).getProductname() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + pl.get(i).getProductscale() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + pl.get(i).getProductvendor() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + pl.get(i).getQuantityinstock() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + plList.get(j).getProductline() + "&nbsp;</td>");
+				    out.println("<td>&nbsp;" + plList.get(j).getHtmldescription() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + plList.get(j).getImage() + "&nbsp;</td>");
+					out.println("<td>&nbsp;" + plList.get(j).getTextdescription() + "&nbsp;</td>");			
 					out.println("</tr>");
 					}
 				}
@@ -76,9 +74,7 @@
 			}
 		%>
 	</table>
-
-
-	
+	</form>
 	<br>
 	<br>
 	<br>

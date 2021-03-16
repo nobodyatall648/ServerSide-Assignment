@@ -18,4 +18,5 @@ public interface ProductSessionBeanLocal {
 	public int getQuantityByProductCode(String productCode) throws EJBException;
 	public void setQuantityByProductCode(String productCode, Integer newQuantity) throws EJBException;
 
+
 }

@@ -65,4 +65,4 @@ public class ProductController extends HttpServlet{
 			}
 			ValidateEmployee.navigateJS(out);
 	}
-}
+

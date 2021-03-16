@@ -1,6 +1,7 @@
 package sessionbean;
 
 import java.util.List;
+import java.math.BigDecimal;
 
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
@@ -87,7 +88,6 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
 	@Override
 	public void deleteProduct(String productName) throws EJBException {
 		// TODO Auto-generated method stub
-		
 		ProductEntity p2 = (ProductEntity) findProductByName(productName);
 		em.remove(p2);
 	}
