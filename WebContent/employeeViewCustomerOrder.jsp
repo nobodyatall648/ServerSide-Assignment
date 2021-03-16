@@ -9,6 +9,7 @@
 <body>
 	<jsp:include page="includes/HeaderEmployee.jsp" />
 
+	<div class="container">
 	<h2>
 		<u><strong>View Customer Order</strong></u>
 	</h2>
@@ -74,7 +75,7 @@
 
 			if (orderList.size() > 0) {
 				out.println("<h3><u>Order Status</u></h3>");
-				out.println("<table border=2>");
+				out.println("<table class='table' border=2>");
 				out.println("<thead>");
 				out.println("<tr>");
 				out.println("<td>&nbsp;Order Number&nbsp;</td>");
@@ -117,7 +118,7 @@
 			out.println("<h3><u>More Order Details of " + orderDetailList.get(0).getOrder().getOrdernumber()
 					+ "</u></h3>");
 
-			out.println("<table border=2>");
+			out.println("<table class='table' border=2>");
 			out.println("<thead>");
 			out.println("<tr>");
 			out.println("<td>&nbsp;Product Code&nbsp;</td>");
@@ -155,7 +156,7 @@
 
 	<br>
 	<br>
-
+</div>
 	<jsp:include page="includes/Footer.jsp" />
 </body>
 </html>

@@ -78,6 +78,7 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 					<li><a href="indexEmp.jsp">Home</a></li>
+					<li><a href="#">Manage Vehicle</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Customer Order <span class="caret"></span></a>
@@ -88,7 +89,7 @@
 								<li><a href="UpdateCustOrderStatus.jsp">Update Customer
 										Order Status</a></li>
 							</ul></li>
-						<li><a href="#">Manage Vehicle</a></li>
+						<li><a href="employeeViewCustomerPayment.jsp">Customer Payment</a></li>
 					</ul>
 
 

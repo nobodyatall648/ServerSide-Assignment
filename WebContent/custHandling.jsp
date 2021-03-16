@@ -8,7 +8,8 @@
 </head>
 <body>
 	<jsp:include page="includes/HeaderEmployee.jsp" />
-
+	
+	<div class="container">
 	<h2>
 		<u><strong>Customer Handling & Assigning</strong></u>
 	</h2>
@@ -140,6 +141,7 @@
 	
 	<br>
 	<br>
+	</div>
 	<jsp:include page="includes/Footer.jsp" />
 </body>
 </html>

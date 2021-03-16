@@ -8,7 +8,7 @@
 </head>
 <body>
 	<jsp:include page="includes/HeaderEmployee.jsp" />
-
+	<div class="container">
 	<h2>
 		<u><strong>Update Customer Order Status</strong></u>
 	</h2>
@@ -20,7 +20,7 @@
 				<td>&nbsp; <input type="text" name="custnum" required>&nbsp;
 				</td>
 			</tr>
-			<tr></tr>
+			<tr><td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td></tr>
 			<tr>
 				<td><select name="filter">
 						<option value="all">Show All Customer Orders</option>
@@ -29,7 +29,7 @@
 				</select></td>
 			</tr>
 		</table>
-
+		<br>
 		<button type="submit">List Orders</button>
 	</form>
 
@@ -131,9 +131,9 @@
 		}
 	%>
 
-	
 	<br>
 	<br>
+	</div>
 	<jsp:include page="includes/Footer.jsp" />
 </body>
 </html>
