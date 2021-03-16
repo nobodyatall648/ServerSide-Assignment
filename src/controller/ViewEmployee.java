@@ -46,7 +46,7 @@ public class ViewEmployee extends HttpServlet {
 		// TODO Auto-generated method stub
 		String employeenum=request.getParameter("employeenum");
 		if(employeenum!=null) {
-		EmployeeEntity e=emp.getEmployeeByEmpNum(employeenum,request);
+		EmployeeEntity e=emp.getEmployeeByEmpNum(employeenum);
 		request.setAttribute("EmployeeResult", e);
 		RequestDispatcher req=request.getRequestDispatcher("ViewEmployee.jsp");
 		req.forward(request, response);
