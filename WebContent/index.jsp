@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,23 +7,7 @@
 </head>
 <body>
 	<jsp:include page="includes/HeaderCustomer.jsp" />
-	<%
-		//get success checkout parameter from checkout page
-		try {
-			if (request.getParameter("success") == null) {
-
-			} else {
-				out.println(
-						"<div id='success_payment' class='alert alert-success alert-dismissible' role='alert'>");
-				out.println(
-						"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
-				out.println("Successfully performed checkout!</div>");
-
-			}
-		} catch (Exception e) {
-
-		}
-	%>
+	
 	<div class="container">
 		<div class="jumbotron">
 			<h2>
@@ -65,13 +48,6 @@
 	</div>
 	<jsp:include page="includes/Footer.jsp" />
 
-	<script>
-		//timeout for success checkout
-		window.setTimeout(function() {
-			$("#success_payment").fadeTo(300, 0).slideUp(500, function() {
-				$(this).remove();
-			});
-		}, 3000);
-	</script>
+	
 </body>
 </html>

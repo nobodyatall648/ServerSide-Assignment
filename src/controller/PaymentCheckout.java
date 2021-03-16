@@ -138,6 +138,8 @@ public class PaymentCheckout extends HttpServlet {
 		session.removeAttribute("CART");
 		session.removeAttribute("PLACED_ORDER");
 
+		//send attribute to show success payment
+		request.setAttribute("CHECKOUT_SUCCESS","success");
 		
 		//pass the objects to payment receipt
 		RequestDispatcher req = request.getRequestDispatcher("paymentReceipt.jsp");

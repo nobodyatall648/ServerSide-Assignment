@@ -192,8 +192,7 @@
 
 									out.println("<tr>");
 									out.println("<td>Check Number </td>");
-									out.println(
-											"<td>&nbsp; : <input class= 'inputdesign' type=\"text\" name=\"checkNumber\" placeholder='eg: HQ336336' value=\"\" required> </td>");
+									out.println("<td>&nbsp; : <input pattern=\"[A-Z]{2}[0-9]{6}\" class='inputdesign' type=\"text\" name=\"checkNumber\" placeholder='eg: HQ336336' value=\"\" required> </td>");
 									out.println("</tr>");
 
 									out.println("<tr>");
@@ -226,6 +225,7 @@
 	<jsp:include page="includes/Footer.jsp" />
 
 	<script>
+		//today's date
 		Date.prototype.toDateInputValue = (function() {
 			var local = new Date(this);
 			local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
@@ -234,6 +234,7 @@
 
 		document.getElementById('paymentDate').value = new Date()
 				.toDateInputValue();
+
 	</script>
 </body>
 </html>
