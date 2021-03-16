@@ -33,14 +33,13 @@ public class ProductController extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ProductController.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ProductDetail.html");
 		dispatcher.forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String eid=request.getParameter("id");
 		String fname=request.getParameter("fname");
 		String lname=request.getParameter("lname");
 		String email=request.getParameter("email");
@@ -48,8 +47,8 @@ public class ProductController extends HttpServlet{
 		String ocode=request.getParameter("officecode");
 		String report=request.getParameter("report");
 		
-		OfficeEntity o=new OfficeEntity();
-		o=offbean.findOffice(Integer.parseInt(ocode));
+		ProductEntity p = new ProductEntity();
+		p = productbean.findOffice(Integer.parseInt(ocode));
 		
 		PrintWriter out = response.getWriter();
 		
