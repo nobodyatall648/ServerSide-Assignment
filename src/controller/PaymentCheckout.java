@@ -109,7 +109,6 @@ public class PaymentCheckout extends HttpServlet {
 				//deduct quantity of product from ProductEntity		
 				productBean.setQuantityByProductCode(cartList.get(i).getProductCode(), (productBean.getQuantityByProductCode(cartList.get(i).getProductCode()))-(orderDetailEntity.get(i).getQuantityordered()));
 
-
 			}
 			
 
@@ -127,16 +126,22 @@ public class PaymentCheckout extends HttpServlet {
 			paymentEntity.setId(paymentEntityPKVal);
 
 			paymentBean.addCustomerPayment(paymentEntity);
+			
+			//send to payment receipt
+			session.setAttribute("PAYMENT_ENTITY", paymentEntity);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		// reset cart session attribute
-		session.setAttribute("CART", "");
+		//reset cart & placed order session attribute
+		session.removeAttribute("CART");
+		session.removeAttribute("PLACED_ORDER");
 
-		//after done, send success message to user
-		response.sendRedirect(request.getContextPath() + "/index.jsp?success=1");
+		
+		//pass the objects to payment receipt
+		RequestDispatcher req = request.getRequestDispatcher("paymentReceipt.jsp");
+		req.forward(request, response);
 	}
 
 }

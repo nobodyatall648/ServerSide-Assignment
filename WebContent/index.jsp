@@ -10,13 +10,18 @@
 	<jsp:include page="includes/HeaderCustomer.jsp" />
 	<%
 		//get success checkout parameter from checkout page
-		if (request.getParameter("success") == null) {
+		try {
+			if (request.getParameter("success") == null) {
 
-		} else {
-			out.println("<div id='success_payment' class='alert alert-success alert-dismissible' role='alert'>");
-			out.println(
-					"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
-			out.println("Successfully performed checkout!</div>");
+			} else {
+				out.println(
+						"<div id='success_payment' class='alert alert-success alert-dismissible' role='alert'>");
+				out.println(
+						"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
+				out.println("Successfully performed checkout!</div>");
+
+			}
+		} catch (Exception e) {
 
 		}
 	%>

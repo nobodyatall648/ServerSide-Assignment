@@ -38,6 +38,7 @@
 				<%
 					//only will shows when product code is entered.
 					try {
+
 						ProductEntity productInfo = (ProductEntity) request.getAttribute("PRODUCT_INFO");
 						boolean noRsl = (Boolean) request.getAttribute("NORESULT");
 
@@ -89,7 +90,7 @@
 								if (c.getName().equals("uid")) {
 									customernumber = c.getValue();
 								}
-							}							
+							}
 
 							out.println("<form action=\"CartController\" method=\"post\">");
 							out.println("<table border=0>");
@@ -112,12 +113,27 @@
 							out.println("<input type=\"hidden\" name=\"customernumber\" value=\"" + customernumber + "\">");
 							out.println("<br><button class='buttondesign' type=\"submit\">Add to Cart</button>");
 							out.println("</form>");
+
 						}
 					} catch (Exception e) { //catching NullPointerException in getAttribute() during the 1st time vising addOrder.jsp
 
 					}
 				%>
+				<%
+					//message shown after item has been added into cart
+					try {
+						boolean addtoCart = (Boolean) request.getAttribute("ADDED_TO_CART");
+						if (addtoCart) {
 
+							out.println(
+									"<div>Item has been added into cart. Please check the cart icon on the right bottom of the page for more information.</div>");
+						} else {
+							out.println("halo");
+						}
+					} catch (Exception e) {
+
+					}
+				%>
 
 				<!-- floating shopping cart button right down corner -->
 				<button id="shoppingcart" class="btn btn-default buttondesign"
@@ -137,6 +153,13 @@
 							</button>
 							<%
 								try {
+									//if cart is empty
+									if (session.getAttribute("CART") == null) {
+										out.println("<div><h3><strong><u>Cart List</u></strong></h3></div>");
+										out.println("<p>It is empty here! Try adding some products.</p>");
+									}
+
+									//retrieve customer number from cookies
 									String customernumber = "";
 									Cookie[] cookies = request.getCookies();
 									for (int i = 0; i < cookies.length; i++) {
@@ -145,11 +168,12 @@
 											customernumber = c.getValue();
 										}
 									}
+
 									List<Cart> cartList = (List<Cart>) session.getAttribute("CART");
-									
+
 									//cart list management
 									if (cartList.size() != 0) {
-										out.println("<div class='cartsubheader'><h3><strong>&nbspCart List</strong></h3></div>");
+										out.println("<div><h3><strong><u>Cart List</u></strong></h3></div>");
 										out.println("<form action=\"CartController\" method=\"get\">");
 										out.println("<table class='table table-bordered' >");
 
@@ -211,8 +235,7 @@
 										out.println("<input type=\"hidden\" name=\"customernumber\" value=\"" + customernumber + "\">");
 										out.println("<button class='buttondesign' type=\"submit\">Place Order</button>");
 										out.println("</form>");
-									}
-									else{
+									} else {
 										out.println("<div class='cartsubheader'><h3><strong>&nbspCart List</strong></h3></div>");
 										out.println("<p>It is empty here! Try adding some products.</p>");
 									}

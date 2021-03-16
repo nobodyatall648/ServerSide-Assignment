@@ -137,8 +137,8 @@ public class AddOrder extends HttpServlet {
 			
 			session.setAttribute("ORDERDETAIL_ENTITY", orderDetailEntityList);			
 			
-//			// reset cart session attribute
-//			session.setAttribute("CART", "");
+			//placed order
+			session.setAttribute("PLACED_ORDER", "placedOrder");
 			
 			
 			//pass the orderEntity + orderDetailEntity object to payment module

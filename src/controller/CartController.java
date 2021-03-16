@@ -154,6 +154,8 @@ public class CartController extends HttpServlet {
 				out.println("location='addOrder.jsp';");
 				out.println("</script>"); 	
 			} else {
+				boolean addtoCart = true;
+				request.setAttribute("ADDED_TO_CART", addtoCart);
 				RequestDispatcher req = request.getRequestDispatcher("addOrder.jsp");
 				req.forward(request, response);
 			}
