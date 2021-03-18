@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -24,8 +25,6 @@ public class ProductController extends HttpServlet{
 	
 	@EJB
 	private ProductSessionBeanLocal productbean;
-	@EJB
-	private ProductLineSessionBeanLocal productlinebean;
 	
 	public ProductController() {
 		super();
@@ -40,19 +39,19 @@ public class ProductController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String fname=request.getParameter("fname");
-		String lname=request.getParameter("lname");
-		String email=request.getParameter("email");
-		String job=request.getParameter("job");
-		String ocode=request.getParameter("officecode");
-		String report=request.getParameter("report");
+		String pcode = request.getParameter("productcode");
+		String pname = request.getParameter("productname");
+		String pscale = request.getParameter("productscale");
+		String pvendor = request.getParameter("productvendor");
+		String pdescription = request.getParameter("productdescription");
+		String quantity = request.getParameter("quantityinstock");
 		
-		ProductEntity p = new ProductEntity();
-		p = productbean.findOffice(Integer.parseInt(ocode));
+		List<ProductEntity> p = (List<ProductEntity>) new ProductEntity();
+		p = productbean.findProductByName(pname);
 		
 		PrintWriter out = response.getWriter();
 		
-		String[] s= {eid,fname,lname,email,job,ocode,report};
+		String[] s= {pcode, pname, pscale, pvendor, pdescription, quantity};
 		
 			if(ValidateEmployee.ValidateEmployee(request).equals("UPDATE")) {
 				empbean.updateEmployee(s);
