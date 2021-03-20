@@ -31,7 +31,7 @@
 		Cookie[] cookies = request.getCookies();
 
 		//check cookie empty or exist
-		if(cookies.length == 1){
+		if(cookies.length == 1 || cookies.length == 0){
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('You are not authorized to view the page.');");
 			out.println("location='login.jsp';");
