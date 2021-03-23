@@ -19,8 +19,5 @@ public class ValidateEmployee {
 		out.println("alert(\"Record has been updated and url will be redirected\")");
 		out.println("window.location.href="+"\"indexAdmin.jsp\"");
 		out.println("</SCRIPT>");
-		
-		
 	}
-
 }

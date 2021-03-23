@@ -1,61 +1,108 @@
+<%@page import="domain.ProductEntity"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Product Info</title>
+<style>
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+
+</style>
 </head>
+
 <body>
-	<jsp:include page="includes/HeaderCustomer.jsp" />
+<h1>Product Detail</h1>
+	<%
+		ProductEntity p = (ProductEntity) request.getAttribute("EmployeeResult");
+	%>
+	<form action = "ProductController" method = "post">
 
+	
+		<table>
+			<tr>
+				<td>Employee Number</td>
+				<td>
+					<%
+						out.println("<input type=\"text\" name=\"id\" value=" + emp.getEmployeenumber().toString());
+					%>
+				</td>
+			</tr>
 
-	<h2>
-		<strong>Add Product</strong>
-	</h2>
-	
-	<form action="./InsertData" method="post"> 
-	
-        <p>Product Code:</p>  
-        <input type="text" name="id"/> 
-        <br/>
-         
-        <p>Product Name:</p>  
-        <input type="text" name="string"/> 
-        <br/>
-        
-        <p>Product Line:</p>  
-        <input type="text" name="id"/> 
-        <br/>
-        
-        <p>Product Scale:</p>  
-        <input type="text" name="id"/> 
-        <br/>
-        
-        <p>Product Vendor:</p>  
-        <input type="text" name="id"/> 
-        <br/>
-        
-        <p>Product Description:</p>  
-        <input type="text" name="id"/> 
-        <br/>
-        
-        <p>Product Quantity:</p>  
-        <input type="text" name="id"/> 
-        <br/>
-        
-        <p>Product Price:</p>  
-        <input type="text" name="id"/> 
-        <br/>
-        
-        <p>Product Msrp:</p>  
-        <input type="text" name="id"/> 
-        <br/>
-        
-        <br/>
-        <input type="submit"/> 
-    </form> 
-    
-    <jsp:include page="includes/Footer.jsp" />
+			<tr>
+				<td>First Name</td>
+				<td>
+					<%
+						out.println("<input type=\"text\" name=\"fname\" value=" + emp.getFirstname());
+					%>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Last Name</td>
+				<td>
+					<%
+						out.println("<input type=\"text\" name=\"lname\" value=" + emp.getLastname());
+					%>
+				</td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td>
+					<%
+						out.println("<input type=\"text\" name=\"email\" value=" + emp.getEmail());
+					%>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Office Code</td>
+				<td>
+					<%
+						out.println("<input type=\"text\" name=\"officecode\" value=" + emp.getOffice().getOfficecode());
+					%>
+				</td>
+			</tr>
+			<tr>
+				<td>Report</td>
+				<td>
+					<%
+						out.println("<input type=\"text\" name=\"report\" value=" + emp.getReportsto());
+					%>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Job Title</td>
+				<td>
+					<%
+						out.println("<input type=\"text\" name=\"job\" value=" + emp.getJobtitle());
+					%>
+				</td>
+			</tr>
+
+		</table>
+		<input type="submit" name="UPDATE" value="UPDATE" /> <input
+			type="submit" name="DELETE" value="DELETE" />
+			
+		</form>
+		
 </body>
 </html>

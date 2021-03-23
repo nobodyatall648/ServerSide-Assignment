@@ -14,5 +14,10 @@ public class ProductValidation {
 		return "ADD";
 	}
 	
-	public static void 
+	public static void naviJS(PrintWriter out) {
+		out.println("<SCRIPT type=\"text/javascript\">");
+		out.println("alert(\"Record has been updated and url will be redirected\")");
+		out.println("window.location.href="+"\"indexAdmin.jsp\"");
+		out.println("</SCRIPT>");
+	}
 }

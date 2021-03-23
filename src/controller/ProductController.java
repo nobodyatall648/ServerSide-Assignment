@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.OfficeEntity;
+import domain.ProductlineEntity;
 import domain.ProductEntity;
 import sessionbean.ProductSessionBeanLocal;
-import utilities.ValidateEmployee;
+import utilities.ProductValidation;
 import sessionbean.ProductLineSessionBeanLocal;
 
 
@@ -53,14 +53,15 @@ public class ProductController extends HttpServlet{
 		
 		String[] s= {pcode, pname, pscale, pvendor, pdescription, quantity};
 		
-			if(ValidateEmployee.ValidateEmployee(request).equals("UPDATE")) {
-				empbean.updateEmployee(s);
-			}else if(ValidateEmployee.ValidateEmployee(request).equals("DELETE")) {
-				empbean.deleteEmployee(eid);
+			if(ProductValidation.ProductValidation(request).equals("UPDATE")) {
+				productbean.updateProduct(s);
+			}else if(ProductValidation.ProductValidation(request).equals("DELETE")) {
+				productbean.deleteProduct(pcode);
 			}
 			else {
-				empbean.addEmployee(s,o);
+				productbean.addProduct(s);
 			}
-			ValidateEmployee.navigateJS(out);
+			ProductValidation.naviJS(out);
+			}
 	}
 
