@@ -66,7 +66,7 @@
 <br>
 
 		<h1>To add Employee Please follow the Instruction</h1>
-		<button class="open-button" onclick="openForm()">ADD</button>
+		
 	<div class="form-popup" id="myForm">
 		<form action="admincontroller" class="form-container" method="post">
 			<h1>Add Employee</h1>
@@ -81,20 +81,11 @@
 
 			</fieldset>
 
-			<button type="submit" class="btn">Submit</button>
-			<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-			<button type="reset" class="btn">Reset</button>
+			<button type="submit" >Submit</button>
+			<button type="button" >Close</button>
+			<button type="reset" >Reset</button>
 		</form>
 	</div>
-	<script>
-		function openForm() {
-			document.getElementById("myForm").style.display = "block";
-		}
-
-		function closeForm() {
-			document.getElementById("myForm").style.display = "none";
-		}
-	</script>
 	
 
 <jsp:include page="includes/Footer.jsp" />
