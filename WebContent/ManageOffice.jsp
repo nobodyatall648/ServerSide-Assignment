@@ -42,6 +42,7 @@
 
 
 <body>
+<jsp:include page="includes/HeaderAdmin.jsp" />
 
 <h1>Office Section</h1>
 <br>
@@ -105,6 +106,6 @@
 <br>
 	
 
-
+<jsp:include page="includes/Footer.jsp" />
 </body>
 </html>
