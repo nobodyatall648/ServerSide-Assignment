@@ -4150,43 +4150,64 @@ S72_3212	Pont Yacht	Ships	1:72	Unimax Art Galleries	Measures 38 inches Long x 33
 
 
 --
--- TOC entry 2897 (class 0 OID 16519)
+-- TOC entry 2897 (class 0 OID 24704)
 -- Dependencies: 211
 -- Data for Name: user_roles; Type: TABLE DATA; Schema: classicmodels; Owner: postgres
 --
 
 COPY classicmodels.user_roles (username, role) FROM stdin;
-admin	admin
-admin	manager-gui
-admin	manager-script
-admin	tomee-admin
-Carine 	user
-david	user
-Mary	staff
-Peter	user
-sam	user
-tomee	tomee-admin
-William	staff
+admin   admin
+admin   manager-gui
+admin   manager-script
+admin   tomee-admin
+Carine  user
+david   user
+Mary    staff
+Peter   user
+sam user
+tomee   tomee-admin
+William staff
+1076    emp
+1088    emp
+1102    emp
+114 cust
+124 cust
+128 cust
+129 cust
+131 cust
+adminEC admin
+1611    emp
+1166    emp
 \.
 
 
 --
--- TOC entry 2898 (class 0 OID 16522)
+-- TOC entry 2898 (class 0 OID 24707)
 -- Dependencies: 212
 -- Data for Name: users; Type: TABLE DATA; Schema: classicmodels; Owner: postgres
 --
 
 COPY classicmodels.users (username, password) FROM stdin;
-admin	admin
-Carine 	Carine
-david	david
-Mary	Mary
-Peter	Peter
-sam	sam
-tomee	tomee
-William	William
+admin   admin
+Carine  Carine
+david   david
+Mary    Mary
+Peter   Peter
+sam sam
+tomee   tomee
+William William
+1076    emp3
+1088    emp4
+1102    emp5
+114 cust1
+124 cust2
+128 cust3
+129 cust4
+131 cust5
+adminEC admin
+1611    emp1
+1166    emp2
 \.
-
 
 --
 -- TOC entry 2738 (class 2606 OID 16526)
