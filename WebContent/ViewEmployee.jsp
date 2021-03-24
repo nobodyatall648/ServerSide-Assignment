@@ -29,6 +29,7 @@ tr:nth-child(even) {
 </head>
 
 <body>
+<jsp:include page="includes/HeaderAdmin.jsp" />
 <h1>Employee Detail</h1>
 	<%
 		EmployeeEntity emp = (EmployeeEntity) request.getAttribute("EmployeeResult");
@@ -103,6 +104,6 @@ tr:nth-child(even) {
 			type="submit" name="DELETE" value="DELETE" />
 			
 		</form>
-		
+		<jsp:include page="includes/Footer.jsp" />
 </body>
 </html>
