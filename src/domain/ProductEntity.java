@@ -15,7 +15,6 @@ import java.util.List;
 @NamedQuery(name="ProductEntity.findAll", query="SELECT p FROM ProductEntity p")
 @NamedQuery(name="ProductEntity.findByProductCode", query="SELECT p FROM ProductEntity p WHERE p.productcode = :productcode")
 @NamedQuery(name="ProductEntity.findQuantityByProductCode", query="SELECT quantityinstock FROM ProductEntity p WHERE p.productcode = :productcode")
-@NamedQuery(name="ProductEntity.findByProductName", query="SELECT p FROM ProductEntity p WHERE p.productname = :productname")
 
 public class ProductEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -41,10 +41,12 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
 	@Override
 	public List<ProductEntity> findProductByName(String productName) throws EJBException {
 		// TODO Auto-generated method stub
-		Query query = em.createNamedQuery("ProductEntity.findByProductName");
-		query.setParameter("productname", productName);
+		Query q = null;
 		
-		return (List<ProductEntity>) query.getSingleResult();
+		q = em.createNativeQuery("select * from classicmodels.products p where lower(p.productname) like ?", ProductEntity.class);
+		q.setParameter(1, "%" + productName + "%");
+		
+		return q.getResultList();
 	}
 
 	@Override
