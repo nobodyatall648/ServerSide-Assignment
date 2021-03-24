@@ -29,11 +29,12 @@ tr:nth-child(even) {
 </head>
 
 <body>
+<jsp:include page="includes/HeaderAdmin.jsp" />
 <h1>Product Detail</h1>
 	<%
 		ProductEntity p = (ProductEntity) request.getAttribute("ProductResult");
 	%>
-	<form action = "ProductController" method = "post">
+	<form action = "productcontroller" method = "post">
 
 	
 		<table>
@@ -94,6 +95,6 @@ tr:nth-child(even) {
 			type="submit" name="DELETE" value="DELETE" />
 			
 		</form>
-		
+		<jsp:include page="includes/Footer.jsp" />
 </body>
 </html>
