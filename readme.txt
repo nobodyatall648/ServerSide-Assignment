@@ -1,5 +1,5 @@
-Credentials
-===========
+Credentials <username:password>
+===============================
 Customer: 114:cust1
 Employee: 1611:emp1
 Admin: adminEC:admin
