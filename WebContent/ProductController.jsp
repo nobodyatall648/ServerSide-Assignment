@@ -31,69 +31,60 @@ tr:nth-child(even) {
 <body>
 <h1>Product Detail</h1>
 	<%
-		ProductEntity p = (ProductEntity) request.getAttribute("EmployeeResult");
+		ProductEntity p = (ProductEntity) request.getAttribute("ProductResult");
 	%>
 	<form action = "ProductController" method = "post">
 
 	
 		<table>
 			<tr>
-				<td>Employee Number</td>
+				<td>Product Code</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"id\" value=" + emp.getEmployeenumber().toString());
+						out.println("<input type=\"text\" name=\"id\" value=" + p.getProductcode());
 					%>
 				</td>
 			</tr>
 
 			<tr>
-				<td>First Name</td>
+				<td>Product Name</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"fname\" value=" + emp.getFirstname());
+						out.println("<input type=\"text\" name=\"fname\" value=" + p.getProductname());
 					%>
 				</td>
 			</tr>
 
 			<tr>
-				<td>Last Name</td>
+				<td>Product Scale</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"lname\" value=" + emp.getLastname());
+						out.println("<input type=\"text\" name=\"lname\" value=" + p.getProductscale());
 					%>
 				</td>
 			</tr>
 			<tr>
-				<td>Email</td>
+				<td>Product Vendor</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"email\" value=" + emp.getEmail());
-					%>
-				</td>
-			</tr>
-
-			<tr>
-				<td>Office Code</td>
-				<td>
-					<%
-						out.println("<input type=\"text\" name=\"officecode\" value=" + emp.getOffice().getOfficecode());
-					%>
-				</td>
-			</tr>
-			<tr>
-				<td>Report</td>
-				<td>
-					<%
-						out.println("<input type=\"text\" name=\"report\" value=" + emp.getReportsto());
+						out.println("<input type=\"text\" name=\"email\" value=" + p.getProductvendor());
 					%>
 				</td>
 			</tr>
 
 			<tr>
-				<td>Job Title</td>
+				<td>Product Description</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"job\" value=" + emp.getJobtitle());
+						out.println("<input type=\"text\" name=\"officecode\" value=" + p.getProductdescription());
+					%>
+				</td>
+			</tr>
+			<tr>
+				<td>Quantity In Stock</td>
+				<td>
+					<%
+						out.println("<input type=\"text\" name=\"report\" value=" + p.getQuantityinstock().toString());
 					%>
 				</td>
 			</tr>

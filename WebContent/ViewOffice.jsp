@@ -29,6 +29,7 @@ tr:nth-child(even) {
 </head>
 
 <body>
+<jsp:include page="includes/HeaderAdmin.jsp" />
 <h1>Office Detail</h1>
 	<%
 		OfficeEntity off = (OfficeEntity) request.getAttribute("OfficeResult");
@@ -128,6 +129,6 @@ tr:nth-child(even) {
 			type="submit" name="DELETE" value="DELETE" />
 			
 		</form>
-		
+		<jsp:include page="includes/Footer.jsp" />
 </body>
 </html>
