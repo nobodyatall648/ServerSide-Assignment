@@ -101,7 +101,7 @@
 	
 									//submit button
 									out.println("<input type=\"hidden\" name=\"custNum\" value=\"" + customerEntity.getCustomernumber() + "\">");
-									out.println("<button style='margin-left:1000px; display:none' type=\"submit\" class=\"btn btn-default submitBtn\">Submit</button>");
+									out.println("<button style='margin-left:1000px; display:none' type=\"submit\" class=\"btn btn-default submitBtn buttondesign\">Submit</button>");
 									out.println("</form>");
 
 								} catch (Exception e) {
@@ -135,7 +135,7 @@
 									out.println("</table><hr>");
 											
 									out.println("<input type=\"hidden\" name=\"empNum\" value=\"" + employeeEntity.getEmployeenumber() + "\">");
-									out.println("<button style='margin-left:1000px; display:none' type=\"submit\" class=\"btn btn-default submitBtn\">Submit</button>");
+									out.println("<button style='margin-left:1000px; display:none' type=\"submit\" class=\"btn btn-default submitBtn buttondesignemp\">Submit</button>");
 									out.println("</form>");
 
 								} catch (Exception e) {

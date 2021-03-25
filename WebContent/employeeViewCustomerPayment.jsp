@@ -23,7 +23,7 @@
 					<td>&nbsp; <input type="text" name="customernumber"
 						required=true></td>
 					<td>&nbsp;
-						<button type="submit">Search Customer Order</button>
+						<button class="buttondesignemp" type="submit">Search Customer Payment</button>
 					</td>
 				</tr>
 

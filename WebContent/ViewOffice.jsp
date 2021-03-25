@@ -117,8 +117,8 @@ tr:nth-child(even) {
 			</tr>
 
 		</table>
-		<input class="buttondesign" type="submit" name="UPDATE" value="UPDATE" /> 
-		<input class="buttondesign" type="submit" name="DELETE" value="DELETE" />
+		<input class="buttondesignemp" type="submit" name="UPDATE" value="UPDATE" /> 
+		<input class="buttondesignemp" type="submit" name="DELETE" value="DELETE" />
 			
 		</form>
 		<br><br>

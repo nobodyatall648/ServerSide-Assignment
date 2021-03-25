@@ -18,7 +18,7 @@
 					Number: </b></label> <input type="text" placeholder="EmployeeNumber"
 				name="employeenum" required>
 
-			<button class="buttondesign" type="submit">Submit</button>
+			<button class="buttondesignemp" type="submit">Submit</button>
 		</form>
 		<%
 		//get fail search for employee num
@@ -69,8 +69,8 @@
 						<td><input type="text" name="job" required/></td>
 					</tr>
 				</table>
-				<button class="buttondesign" type="submit">Submit</button>
-				<button class="buttondesign" type="reset">Reset</button>
+				<button class="buttondesignemp" type="submit">Submit</button>
+				<button class="buttondesignemp" type="reset">Reset</button>
 			</form>
 		</div>
 

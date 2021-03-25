@@ -25,7 +25,7 @@
 				<td>&nbsp; <input type="text" name="customernumber"
 					required=true></td>
 				<td>&nbsp;
-					<button type="submit">Search Customer Order</button>
+					<button class="buttondesignemp" type="submit">Search Customer Order</button>
 				</td>
 			</tr>
 
@@ -56,7 +56,7 @@
 				out.println("</select>");
 				out.println("</td>");
 				out.println("<td>&nbsp;");
-				out.println("<button type=\"submit\">Get Orders Info</button>");
+				out.println("<button class=\"buttondesignemp\" type=\"submit\">Get Orders Info</button>");
 				out.println("</td>");
 				out.println("</tr>");
 				out.println("</table>");

@@ -23,7 +23,7 @@
 					for="uname"><b>Office Code: </b></label> <input type="text"
 					placeholder="Office Code" name="ocode" required>
 
-				<button class="buttondesign" type="submit">Submit</button>
+				<button class="buttondesignemp" type="submit">Submit</button>
 		</form>
 		<%
 		//get fail search for office code
@@ -83,8 +83,8 @@
 						name="territory" required></td>
 				</tr>
 			</table>
-			<button class="buttondesign" type="submit">Submit</button>
-			<button class="buttondesign" type="reset">Reset</button>
+			<button class="buttondesignemp" type="submit">Submit</button>
+			<button class="buttondesignemp" type="reset">Reset</button>
 		</form>
 	</div>
 	<br>

@@ -130,6 +130,24 @@ hr{
 	border: 1px solid black !important;
 }
 
+.buttondesignemp{
+display:inline-block; 
+padding:0.3em 1.2em; 
+margin:0 0.3em 0.3em 0; 
+border-radius:2em; 
+box-sizing: border-box; 
+text-decoration:none; 
+font-family:'Roboto',sans-serif; 
+font-weight:300; 
+color:#FFFFFF; 
+background-color:#636363; 
+text-align:center; 
+transition: all 0.2s;
+}
+
+.buttondesignemp:hover{
+	background-color:#222222;
+}
 
 /* ==========================================================================
    addOrder.jsp
