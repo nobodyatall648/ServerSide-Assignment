@@ -5,8 +5,6 @@
 -- Dumped from database version 12.3
 -- Dumped by pg_dump version 12.3
 
--- Started on 2020-06-01 23:59:05
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -19,7 +17,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 6 (class 2615 OID 16475)
 -- Name: classicmodels; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -33,7 +30,6 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 203 (class 1259 OID 16476)
 -- Name: customers; Type: TABLE; Schema: classicmodels; Owner: postgres
 --
 
@@ -57,7 +53,6 @@ CREATE TABLE classicmodels.customers (
 ALTER TABLE classicmodels.customers OWNER TO postgres;
 
 --
--- TOC entry 204 (class 1259 OID 16484)
 -- Name: employees; Type: TABLE; Schema: classicmodels; Owner: postgres
 --
 
@@ -76,7 +71,6 @@ CREATE TABLE classicmodels.employees (
 ALTER TABLE classicmodels.employees OWNER TO postgres;
 
 --
--- TOC entry 205 (class 1259 OID 16488)
 -- Name: offices; Type: TABLE; Schema: classicmodels; Owner: postgres
 --
 
@@ -96,7 +90,6 @@ CREATE TABLE classicmodels.offices (
 ALTER TABLE classicmodels.offices OWNER TO postgres;
 
 --
--- TOC entry 206 (class 1259 OID 16493)
 -- Name: orderdetails; Type: TABLE; Schema: classicmodels; Owner: postgres
 --
 
@@ -112,7 +105,6 @@ CREATE TABLE classicmodels.orderdetails (
 ALTER TABLE classicmodels.orderdetails OWNER TO postgres;
 
 --
--- TOC entry 207 (class 1259 OID 16496)
 -- Name: orders; Type: TABLE; Schema: classicmodels; Owner: postgres
 --
 
@@ -130,7 +122,6 @@ CREATE TABLE classicmodels.orders (
 ALTER TABLE classicmodels.orders OWNER TO postgres;
 
 --
--- TOC entry 208 (class 1259 OID 16501)
 -- Name: payments; Type: TABLE; Schema: classicmodels; Owner: postgres
 --
 
@@ -145,7 +136,6 @@ CREATE TABLE classicmodels.payments (
 ALTER TABLE classicmodels.payments OWNER TO postgres;
 
 --
--- TOC entry 209 (class 1259 OID 16504)
 -- Name: productlines; Type: TABLE; Schema: classicmodels; Owner: postgres
 --
 
@@ -160,7 +150,6 @@ CREATE TABLE classicmodels.productlines (
 ALTER TABLE classicmodels.productlines OWNER TO postgres;
 
 --
--- TOC entry 210 (class 1259 OID 16513)
 -- Name: products; Type: TABLE; Schema: classicmodels; Owner: postgres
 --
 
@@ -180,7 +169,6 @@ CREATE TABLE classicmodels.products (
 ALTER TABLE classicmodels.products OWNER TO postgres;
 
 --
--- TOC entry 211 (class 1259 OID 16519)
 -- Name: user_roles; Type: TABLE; Schema: classicmodels; Owner: postgres
 --
 
@@ -193,7 +181,6 @@ CREATE TABLE classicmodels.user_roles (
 ALTER TABLE classicmodels.user_roles OWNER TO postgres;
 
 --
--- TOC entry 212 (class 1259 OID 16522)
 -- Name: users; Type: TABLE; Schema: classicmodels; Owner: postgres
 --
 
@@ -206,8 +193,6 @@ CREATE TABLE classicmodels.users (
 ALTER TABLE classicmodels.users OWNER TO postgres;
 
 --
--- TOC entry 2889 (class 0 OID 16476)
--- Dependencies: 203
 -- Data for Name: customers; Type: TABLE DATA; Schema: classicmodels; Owner: postgres
 --
 
@@ -338,8 +323,6 @@ COPY classicmodels.customers (customernumber, customername, contactlastname, con
 
 
 --
--- TOC entry 2890 (class 0 OID 16484)
--- Dependencies: 204
 -- Data for Name: employees; Type: TABLE DATA; Schema: classicmodels; Owner: postgres
 --
 
@@ -371,8 +354,6 @@ COPY classicmodels.employees (employeenumber, lastname, firstname, extension, em
 
 
 --
--- TOC entry 2891 (class 0 OID 16488)
--- Dependencies: 205
 -- Data for Name: offices; Type: TABLE DATA; Schema: classicmodels; Owner: postgres
 --
 
@@ -388,8 +369,6 @@ COPY classicmodels.offices (officecode, city, phone, addressline1, addressline2,
 
 
 --
--- TOC entry 2892 (class 0 OID 16493)
--- Dependencies: 206
 -- Data for Name: orderdetails; Type: TABLE DATA; Schema: classicmodels; Owner: postgres
 --
 
@@ -3394,8 +3373,6 @@ COPY classicmodels.orderdetails (ordernumber, productcode, quantityordered, pric
 
 
 --
--- TOC entry 2893 (class 0 OID 16496)
--- Dependencies: 207
 -- Data for Name: orders; Type: TABLE DATA; Schema: classicmodels; Owner: postgres
 --
 
@@ -3730,8 +3707,6 @@ COPY classicmodels.orders (ordernumber, orderdate, requireddate, shippeddate, st
 
 
 --
--- TOC entry 2894 (class 0 OID 16501)
--- Dependencies: 208
 -- Data for Name: payments; Type: TABLE DATA; Schema: classicmodels; Owner: postgres
 --
 
@@ -4013,8 +3988,6 @@ COPY classicmodels.payments (customernumber, checknumber, paymentdate, amount) F
 
 
 --
--- TOC entry 2895 (class 0 OID 16504)
--- Dependencies: 209
 -- Data for Name: productlines; Type: TABLE DATA; Schema: classicmodels; Owner: postgres
 --
 
@@ -4030,8 +4003,6 @@ Vintage Cars	Our Vintage Car models realistically portray automobiles produced f
 
 
 --
--- TOC entry 2896 (class 0 OID 16513)
--- Dependencies: 210
 -- Data for Name: products; Type: TABLE DATA; Schema: classicmodels; Owner: postgres
 --
 
@@ -4150,67 +4121,63 @@ S72_3212	Pont Yacht	Ships	1:72	Unimax Art Galleries	Measures 38 inches Long x 33
 
 
 --
--- TOC entry 2897 (class 0 OID 24704)
--- Dependencies: 211
 -- Data for Name: user_roles; Type: TABLE DATA; Schema: classicmodels; Owner: postgres
 --
 
 COPY classicmodels.user_roles (username, role) FROM stdin;
-admin   admin
-admin   manager-gui
-admin   manager-script
-admin   tomee-admin
-Carine  user
-david   user
-Mary    staff
-Peter   user
-sam user
-tomee   tomee-admin
-William staff
-1076    emp
-1088    emp
-1102    emp
-114 cust
-124 cust
-128 cust
-129 cust
-131 cust
-adminEC admin
-1611    emp
-1166    emp
+admin	admin
+admin	manager-gui
+admin	manager-script
+admin	tomee-admin
+Carine 	user
+david	user
+Mary	staff
+Peter	user
+sam	user
+tomee	tomee-admin
+William	staff
+1611	emp
+1166	emp
+1076	emp
+1088	emp
+1102	emp
+114	cust
+124	cust
+128	cust
+129	cust
+131	cust
+adminEC	admin
 \.
 
 
 --
--- TOC entry 2898 (class 0 OID 24707)
--- Dependencies: 212
 -- Data for Name: users; Type: TABLE DATA; Schema: classicmodels; Owner: postgres
 --
 
 COPY classicmodels.users (username, password) FROM stdin;
-admin   admin
-Carine  Carine
-david   david
-Mary    Mary
-Peter   Peter
-sam sam
-tomee   tomee
-William William
-1076    emp3
-1088    emp4
-1102    emp5
-114 cust1
-124 cust2
-128 cust3
-129 cust4
-131 cust5
-adminEC admin
-1611    emp1
-1166    emp2
+admin	admin
+Carine 	Carine
+david	david
+Mary	Mary
+Peter	Peter
+sam	sam
+tomee	tomee
+William	William
+1611	emp1
+1166	emp2
+1076	emp3
+1088	emp4
+1102	emp5
+114	cust1
+124	cust2
+128	cust3
+129	cust4
+131	cust5
+adminEC	admin
 \.
 
+
 --
--- TOC entry 2738 (class 2606 OID 16526)
 -- Name: customers customers_pkey; Type: CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4219,7 +4186,6 @@ ALTER TABLE ONLY classicmodels.customers
 
 
 --
--- TOC entry 2740 (class 2606 OID 16528)
 -- Name: employees employees_pkey; Type: CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4228,7 +4194,6 @@ ALTER TABLE ONLY classicmodels.employees
 
 
 --
--- TOC entry 2742 (class 2606 OID 16530)
 -- Name: offices offices_pkey; Type: CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4237,7 +4202,6 @@ ALTER TABLE ONLY classicmodels.offices
 
 
 --
--- TOC entry 2744 (class 2606 OID 16532)
 -- Name: orderdetails orderdetails_pkey; Type: CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4246,7 +4210,6 @@ ALTER TABLE ONLY classicmodels.orderdetails
 
 
 --
--- TOC entry 2746 (class 2606 OID 16534)
 -- Name: orders orders_pkey; Type: CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4255,7 +4218,6 @@ ALTER TABLE ONLY classicmodels.orders
 
 
 --
--- TOC entry 2748 (class 2606 OID 16536)
 -- Name: payments payments_pkey; Type: CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4264,7 +4226,6 @@ ALTER TABLE ONLY classicmodels.payments
 
 
 --
--- TOC entry 2750 (class 2606 OID 16538)
 -- Name: productlines productlines_pkey; Type: CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4273,7 +4234,6 @@ ALTER TABLE ONLY classicmodels.productlines
 
 
 --
--- TOC entry 2752 (class 2606 OID 16540)
 -- Name: products products_pkey; Type: CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4282,7 +4242,6 @@ ALTER TABLE ONLY classicmodels.products
 
 
 --
--- TOC entry 2754 (class 2606 OID 16542)
 -- Name: user_roles user_roles_pkey; Type: CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4291,7 +4250,6 @@ ALTER TABLE ONLY classicmodels.user_roles
 
 
 --
--- TOC entry 2756 (class 2606 OID 16544)
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4300,7 +4258,6 @@ ALTER TABLE ONLY classicmodels.users
 
 
 --
--- TOC entry 2757 (class 2606 OID 16545)
 -- Name: customers fk_cust_emp; Type: FK CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4309,7 +4266,6 @@ ALTER TABLE ONLY classicmodels.customers
 
 
 --
--- TOC entry 2758 (class 2606 OID 16550)
 -- Name: employees fk_emp_office; Type: FK CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4318,7 +4274,6 @@ ALTER TABLE ONLY classicmodels.employees
 
 
 --
--- TOC entry 2759 (class 2606 OID 16555)
 -- Name: orderdetails fk_orderdetails_order; Type: FK CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4327,7 +4282,6 @@ ALTER TABLE ONLY classicmodels.orderdetails
 
 
 --
--- TOC entry 2760 (class 2606 OID 16560)
 -- Name: orderdetails fk_orderdetails_product; Type: FK CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4336,7 +4290,6 @@ ALTER TABLE ONLY classicmodels.orderdetails
 
 
 --
--- TOC entry 2761 (class 2606 OID 16565)
 -- Name: payments fk_payments_cust; Type: FK CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
@@ -4345,15 +4298,12 @@ ALTER TABLE ONLY classicmodels.payments
 
 
 --
--- TOC entry 2762 (class 2606 OID 16570)
 -- Name: products fk_products_prodline; Type: FK CONSTRAINT; Schema: classicmodels; Owner: postgres
 --
 
 ALTER TABLE ONLY classicmodels.products
     ADD CONSTRAINT fk_products_prodline FOREIGN KEY (productline) REFERENCES classicmodels.productlines(productline);
 
-
--- Completed on 2020-06-01 23:59:06
 
 --
 -- PostgreSQL database dump complete

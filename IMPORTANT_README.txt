@@ -6,7 +6,11 @@ Admin: adminEC:admin
 
 Important notes:
 ================
-* Start running the server by executing the login.jsp, all the other pages will not be authorized without the specific roles been assigned through the login authentication process.
+- Start running the server by executing the login.jsp, all the other pages will not be authorized without the specific roles been assigned through the login authentication process.
+- to import the sql file use psql
+	eg: \i <directory path>/classicmodels_dataset.sql
+!! remember to import the sql dataset first, as the login credentials are added into it. without that the login part would not work.
+
 
 Each Student Task Managed:
 ==========================
