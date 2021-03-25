@@ -120,4 +120,26 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
 
 	}
 
+	@Override
+	public int getProductQuantity() throws EJBException {
+		// TODO Auto-generated method stub
+		Query q = em.createNamedQuery("ProductEntity.findAll");
+		int prodQty = q.getResultList().size();
+		return prodQty;
+	}
+
+	@Override
+	public List<ProductEntity> getProductByPageNum(int pageNo) throws EJBException {
+		// TODO Auto-generated method stub
+		int recordsPerPage = 15;
+		int startOffset = pageNo * recordsPerPage - recordsPerPage;
+		
+		Query q = em.createNativeQuery("SELECT * FROM classicmodels.products ORDER BY productcode offset ? limit 15", ProductEntity.class);
+		q.setParameter(1, startOffset);
+		
+		return q.getResultList();
+	}
+	
+	
+
 }

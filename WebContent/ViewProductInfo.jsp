@@ -25,6 +25,25 @@
 	<h3>
 		<u><strong>Product Info</strong></u>
 	</h3>
+	
+	<%
+		int maxPageNum = (int) request.getAttribute("MAX_PAGE_NUM");
+		int viewPage = (int) request.getAttribute("VIEW_PAGE");
+		out.println("<h4><b>Current View Page: " + viewPage + "</b></h4>");
+		out.println("<br>");
+		
+		out.println("<form action=\"ViewProductInfo\" method=\"get\">");
+		out.println("Pages: ");
+		out.println("<select name=\"page\">");
+		for(int i=1; i <= maxPageNum; i++){
+			out.println("<option value=" + i + ">" + i +"</option>");
+		}
+		
+		out.println("</select>");
+		out.println("<button type=\"submit\">Go to Page</button>");
+		out.println("</form>");
+		out.println("<br>");
+	%>
 	<form action = "Product" method ="get">
 	<table class="table" border=2>
 		<thead>
