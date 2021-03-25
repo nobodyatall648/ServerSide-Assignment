@@ -40,7 +40,7 @@
 		}
 		
 		out.println("</select>");
-		out.println("<button type=\"submit\">Go to Page</button>");
+		out.println("<button class='buttondesign' type=\"submit\">Go to Page</button>");
 		out.println("</form>");
 		out.println("<br>");
 	%>
@@ -61,10 +61,12 @@
 					out.println("<tr><th>Product Line: </th><td>" + pl.get(i).getProductlineBean().getProductline() + "</td></tr>");
 					out.println("<tr><th>Available Stock: </th><td>" + pl.get(i).getQuantityinstock() + "</td></tr><br>");
 // 				    out.println("TextDescription" + pl.get(i).getProductlineBean().getTextdescription() + "");
-				    out.println("<span style='float:right;'><h2>RM " + pl.get(i).getMsrp() + "</h2></span></table></div></div>");
+				    out.println("<span style='float:right;'><h2>RM " + pl.get(i).getMsrp() + "</h2>");
+				    out.println("<input class='buttondesign' type=\"button\" onclick=\"location.href='GetProductInfo?productCode="+ pl.get(i).getProductcode() + "';\" value=\"Buy Now\" /></span></table></div></div>"); 
+				    
      			}
 			} catch (Exception e) {
-
+				
 			}
 		%>
 	</table>
