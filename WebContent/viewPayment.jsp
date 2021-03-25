@@ -25,8 +25,8 @@
 				<table class="table" border=2>
 					<thead>
 						<tr>
-							<td><strong>&nbsp;Check Number&nbsp;</strong></td>
 							<td><strong>&nbsp;Payment Date&nbsp;</strong></td>
+							<td><strong>&nbsp;Check Number&nbsp;</strong></td>
 							<td><strong>&nbsp;Amount&nbsp;</strong></td>
 
 						</tr>
@@ -40,9 +40,8 @@
 							out.println("<tbody>");
 							for (int i = 0; i < paymentList.size(); i++) {
 								out.println("<tr>");
-
-								out.println("<td>&nbsp;" + paymentList.get(i).getId().getChecknumber().toString() + "&nbsp;</td>");
 								out.println("<td>&nbsp;" + paymentList.get(i).getPaymentdate() + "&nbsp;</td>");
+								out.println("<td>&nbsp;" + paymentList.get(i).getId().getChecknumber().toString() + "&nbsp;</td>");	
 								out.println("<td>&nbsp;RM " + paymentList.get(i).getAmount() + "&nbsp;</td>");
 
 								out.println("</tr>");
