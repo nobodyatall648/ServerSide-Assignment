@@ -45,42 +45,24 @@
 		out.println("<br>");
 	%>
 	<form action = "Product" method ="get">
-	<table class="table" border=2>
-		<thead>
-			<tr>
-				<td><strong>&nbsp;Product Code&nbsp;</strong></td>
-				<td><strong>&nbsp;Product Name&nbsp;</strong></td>
-				<td><strong>&nbsp;Buy Price&nbsp;</strong></td>
-				<td><strong>&nbsp;Msrp&nbsp;</strong></td>
-				<td><strong>&nbsp;Product Description&nbsp;</strong></td>				
-				<td><strong>&nbsp;Product Scale&nbsp;</strong></td>
-				<td><strong>&nbsp;Product Vendor&nbsp;</strong></td>
-				<td><strong>&nbsp;Quantity In Stock&nbsp;</strong></td>
-				<td><strong>&nbsp;Product Line&nbsp;</strong></td>
-				<td><strong>&nbsp;TextDescription&nbsp;</strong></td>
-			</tr>
-		</thead>
-		 
 		<%
 			try {
 				List<ProductEntity> pl = (List<ProductEntity>) request.getAttribute("PRODUCT_LIST");
 				//List<ProductlineEntity> plList = (List<ProductlineEntity>) request.getAttribute("PRODUCTLINE_LIST");
-     			out.println("<tbody>");
-				
+    
      			for(int i=0; i < pl.size(); i++){
-     				out.println("<td>&nbsp;" + pl.get(i).getProductcode() + "&nbsp;</td>");
-     				out.println("<td>&nbsp;" + pl.get(i).getProductname() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + pl.get(i).getBuyprice() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + pl.get(i).getMsrp() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + pl.get(i).getProductdescription() + "&nbsp;</td>");					
-					out.println("<td>&nbsp;" + pl.get(i).getProductscale() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + pl.get(i).getProductvendor() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + pl.get(i).getQuantityinstock() + "&nbsp;</td>");
-					out.println("<td>&nbsp;" + pl.get(i).getProductlineBean().getProductline() + "&nbsp;</td>");
-				    out.println("<td>&nbsp;" + pl.get(i).getProductlineBean().getTextdescription() + "&nbsp;</td>");		
-					out.println("</tr>");
+     				out.println("<div class='panel panel-info'>");
+     				out.println("<div class='panel-heading'><h3 class='panel-title'><b>" + pl.get(i).getProductname() + "</b>");
+     				out.println("<span style='float:right;'>&nbsp<b>" + pl.get(i).getProductcode() + "</b></span></h3></div>");
+// 					out.println("RM " + pl.get(i).getBuyprice() + "\n");
+					out.println("<div class='panel-body'>"+ pl.get(i).getProductdescription());	
+					out.println("<table style='border: none;'><tr><th style='width:150px'>Scale: </th><td>" + pl.get(i).getProductscale() + "</td></tr><br>");
+					out.println("<tr><th>Vendor: </th><td>" + pl.get(i).getProductvendor() + "</td></tr><br>");			
+					out.println("<tr><th>Product Line: </th><td>" + pl.get(i).getProductlineBean().getProductline() + "</td></tr>");
+					out.println("<tr><th>Available Stock: </th><td>" + pl.get(i).getQuantityinstock() + "</td></tr><br>");
+// 				    out.println("TextDescription" + pl.get(i).getProductlineBean().getTextdescription() + "");
+				    out.println("<span style='float:right;'><h2>RM " + pl.get(i).getMsrp() + "</h2></span></table></div></div>");
      			}
-				out.println("</tbody>");
 			} catch (Exception e) {
 
 			}
