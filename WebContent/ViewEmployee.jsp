@@ -41,7 +41,7 @@ tr:nth-child(even) {
 				<td>Employee Number</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"id\" readonly value=" +emp.getEmployeenumber().toString());
+						out.println("<input type=\"text\" name=\"id\" readonly value=\"" +emp.getEmployeenumber().toString()+"\">");
 					%>
 				</td>
 			</tr>
@@ -50,7 +50,7 @@ tr:nth-child(even) {
 				<td>First Name</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"fname\" value=" + emp.getFirstname());
+						out.println("<input type=\"text\" name=\"fname\" value=\"" + emp.getFirstname()+"\">");
 					%>
 				</td>
 			</tr>
@@ -59,7 +59,7 @@ tr:nth-child(even) {
 				<td>Last Name</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"lname\" value=" + emp.getLastname());
+						out.println("<input type=\"text\" name=\"lname\" value=\"" + emp.getLastname()+"\">");
 					%>
 				</td>
 			</tr>
@@ -67,7 +67,7 @@ tr:nth-child(even) {
 				<td>Email</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"email\" value=" + emp.getEmail());
+						out.println("<input type=\"text\" name=\"email\" value=\"" + emp.getEmail()+"\">");
 					%>
 				</td>
 			</tr>
@@ -76,7 +76,7 @@ tr:nth-child(even) {
 				<td>Office Code</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"officecode\" value=" + emp.getOffice().getOfficecode());
+						out.println("<input type=\"text\" name=\"officecode\" value=\"" + emp.getOffice().getOfficecode()+"\">");
 					%>
 				</td>
 			</tr>
@@ -84,7 +84,7 @@ tr:nth-child(even) {
 				<td>Report</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"report\" value=" + emp.getReportsto());
+						out.println("<input type=\"text\" name=\"report\" value=\"" + emp.getReportsto()+"\">");
 					%>
 				</td>
 			</tr>
@@ -93,7 +93,7 @@ tr:nth-child(even) {
 				<td>Job Title</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"job\" value=" + emp.getJobtitle());
+						out.println("<input type=\"text\" name=\"job\" value=\"" + emp.getJobtitle()+"\">");
 					%>
 				</td>
 			</tr>
