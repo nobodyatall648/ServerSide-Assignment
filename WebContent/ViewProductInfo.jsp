@@ -51,7 +51,7 @@
 				//List<ProductlineEntity> plList = (List<ProductlineEntity>) request.getAttribute("PRODUCTLINE_LIST");
     
      			for(int i=0; i < pl.size(); i++){
-     				out.println("<div class='panel panel-info'>");
+     				out.println("<div class='panel panel-primary'>");
      				out.println("<div class='panel-heading'><h3 class='panel-title'><b>" + pl.get(i).getProductname() + "</b>");
      				out.println("<span style='float:right;'>&nbsp<b>" + pl.get(i).getProductcode() + "</b></span></h3></div>");
 // 					out.println("RM " + pl.get(i).getBuyprice() + "\n");

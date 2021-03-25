@@ -195,3 +195,11 @@ hr{
 	border-style: none;
 	
 }
+
+/* ==========================================================================
+   ViewProductInfo.jsp
+   ========================================================================== */
+.panel-heading {
+     background-color: #4eb5f1 !important;
+     color:#FFFFFF !important;  
+}
