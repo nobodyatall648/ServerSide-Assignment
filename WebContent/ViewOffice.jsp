@@ -43,7 +43,7 @@ tr:nth-child(even) {
 				<td>Office Code</td>
 				<td>
 					<%
-					out.println("<input type=\"text\" name=\"ocode\"  value=\""+off.getOfficecode()+"\">");
+					out.println("<input type=\"text\" name=\"ocode\" readonly value=\""+off.getOfficecode()+"\">");
 					%>
 				</td>
 			</tr>

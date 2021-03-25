@@ -41,7 +41,7 @@ tr:nth-child(even) {
 				<td>Employee Number</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"id\" value=" + emp.getEmployeenumber().toString());
+						out.println("<input type=\"text\" name=\"id\" readonly value=" +emp.getEmployeenumber().toString());
 					%>
 				</td>
 			</tr>
