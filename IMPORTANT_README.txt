@@ -10,7 +10,7 @@ Important notes:
 
 Each Student Task Managed:
 ==========================
-Leong Wai Chun		: login, authorization checking, order modules
+Leong Wai Chun		: login, authorization checking, order modules, Customer View Product Pagination
 Ng Miao Xuan		: profile, payment modules, interface designing
 Kenneth Foong Kok Chun	: product modules
 Alfred Teh Hao Xian	: employee modules
