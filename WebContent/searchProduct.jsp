@@ -44,25 +44,6 @@
 						if (searchRsl.size() == 0) {
 							out.println("<h4>No Result Found.</h4>");
 						} else {
-// 							out.println("<table class=\"table\" border=2>");
-// 							out.println("<thead>");
-// 							out.println("<tr>");
-
-// 							out.println("<td><strong>&nbsp;Product Code&nbsp;</strong></td>");
-// 							out.println("<td><strong>&nbsp;Product Name&nbsp;</strong></td>");
-// // 							out.println("<td><strong>&nbsp;Buy Price&nbsp;</strong></td>");
-// 							out.println("<td><strong>&nbsp;Msrp&nbsp;</strong></td>");
-// 							out.println("<td><strong>&nbsp;Product Description&nbsp;</strong></td>");
-// 							out.println("<td><strong>&nbsp;Product Scale&nbsp;</strong></td>");
-// 							out.println("<td><strong>&nbsp;Product Vendor&nbsp;</strong></td>");
-// 							out.println("<td><strong>&nbsp;Quantity In Stock&nbsp;</strong></td>");
-// 							out.println("<td><strong>&nbsp;Product Line&nbsp;</strong></td>");
-
-// 							out.println("</tr>");
-// 							out.println("</thead>");
-
-// 							out.println("<tbody>");
-
 							//prints ret search results
 							for (int i = 0; i < searchRsl.size(); i++) {
 								out.println("<div class='panel panel-primary'>");
@@ -73,26 +54,11 @@
 								out.println("<tr><th>Vendor: </th><td>" + searchRsl.get(i).getProductvendor() + "</td></tr><br>");			
 								out.println("<tr><th>Product Line: </th><td>" + searchRsl.get(i).getProductlineBean().getProductline() + "</td></tr>");
 								out.println("<tr><th>Available Stock: </th><td>" + searchRsl.get(i).getQuantityinstock() + "</td></tr><br>");
-							    out.println("<span style='float:right;'><h2>RM " + searchRsl.get(i).getMsrp() + "</h2></span></table></div></div>");
-							    
-// 								out.println("<tr>");
+							    out.println("<span style='float:right;'><h2>RM " + searchRsl.get(i).getMsrp() + "</h2>");
+							    out.println("<input class='buttondesign' type=\"button\" onclick=\"location.href='GetProductInfo?productCode="+ searchRsl.get(i).getProductcode() + "';\" value=\"Buy Now\" /></span></table></div></div>"); 
 
-// 								out.println("<td>&nbsp;" + searchRsl.get(i).getProductcode() + "&nbsp;</td>");
-// 								out.println("<td>&nbsp;" + searchRsl.get(i).getProductname() + "&nbsp;</td>");
-// // 								out.println("<td>&nbsp;" + searchRsl.get(i).getBuyprice() + "&nbsp;</td>");
-// 								out.println("<td>&nbsp;RM " + searchRsl.get(i).getMsrp() + "&nbsp;</td>");
-// 								out.println("<td>&nbsp;" + searchRsl.get(i).getProductdescription() + "&nbsp;</td>");
-// 								out.println("<td>&nbsp;" + searchRsl.get(i).getProductscale() + "&nbsp;</td>");
-// 								out.println("<td>&nbsp;" + searchRsl.get(i).getProductvendor() + "&nbsp;</td>");
-// 								out.println("<td>&nbsp;" + searchRsl.get(i).getQuantityinstock() + "&nbsp;</td>");
-// 								out.println(
-// 										"<td>&nbsp;" + searchRsl.get(i).getProductlineBean().getProductline() + "&nbsp;</td>");
-
-// 								out.println("</tr>");
 							}
 
-// 							out.println("</tbody>");
-// 							out.println("</table>");
 						}
 
 					} catch (Exception e) {
