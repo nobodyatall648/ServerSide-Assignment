@@ -30,6 +30,7 @@ tr:nth-child(even) {
 
 <body>
 <jsp:include page="includes/HeaderAdmin.jsp" />
+<div class="container">
 <h1>Office Detail</h1>
 	<%
 		OfficeEntity off = (OfficeEntity) request.getAttribute("OfficeResult");
@@ -37,13 +38,12 @@ tr:nth-child(even) {
 	<form action="OfficeController" method="post">
 
 	
-		<table>
+		<table class="table">
 			<tr>
 				<td>Office Code</td>
 				<td>
 					<%
-					out.println("<input type=\"text\" name=\"ocode\"  value="+off.getOfficecode());
-					out.println("<h1 >"+off.getOfficecode()+"</h1>");
+					out.println("<input type=\"text\" name=\"ocode\"  value=\""+off.getOfficecode()+"\">");
 					%>
 				</td>
 			</tr>
@@ -52,8 +52,7 @@ tr:nth-child(even) {
 				<td>City</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"city\"value="+off.getCity());
-					out.println("<h4>"+off.getCity()+"</h4>");
+						out.println("<input type=\"text\" name=\"city\"value=\""+off.getCity()+"\">");
 					%>
 				</td>
 			</tr>
@@ -62,8 +61,7 @@ tr:nth-child(even) {
 				<td>Phone</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"phone\"value="+off.getPhone());
-					out.println("<h4>"+off.getPhone()+"</h4>");
+						out.println("<input type=\"text\" name=\"phone\"value=\""+off.getPhone()+"\">");
 					%>
 				</td>
 			</tr>
@@ -71,8 +69,7 @@ tr:nth-child(even) {
 				<td>Address 1</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"add1\" value="+off.getAddressline1());
-					out.println("<h4>"+off.getAddressline1()+"</h4>");
+						out.println("<input type=\"text\" name=\"add1\" value=\""+off.getAddressline1()+"\">");
 					%>
 				</td>
 			</tr>
@@ -81,8 +78,7 @@ tr:nth-child(even) {
 				<td>Address 2</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"add2\" value="+off.getAddressline2());
-					out.println("<h4>"+off.getAddressline2()+"</h4>");
+						out.println("<input type=\"text\" name=\"add2\" value=\""+off.getAddressline2()+"\">");
 					%>
 				</td>
 			</tr>
@@ -90,8 +86,7 @@ tr:nth-child(even) {
 				<td>State</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"state\" value="+off.getState());
-					out.println("<h4>"+off.getState()+"</h4>");
+						out.println("<input type=\"text\" name=\"state\" value=\""+off.getState()+"\">");
 					%>
 				</td>
 			</tr>
@@ -100,8 +95,7 @@ tr:nth-child(even) {
 				<td>Country</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"country\"value="+off.getCountry());
-					out.println("<h4>"+off.getCountry()+"</h4>");
+						out.println("<input type=\"text\" name=\"country\"value=\""+off.getCountry()+"\">");
 					%>
 				</td>
 			</tr>
@@ -109,8 +103,7 @@ tr:nth-child(even) {
 				<td>Postal Code</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"pcode\" value="+off.getPostalcode());
-					out.println("<h4>"+off.getPostalcode()+"</h4>");
+						out.println("<input type=\"text\" name=\"pcode\" value=\""+off.getPostalcode()+"\">");
 					%>
 				</td>
 			</tr>
@@ -118,17 +111,18 @@ tr:nth-child(even) {
 				<td>Territory</td>
 				<td>
 					<%
-						out.println("<input type=\"text\" name=\"territory\" value="+off.getTerritory());
-					out.println("<h4>"+off.getTerritory()+"</h4>");
+						out.println("<input type=\"text\" name=\"territory\" value=\""+off.getTerritory()+"\">");
 					%>
 				</td>
 			</tr>
 
 		</table>
-		<input type="submit" name="UPDATE" value="UPDATE" /> <input
-			type="submit" name="DELETE" value="DELETE" />
+		<input class="buttondesign" type="submit" name="UPDATE" value="UPDATE" /> 
+		<input class="buttondesign" type="submit" name="DELETE" value="DELETE" />
 			
 		</form>
+		<br><br>
+		</div>
 		<jsp:include page="includes/Footer.jsp" />
 </body>
 </html>

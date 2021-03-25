@@ -25,12 +25,13 @@
 			%></h2>
 			<div>This is the Employee Management Portal. Manage your employees.</div>
 			<p>
-				<a style="width:300px;" class="btn btn-primary btn-lg buttondesign" href="AdminHomepage.jsp" role="button">Employee Sector</a>&nbsp
-				<a style="width:300px;" class="btn btn-primary btn-lg buttondesign" href="ManageOffice.jsp" role="button">Office Sector</a>&nbsp
+				<a style="width:300px;" class="btn btn-primary btn-lg buttondesign" href="ManageEmployee.jsp" role="button">Employee Section</a>&nbsp
+				<a style="width:300px;" class="btn btn-primary btn-lg buttondesign" href="ManageOffice.jsp" role="button">Office Section</a>&nbsp
 				
 			</p>	
 		</div>
 	</div>
+	<br><br><br><br><br><br><br>
 	<jsp:include page="includes/Footer.jsp" />
 </body>
 </html>

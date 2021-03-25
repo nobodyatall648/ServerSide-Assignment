@@ -134,6 +134,7 @@
 	<br>
 	<br>
 	</div>
+	<br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="includes/Footer.jsp" />
 </body>
 </html>

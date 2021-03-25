@@ -30,14 +30,13 @@ tr:nth-child(even) {
 
 <body>
 <jsp:include page="includes/HeaderAdmin.jsp" />
+<div class="container">
 <h1>Employee Detail</h1>
 	<%
 		EmployeeEntity emp = (EmployeeEntity) request.getAttribute("EmployeeResult");
 	%>
 	<form action="admincontroller" method="post">
-
-	
-		<table>
+		<table class="table">
 			<tr>
 				<td>Employee Number</td>
 				<td>
@@ -100,10 +99,12 @@ tr:nth-child(even) {
 			</tr>
 
 		</table>
-		<input type="submit" name="UPDATE" value="UPDATE" /> <input
-			type="submit" name="DELETE" value="DELETE" />
+		<input class="buttondesign" type="submit" name="UPDATE" value="UPDATE" /> 
+		<input class="buttondesign" type="submit" name="DELETE" value="DELETE" />
 			
 		</form>
+		</div>
+		<br><br><br><br><br>
 		<jsp:include page="includes/Footer.jsp" />
 </body>
 </html>

@@ -41,11 +41,13 @@ public class OfficeController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String officecode=request.getParameter("ocode");
 		
-		if(officecode!=null) {
-		OfficeEntity o=offbean.findOffice(Integer.parseInt(officecode));
-		request.setAttribute("OfficeResult", o);
-		RequestDispatcher req=request.getRequestDispatcher("ViewOffice.jsp");
-		req.forward(request, response);
+		try {
+			OfficeEntity o = offbean.findOffice(Integer.parseInt(officecode));
+			request.setAttribute("OfficeResult", o);
+			RequestDispatcher req = request.getRequestDispatcher("ViewOffice.jsp");
+			req.forward(request, response);
+		}catch (Exception e) { 
+			response.sendRedirect(request.getContextPath() + "/ManageOffice.jsp?fail=0");
 		}
 	}
 	
@@ -55,7 +57,6 @@ public class OfficeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		
 		String num=request.getParameter("ocode");
 		String city=request.getParameter("city");
@@ -67,11 +68,7 @@ public class OfficeController extends HttpServlet {
 		String pcode=request.getParameter("pcode");
 		String territory=request.getParameter("territory");
 		
-		
-		
-		
-		
-PrintWriter out = response.getWriter();
+		PrintWriter out = response.getWriter();
 		
 		String[] s= {num,city,phone,add1,add2,state,country,pcode,territory};
 		

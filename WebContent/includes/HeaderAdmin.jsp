@@ -25,7 +25,7 @@
 
 </head>
 <body>
-<%
+	<%
 		//check for authorization
 		String roleAuth = "admin";
 		Cookie[] cookies = request.getCookies();
@@ -56,7 +56,7 @@
 			out.println("</script>");
 		}
 	%>
-	
+
 
 	<header class="site-header">
 		<nav class="navbar navbar-inverse">
@@ -70,7 +70,8 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="indexAdmin.jsp">Ransom Vehicle Store</a>
+					<a class="navbar-brand" href="indexAdmin.jsp">Ransom Vehicle
+						Store</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -78,21 +79,14 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li><a href="indexAdmin.jsp">Home</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Manage Employee<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Add Employee</a></li>
-								<li><a href="#">Remove Employee</a></li>
-								<li><a href="#">Assign Employee</a></li>
-							</ul></li>
+						<li><a href="ManageEmployee.jsp">Employee Section</a></li>
+						<li><a href="ManageOffice.jsp">Office Section</a></li>
 					</ul>
 
-<ul class="nav navbar-nav navbar-right">
+					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">
-							<%
+							aria-expanded="false"> <%
 						 	//show username
 						 	for (int i = 0; i < cookies.length; i++) {
 						 		Cookie c = cookies[i];
@@ -100,13 +94,14 @@
 						 			out.println("<div>"+ c.getValue() + "</div>");
 						 		}
 						 	}
-					 		%> </a>
+					 		%>
+						</a>
 							<ul class="dropdown-menu">
 								<li><a href="Logout">Logout</a></li>
 							</ul></li>
-						
+
 					</ul>
-					
+
 					<!--  
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#">Sign Up</a></li>
@@ -130,7 +125,7 @@
 	<script src="js/bootstrap.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/main.js"></script>
-	
-	
+
+
 </body>
 </html>

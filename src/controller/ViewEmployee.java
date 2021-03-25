@@ -45,11 +45,13 @@ public class ViewEmployee extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String employeenum=request.getParameter("employeenum");
-		if(employeenum!=null) {
-		EmployeeEntity e=emp.getEmployeeByEmpNum(employeenum);
-		request.setAttribute("EmployeeResult", e);
-		RequestDispatcher req=request.getRequestDispatcher("ViewEmployee.jsp");
-		req.forward(request, response);
+		try {
+			EmployeeEntity e = emp.getEmployeeByEmpNum(employeenum);
+			request.setAttribute("EmployeeResult", e);
+			RequestDispatcher req = request.getRequestDispatcher("ViewEmployee.jsp");
+			req.forward(request, response);
+		}catch (Exception e) { 
+			response.sendRedirect(request.getContextPath() + "/ManageEmployee.jsp?fail=0");
 		}
 	}
 }

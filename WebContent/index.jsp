@@ -27,7 +27,7 @@
 				start searching for your dream vehicle.</div>
 			<p>
 				<a style="width: 300px;" class="btn btn-primary btn-lg buttondesign"
-					href="ViewProductInfo.jsp" role="button">Search Vehicles</a>&nbsp <a
+					href="ViewProductInfo" role="button">Search Vehicles</a>&nbsp <a
 					style="width: 300px;" class="btn btn-primary btn-lg buttondesign"
 					href="addOrder.jsp" role="button">Place Order</a>&nbsp <a
 					style="width: 300px;" class="btn btn-primary btn-lg buttondesign"
