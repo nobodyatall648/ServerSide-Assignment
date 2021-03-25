@@ -2,6 +2,7 @@ package sessionbean;
 
 
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -12,6 +13,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolationException;
+
+import org.postgresql.util.PSQLException;
 
 import domain.EmployeeEntity;
 import domain.OfficeEntity;
@@ -38,23 +42,19 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 	}
 
 	@Override
-	public void addEmployee(String[] s, OfficeEntity o) throws EJBException {
-		// TODO Auto-generated method stub
-		EmployeeEntity e=new EmployeeEntity();
-		
-	    
-		e.setEmployeenumber(Integer.parseInt(s[0]));
-		e.setFirstname(s[1]);
-		e.setLastname(s[2]);
-		e.setEmail(s[3]);
-		e.setJobtitle(s[4]);
-		e.setExtension("x100");
-		e.setReportsto(s[6]);
-		e.setOffice(o);
-		
-		em.persist(e);
-		
-		
+	public void addEmployee(EmployeeEntity e) throws EJBException {
+		// TODO Auto-generated method stub	
+		//using native query because EJB not work for foreign key insertion
+		Query q = em.createNativeQuery("INSERT INTO classicmodels.employees (employeenumber, email, extension, firstname, jobtitle, lastname, reportsto, officecode) VALUES (?,?,?,?,?,?,?,?)", EmployeeEntity.class);
+		q.setParameter(1, e.getEmployeenumber());
+		q.setParameter(2,e.getEmail() );
+		q.setParameter(3, e.getExtension());
+		q.setParameter(4, e.getFirstname());
+		q.setParameter(5, e.getJobtitle());
+		q.setParameter(6, e.getLastname());
+		q.setParameter(7, e.getReportsto());
+		q.setParameter(8, e.getOffice().getOfficecode());
+		q.executeUpdate();	  
 		
 	}
 

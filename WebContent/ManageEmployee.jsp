@@ -40,10 +40,10 @@
 
 				Please enter Employee Details to add Employee.  <br> <br>
 				<table class="table">
-<!-- 					<tr> -->
-<!-- 						<th>Employee Number</th> -->
-<!-- 						<td><input type="text" name="id" required/></td> -->
-<!-- 					</tr> -->
+ 					<tr> 
+ 						<th>Employee Number</th> 
+ 						<td><input type="text" name="id" required/></td>
+ 					</tr> 
 					<tr>
 						<th>First Name</th>
 						<td><input type="text" name="fname" required/></td>
